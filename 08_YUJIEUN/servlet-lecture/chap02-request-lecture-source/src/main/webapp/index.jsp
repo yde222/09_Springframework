@@ -68,6 +68,9 @@
     <input type="submit" value="POST 요청">
 
 </form>
+<hr>
 
+<h1>Request Header 값 확인</h1>
+<a href="headers">클릭</a>
 </body>
 </html>
