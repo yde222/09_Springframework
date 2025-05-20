@@ -9,14 +9,17 @@ import java.io.PrintWriter;
 
 @WebServlet(value = "/redirect")
 public class Redirect extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("이 서블릿으로 redirect 완료!");
-        String name2 = (String) request.getAttribute("name2");
+        System.out.println("이 서블릿으로 redirect완료!");
+        String name2 = (String)request.getAttribute("name2");
         System.out.println("name2 = " + name2);
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        out.println("<h1>" + name2 + "님 환영합니다.</h1>");
+        out.println("<h1>이 서블릿으로 redirect완료!</h1>");
+        out.flush();
+        out.close();
     }
 }
