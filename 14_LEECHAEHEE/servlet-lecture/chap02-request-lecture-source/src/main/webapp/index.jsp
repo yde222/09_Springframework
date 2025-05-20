@@ -34,11 +34,12 @@
     <br>
 
     <input type="submit" value="GET 요청">
+
 </form>
 
 <hr>
 <h2>POST 방식의 요청</h2>
-<h3>form 태그를 이용한 POST 방식 요청</h3>
+<h3>form 태그를 이용한 post 방식 요청</h3>
 <form action="formdata" method="post">
     <label>이름 : </label><input type="text" name="name">
     <br>
@@ -63,10 +64,13 @@
     <input type="checkbox" name="hobbies" id="music2" value="music"><label for="music">음악</label>
     <input type="checkbox" name="hobbies" id="sleep2" value="sleep"><label for="sleep">취침</label>
     <br>
+
     <input type="submit" value="POST 요청">
+
 </form>
 <hr>
-<h2>Header</h2>
+
+<h1>Request Header 값 확인</h1>
 <a href="headers">클릭</a>
 </body>
 </html>

@@ -10,27 +10,25 @@ import java.io.IOException;
 * value 속성 : 서블릿 매핑
 * */
 
-@WebServlet(value="/annotation-lifecycle", loadOnStartup=1)
+@WebServlet(value="/annotation-lifecyle", loadOnStartup = 1)
 public class LifeCycleTest extends HttpServlet {
 
     public LifeCycleTest() {
-        System.out.println("Annotation 생성자 호출");
+        System.out.println("Annotation Mapping constructor한");
     }
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        System.out.println("Annotation Init 메소드 호출");
-
+        System.out.println("Annotation mapping init");
     }
 
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-        System.out.println("Annotation Mapping Service 메소드 호출");
-
+        System.out.println("Annotation mapping service");
     }
 
     @Override
     public void destroy() {
-        System.out.println("Annotation Mapping Destroy 메소드 호출");
+        System.out.println("Annotation mapping destroy");
     }
 }
