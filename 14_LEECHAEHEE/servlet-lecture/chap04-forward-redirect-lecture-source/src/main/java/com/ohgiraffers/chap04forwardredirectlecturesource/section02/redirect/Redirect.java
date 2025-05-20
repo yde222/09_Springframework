@@ -12,7 +12,7 @@ public class Redirect extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("이 서블릿으로 redirect완료!");
+        System.out.println("이 서블릿으로 redirect완료!!");
         String name2 = (String)request.getAttribute("name2");
         System.out.println("name2 = " + name2);
 
