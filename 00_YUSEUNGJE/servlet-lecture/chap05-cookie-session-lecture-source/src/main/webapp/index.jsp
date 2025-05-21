@@ -41,5 +41,7 @@
     </table>
 </form>
 
+<h3>세션 데이터 지우기</h3>
+<a href="session-delete">세션 데이터 제거</a>
 </body>
 </html>

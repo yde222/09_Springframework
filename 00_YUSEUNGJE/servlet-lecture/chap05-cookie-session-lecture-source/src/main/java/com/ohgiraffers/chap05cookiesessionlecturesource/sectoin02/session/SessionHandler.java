@@ -20,5 +20,20 @@ public class SessionHandler extends HttpServlet {
         * session id는 cookie에 저장 되어 있다.
         * */
         System.out.println(session.getId());
+
+        System.out.println(session.getMaxInactiveInterval()); // 세션의 기본 유지 시간 30분
+        session.setMaxInactiveInterval(60 * 10); // 10분
+        System.out.println(session.getMaxInactiveInterval());
+
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+
+        System.out.println("firstName = " + firstName);
+        System.out.println("lastName = " + lastName);
+
+        session.setAttribute("firstName", firstName);
+        session.setAttribute("lastName", lastName);
+
+        response.sendRedirect("session-redirect");
     }
 }
