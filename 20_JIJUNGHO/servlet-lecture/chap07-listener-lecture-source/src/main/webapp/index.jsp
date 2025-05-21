@@ -9,6 +9,7 @@
 <ul>
     <li><a href="context">context listener test</a></li>
     <li><a href="session">session listener test</a></li>
+    <li><a href="request">request listener test</a></li>
 </ul>
 </body>
 </html>
