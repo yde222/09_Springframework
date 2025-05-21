@@ -18,5 +18,11 @@ public class RegistmemberServlet extends HttpServlet {
         System.out.println("userId = " + userId);
         System.out.println("password = " + password);
         System.out.println("name = " + name);
+
+
+        /**/
+        BCryptPasswordEncorder encoder = new BCryptPasswordEncorder();
+        System.out.println("비밀번호가 pass01?" + encoder.matches("pass01",password));
+
     }
 }
