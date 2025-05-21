@@ -4,7 +4,7 @@ response header에 응답을 위한 설정으로 content-type이라는 헤더에
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>simpleJspStates</title>
 </head>
 <body>
 <!-- 2. jsp 주석 태그 -->
