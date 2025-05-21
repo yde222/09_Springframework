@@ -8,6 +8,13 @@ import jakarta.servlet.http.HttpSessionListener;
 
 @WebListener
 public class SessionListenerTest implements HttpSessionListener, HttpSessionAttributeListener {
+    /*
+    * session (→ 세션에서 발생 가능한 이벤트)
+     * HttpSessionListener : Http 세션의 시작, 종료에 대한 이벤트 리스너
+     * HttpSessionAttributeListener : HttpSession에 attribute를 추가, 제거, 수정에 대한 이벤트 리스너
+     *
+    * */
+
     public SessionListenerTest() {
         // context가 load 될 때 인스턴스가 생성된다.
         System.out.println("session listener 인스턴스 생성됨~~");

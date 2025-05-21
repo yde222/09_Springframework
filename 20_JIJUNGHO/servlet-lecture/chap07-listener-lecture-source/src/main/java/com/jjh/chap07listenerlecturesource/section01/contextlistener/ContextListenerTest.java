@@ -20,7 +20,7 @@ public class ContextListenerTest implements ServletContextListener , ServletCont
      *
      * 3. request (→ request 관련 이벤트)
      * 3-1. ServletRequestListener : ServletRequest 생성과 소멸에 대한 이벤트 리스너
-     * 3-2. ServletRequest에 attribute를 추가, 제거, 수정하는 것에 대한 이벤트 리스너
+     * 3-2. ServletRequestAttributeListener에 attribute를 추가, 제거, 수정하는 것에 대한 이벤트 리스너
      * */
 
     public ContextListenerTest() {
