@@ -5,9 +5,7 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+    <h1>JSP Action Tag</h1>
+    <h3><a href="views/action/testAction.jsp">jsp action tag 테스트</a></h3>
 </body>
 </html>
