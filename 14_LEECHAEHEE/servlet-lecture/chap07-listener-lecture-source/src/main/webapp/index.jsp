@@ -2,12 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Listener</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+<h1>Listener</h1>
+<ul>
+    <li><a href="listener">Listener test</a></li>
+    <li><a href="session">Session test</a></li>
+    <li><a href="request">Request test</a></li>
+</ul>
 </body>
 </html>
