@@ -8,6 +8,7 @@
 <h1>Listener</h1>
 <ul>
     <li><a href="context">context listener test</a></li>
+    <li><a href="session">session listener test</a></li>
 </ul>
 </body>
 </html>
