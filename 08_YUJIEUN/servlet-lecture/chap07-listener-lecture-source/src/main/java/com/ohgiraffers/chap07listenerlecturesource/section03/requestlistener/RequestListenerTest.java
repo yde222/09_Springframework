@@ -25,4 +25,19 @@ public class RequestListenerTest implements ServletRequestListener, ServletConte
         /*request가 생성된 때 호출된다.*/
         System.out.println("request initialized");
     }
+
+    @Override
+    public void attributeAdded(ServletContextAttributeEvent event) {
+        System.out.println("attribute added");
+    }
+
+    @Override
+    public void attributeRemoved(ServletContextAttributeEvent event) {
+        System.out.println("attribute removed");
+    }
+
+    @Override
+    public void attributeReplaced(ServletContextAttributeEvent event) {
+        System.out.println("attribute replaced");
+    }
 }

@@ -5,18 +5,16 @@
     <title>Listener</title>
 </head>
 <body>
-<h1>Listener
-</h1>
-<br/>
-<a href="context">context listener test</a>
-<ul>
-    <li>
-        <a href="session">session listener test</a>
-    </li>
-</ul>
+<h1>Listener</h1>
 <ul>
     <li>
         <a href="context">context listener test</a>
+    </li>
+    <li>
+        <a href="session">session listener test</a>
+    </li>
+    <li>
+        <a href="request">reqeust listener test</a>
     </li>
 </ul>
 </body>
