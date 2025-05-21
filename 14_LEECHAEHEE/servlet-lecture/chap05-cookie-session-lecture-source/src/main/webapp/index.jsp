@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cookie & Session</title>
+    <title>cookie & session</title>
 </head>
 <body>
 <h1>Cookie Handling</h1>
@@ -21,6 +21,7 @@
         </tr>
     </table>
 </form>
+
 <hr>
 
 <h1>Session Handling</h1>
