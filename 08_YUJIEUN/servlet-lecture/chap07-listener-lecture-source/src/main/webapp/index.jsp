@@ -9,5 +9,15 @@
 </h1>
 <br/>
 <a href="context">context listener test</a>
+<ul>
+    <li>
+        <a href="session">session listener test</a>
+    </li>
+</ul>
+<ul>
+    <li>
+        <a href="context">context listener test</a>
+    </li>
+</ul>
 </body>
 </html>
