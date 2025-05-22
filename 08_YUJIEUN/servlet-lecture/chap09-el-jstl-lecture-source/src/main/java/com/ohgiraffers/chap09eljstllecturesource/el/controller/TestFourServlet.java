@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/test3")
-public class Test3Servlet extends HttpServlet {
+@WebServlet("/test4")
+public class TestFourServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MemberDTO memberDTO = new MemberDTO();
