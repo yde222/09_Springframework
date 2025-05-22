@@ -1,0 +1,40 @@
+package com.ohgiraffers.chap06filterlecturesource.section01.filter;
+
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.annotation.WebServlet;
+import java.io.IOException;
+
+@WebFilter("/fisrt/filter")
+/*@WebFilter("/fisrt/*") // first아래 모든 서블릿에
+@WebFilter("/*") // 모든 서블릿에*/
+public class FirstFilter implements Filter {
+
+  @Override
+  public void init(FilterConfig filterConfig) throws ServletException {
+    System.out.println("FirstFilter init 메소드 호출");
+  }
+
+  @Override
+  public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
+      FilterChain filterChain) throws IOException, ServletException {
+    System.out.println("Filter doFilter 메소드 호출");
+
+    /* 현재 필터에서 다음 필터 또는 서블릿을 호출하는 코드 */
+    filterChain.doFilter(servletRequest, servletResponse);
+
+    System.out.println("서블릿 요청 수행 완료");
+  }
+
+  @Override
+  public void destroy() {
+    System.out.println("Filter destroy 메소드 호출");
+  }
+
+
+}
