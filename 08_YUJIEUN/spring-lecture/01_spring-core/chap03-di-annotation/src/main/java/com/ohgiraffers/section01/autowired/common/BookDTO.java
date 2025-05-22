@@ -1,12 +1,8 @@
 package com.ohgiraffers.section01.autowired.common;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Date;
-
 
 @Getter
 @Setter
@@ -19,6 +15,5 @@ public class BookDTO {
     private String title;
     private String author;
     private String publisher;
-    private Date cretedDate;
-
+    private Date createdDate;
 }

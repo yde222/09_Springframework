@@ -1,4 +1,4 @@
-package com.ohgiraffers.section01.subsection02.constructor;
+package com.ohgiraffers.section01.autowired.subsection03.setter;
 
 import com.ohgiraffers.section01.autowired.common.BookDAO;
 import com.ohgiraffers.section01.autowired.common.BookDTO;
@@ -7,16 +7,18 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("bookServiceConstructor")
+@Service("bookServiceSetter")
 public class BookService {
 
     //생성자 주입
-    private final BookDAO bookDAO;
+    private BookDAO bookDAO;
 
-//    @Autowired //생성자 주입
-    public BookService(BookDAO bookDAO) {
+    //의존성 주입이 옵션으로 수행될 수 있도록 처리하는데 유용하게 사용된다.
+    @Autowired(required = false)
+    public void setBookDAO(BookDAO bookDAO) {
         this.bookDAO = bookDAO;
     }
+    
 
     public List<BookDTO> selectAllBooks(){
         return bookDAO.selectBookList();

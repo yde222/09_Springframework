@@ -8,19 +8,19 @@ import org.springframework.context.annotation.Bean;
 public class ContextConfiguration {
 
     @Bean
-    public Account accountGenerator(){
-        return new PersonalAccount(20,"123-456-8890");
+    public Account acountGenerator() {
+        return new PersonalAccount(20, "123-456-8890");
     }
 
-    /*bean 등록에 사용된 메소드를 호출하여 의존성 주입을 처리할 수 있다.*/
-    @Bean
-    public MemberDTO memberGenerator(){
-        /* 1. 생성자 주입*/
-//        return new MemberDTO(1, "홍길동", "101-1213-1212", "fdfd@gmail.com", accountGenerator());
+    /* bean등록에 사용된 메소드를 호출하여 의존성 주입을 처리할 수 있다. */
 
-        /* 2. setter 주입*/
+    @Bean
+    public MemberDTO memberGenerator() {
+        /* 1. 생성자 주입 */
+//        return new MemberDTO(1, "홍길동", "010-1234-5678", "hong@gmail.com", acountGenerator());
+        /* 2. setter 주입 */
         MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setPersonalAccount(accountGenerator());
+        memberDTO.setPersonalAccount(acountGenerator());
         return memberDTO;
     }
 }

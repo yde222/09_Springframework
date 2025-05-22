@@ -4,10 +4,9 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class PersonalAccount implements Account{
-
-    private final int bankCode;     //은행코드
-    private final String accNo;     //계좌번호
-    private int balance;            //잔액
+    private final int bankCode;      // 은행코드
+    private final String accNo;     // 계좌번호
+    private int balance;            // 잔액
 
     @Override
     public String getBalance() {
@@ -35,5 +34,4 @@ public class PersonalAccount implements Account{
         }
         return str;
     }
-
 }
