@@ -11,7 +11,7 @@ repositories {
 }
 
 ext {
-    junitVersion = '5.9.2'
+    junitVersion = '5.11.0'
 }
 
 sourceCompatibility = '17'
@@ -22,7 +22,8 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    compileOnly('jakarta.servlet:jakarta.servlet-api:5.0.0')
+    compileOnly('jakarta.servlet:jakarta.servlet-api:6.1.0')
+
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.1'
     runtimeOnly 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
 
