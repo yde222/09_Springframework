@@ -7,14 +7,15 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Application {
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext("ConfigurationContext.class");
+        ApplicationContext applicationContext =
+                new AnnotationConfigApplicationContext(ConfigurationContext.class);
 
-
-        String[] beanNames  = applicationContext.getBeanDefinitionNames();
-        for(String beanName : beanNames) {
-            System.out.println(beanName);
+        String[] beanNames = applicationContext.getBeanDefinitionNames();
+        for (String beanName : beanNames) {
+            System.out.println("beanName = " + beanName);
         }
 
-
+//        MemberDTO member = applicationContext.getBean("member", MemberDTO.class);
+//        System.out.println(member);
     }
 }
