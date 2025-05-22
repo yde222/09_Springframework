@@ -6,7 +6,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class Application {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new GenericXmlApplicationContext("section01/xmlconfig/string-context.xml");
+        ApplicationContext applicationContext = new GenericXmlApplicationContext("section01/xmlconfig/spring-context.xml");
 
         String[] beanNames = applicationContext.getBeanDefinitionNames();
         for (String beanName : beanNames) {
