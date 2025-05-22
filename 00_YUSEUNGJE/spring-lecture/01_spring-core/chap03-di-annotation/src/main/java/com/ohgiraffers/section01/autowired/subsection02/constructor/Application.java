@@ -1,23 +1,28 @@
-package com.ohgiraffers.section01.autowired.subsection01.field;
+package com.ohgiraffers.section01.autowired.subsection02.constructor;
 
+import com.ohgiraffers.section01.autowired.common.BookDAOImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Application {
+
     public static void main(String[] args) {
+
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.ohgiraffers.section01");
+
         String[] definitionNames = context.getBeanDefinitionNames();
         for (String definitionName : definitionNames) {
             System.out.println("definitionName = " + definitionName);
         }
-        // IoC컨테이너에서 사용
-        BookService bookService = context.getBean("bookServiceField", BookService.class);
+
+        BookService bookService =
+                context.getBean("bookServiceConstructor", BookService.class);
         System.out.println(bookService.selectBookBySequence(1));
         System.out.println(bookService.selectAllBooks());
 
-        // IoC컨테이너 없이 BookService 코드 사용
-        BookService bookService2 = new BookService();
+        // IoC컨테이너 없이 코드를 테스트할 떄 생성자를 통해 BookDAO객체를 전달하여 처리 가능
+        BookService bookService2 = new BookService(new BookDAOImpl());
         System.out.println(bookService2.selectAllBooks());
     }
 }
