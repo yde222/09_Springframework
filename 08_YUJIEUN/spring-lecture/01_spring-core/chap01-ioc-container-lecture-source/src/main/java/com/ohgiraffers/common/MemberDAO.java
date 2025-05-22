@@ -1,8 +1,12 @@
 package com.ohgiraffers.common;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+
+@Component
 public class MemberDAO {
 
     private final Map<Integer, MemberDTO> memberMap;
