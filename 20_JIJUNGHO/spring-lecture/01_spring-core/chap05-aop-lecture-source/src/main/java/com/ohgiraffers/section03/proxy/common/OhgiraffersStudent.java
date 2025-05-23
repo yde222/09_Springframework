@@ -1,6 +1,6 @@
 package com.ohgiraffers.section03.proxy.common;
 
-public class OjgiraffersStudent implements Student {
+public class OhgiraffersStudent implements Student {
     @Override
     public void study(int hours) {
         System.out.println(hours + " 시간동안 열심히 공부합니다.");

@@ -1,6 +1,6 @@
 package com.ohgiraffers.section03.proxy.subsection01.dynamic;
 
-import com.ohgiraffers.section03.proxy.common.OjgiraffersStudent;
+import com.ohgiraffers.section03.proxy.common.OhgiraffersStudent;
 import com.ohgiraffers.section03.proxy.common.Student;
 
 import java.lang.reflect.Proxy;
@@ -12,7 +12,7 @@ public class Application {
         * Target Object의 타입이 반드시 interface여야 한다.
         * */
 
-        Student student = new OjgiraffersStudent();
+        Student student = new OhgiraffersStudent();
         Handler handler = new Handler(student);
 
         Student proxy = (Student) Proxy.newProxyInstance(
