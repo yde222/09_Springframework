@@ -1,15 +1,13 @@
 package com.ohgiraffers.common;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-    private final List<Product> items;  // 쇼핑 카드에 담긴 상품들
 
+    private final List<Product> items; // 쇼핑 카드에 담긴 상품들
 
     public ShoppingCart() {
         items = new ArrayList<Product>();

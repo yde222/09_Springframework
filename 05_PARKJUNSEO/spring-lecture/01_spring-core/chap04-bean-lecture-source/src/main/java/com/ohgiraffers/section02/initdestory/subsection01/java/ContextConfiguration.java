@@ -1,40 +1,41 @@
-package com.ohgiraffers.secion01.scope.subsection02.prototype;
+package com.ohgiraffers.section02.initdestory.subsection01.java;
 
 import com.ohgiraffers.common.Beverage;
 import com.ohgiraffers.common.Bread;
 import com.ohgiraffers.common.Product;
 import com.ohgiraffers.common.ShoppingCart;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Scope;
-
-import java.util.Date;
 
 public class ContextConfiguration {
 
     @Bean
-    public Product crapBread() {
+    public Product carpBread(){
         System.out.println("붕어빵 생성 시점");
-        return new Bread("붕어빵", 1000, new Date());
+        return new Bread("붕어빵", 1000, new java.util.Date());
     }
 
-
     @Bean
-    public Product milk() {
+    public Product milk(){
         System.out.println("딸기우유 생성 시점");
         return new Beverage("딸기우유", 1500, 500);
     }
 
     @Bean
-    public Product water() {
+    public Product water(){
         System.out.println("물 생성 시점");
-        return new Beverage("삼다수", 30000, 500);
+        return new Beverage("지리산 절벽 암반수", 30000, 400);
     }
 
     @Bean
-    public ShoppingCart cart() {
+    @Scope("prototype")
+    public ShoppingCart cart(){
         System.out.println("쇼핑 카트 생성 시점");
         return new ShoppingCart();
     }
 
+    @Bean(initMethod = "openShop", destroyMethod = "closeShop")
+    public Owner owner(){
+        return new Owner();
+    }
 }
