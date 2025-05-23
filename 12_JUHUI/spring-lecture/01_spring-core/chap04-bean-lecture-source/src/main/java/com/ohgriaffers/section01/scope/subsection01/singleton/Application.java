@@ -26,6 +26,5 @@ public class Application {
         shoppingCart2.addItem(water);
         System.out.println("cart2에 담긴 물품 : " + shoppingCart2.getItems());
 
-        ((AnnotationConfigApplicationContext)context).close();
     }
 }

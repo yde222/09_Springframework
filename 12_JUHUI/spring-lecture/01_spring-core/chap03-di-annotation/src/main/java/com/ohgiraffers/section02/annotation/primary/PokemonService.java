@@ -3,7 +3,7 @@ package com.ohgiraffers.section02.annotation.primary;
 import com.ohgiraffers.section02.annotation.common.Pokemon;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("pokemonServicePrimary")
 public class PokemonService {
     private Pokemon pokemon;
 
