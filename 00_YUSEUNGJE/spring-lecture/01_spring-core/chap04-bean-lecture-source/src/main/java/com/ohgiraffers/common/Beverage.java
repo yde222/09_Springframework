@@ -6,13 +6,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Getter
 @Setter
 public class Beverage extends Product {
 
     private int capacity;       // 용량
+
+    public Beverage() {
+    }
+
+    public Beverage(String name, int price, int capacity) {
+        super(name, price);
+        this.capacity = capacity;
+    }
+
+
 
     @Override
     public String toString() {
