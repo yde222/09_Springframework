@@ -1,10 +1,9 @@
-package com.ohgiraffers.section02.initdestory.subsection02.annotation;
+package com.ohgiraffers.section02.subsection01.initdestory.java;
 
 import com.ohgiraffers.common.Beverage;
 import com.ohgiraffers.common.Bread;
 import com.ohgiraffers.common.Product;
 import com.ohgiraffers.common.ShoppingCart;
-import com.ohgiraffers.section02.initdestory.subsection01.java.Owner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 
@@ -35,7 +34,7 @@ public class ContextConfiguration {
         return new ShoppingCart();
     }
 
-    @Bean
+    @Bean(initMethod = "openShop", destroyMethod = "closeShop")
     public Owner owner(){
         return new Owner();
     }

@@ -1,8 +1,7 @@
-package com.ohgiraffers.section02.initdestory.subsection02.annotation;
+package com.ohgiraffers.section02.subsection02.annotation;
 
 import com.ohgiraffers.common.Product;
 import com.ohgiraffers.common.ShoppingCart;
-import com.ohgiraffers.section02.initdestory.subsection01.java.ContextConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

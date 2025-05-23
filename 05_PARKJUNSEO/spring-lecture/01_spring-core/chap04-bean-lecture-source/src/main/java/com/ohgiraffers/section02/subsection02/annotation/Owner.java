@@ -1,4 +1,4 @@
-package com.ohgiraffers.section02.initdestory.subsection02.annotation;
+package com.ohgiraffers.section02.subsection02.annotation;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

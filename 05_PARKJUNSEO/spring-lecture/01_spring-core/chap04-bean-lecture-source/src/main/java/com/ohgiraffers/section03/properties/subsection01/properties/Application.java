@@ -27,7 +27,5 @@ public class Application {
         ShoppingCart shoppingCart2 = context.getBean("cart", ShoppingCart.class);
         shoppingCart2.addItem(water);
         System.out.println("cart2에 담긴 물품 : " + shoppingCart2.getItems());
-
-        ((AnnotationConfigApplicationContext)context).close();
     }
 }
