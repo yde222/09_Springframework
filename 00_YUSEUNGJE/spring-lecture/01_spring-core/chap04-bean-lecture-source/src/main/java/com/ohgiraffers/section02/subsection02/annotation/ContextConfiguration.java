@@ -1,4 +1,4 @@
-package com.ohgiraffers.section02.initdestory.subsection01.java;
+package com.ohgiraffers.section02.subsection02.annotation;
 
 import com.ohgiraffers.common.Beverage;
 import com.ohgiraffers.common.Bread;
@@ -34,7 +34,7 @@ public class ContextConfiguration {
         return new ShoppingCart();
     }
 
-    @Bean(initMethod = "openShop", destroyMethod = "closeShop")
+    @Bean
     public Owner owner(){
         return new Owner();
     }
