@@ -7,7 +7,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/cookie-redirect")
+@WebServlet(value = "/cookie-redirect")
 public class CookieRedirect extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

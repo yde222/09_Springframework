@@ -21,12 +21,10 @@
         </tr>
     </table>
 </form>
-</body>
-</html>
 
 <hr>
 
-<h1>Session Handlingg</h1>
+<h1>Session Handling</h1>
 <form action="session" method="post">
     <table>
         <tr>
@@ -42,3 +40,8 @@
         </tr>
     </table>
 </form>
+
+<h3>세션 데이터 지우기</h3>
+<a href="session-delete">세션 데이터 제거</a>
+</body>
+</html>
