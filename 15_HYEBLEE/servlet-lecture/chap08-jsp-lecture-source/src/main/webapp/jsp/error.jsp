@@ -1,0 +1,23 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: qls09
+  Date: 2025-05-21
+  Time: 오후 4:16
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isErrorPage="true" %>
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <%
+        // isErrorPage="true"로 설정 시, exception 내장 객체 사용 가능
+        String exceptionType = exception.getClass().getTypeName();
+        String exceptionMessage = exception.getMessage();
+    %>
+
+<h1><%= exceptionType%></h1>
+<h1><%= exceptionMessage%></h1>
+</body>
+</html>
