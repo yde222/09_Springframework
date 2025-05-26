@@ -1,15 +1,17 @@
 package com.ohgiraffers.exceptionhandler;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ExceptionHandlerController {
+
     @GetMapping("/controller-null")
-    public String nullPointerException() {
+    public String nullPonterExceptionTest(){
         String str = null;
-        System.out.println(str.charAt(0)); // 의도적으로 NullPointerException 발생
+        System.out.println(str.charAt(0));  // 의도적으로 NullPointerException 발생
         return "/";
     }
 
@@ -21,9 +23,17 @@ public class ExceptionHandlerController {
     }
 
     @ExceptionHandler(NullPointerException.class)
-    public String nullPointerExcptionHandler(NullPointerException e){
+    public String nullPointerExceptionHandler(NullPointerException e){
         System.out.println("지역 범위의 Exception Handler 동작");
-        System.out.println("message: " + e.getMessage());
+        System.out.println("message : " + e.getMessage());
         return "error/nullPointer";
+    }
+
+    @ExceptionHandler(MemberRegistException.class)
+    public String userExceptionHandler(MemberRegistException e, Model model){
+        System.out.println("지역 범위의 Exception Handler 동작");
+        System.out.println("message : " + e.getMessage());
+        model.addAttribute("exception", e);
+        return "error/memberRegist";
     }
 }
