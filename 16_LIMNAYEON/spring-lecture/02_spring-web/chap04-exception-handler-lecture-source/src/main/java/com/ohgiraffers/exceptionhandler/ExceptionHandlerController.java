@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ExceptionHandlerController {
 
     @GetMapping("/controller-null")
-    public String nullPointerException() {
+    public String nullPonterExceptionTest(){
         String str = null;
-        System.out.println(str.charAt(0)); // 의도적으로 NullPointerException 발생
+        System.out.println(str.charAt(0));  // 의도적으로 NullPointerException 발생
         return "/";
     }
 }
