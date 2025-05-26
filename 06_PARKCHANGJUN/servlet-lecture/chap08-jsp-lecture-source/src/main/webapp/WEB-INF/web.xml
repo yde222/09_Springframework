@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+</web-app>
+
+<!-- WEB.xml은 Tomcat이 관리한다. 따라서 web.xml은 직접 접근이 불가하고 서블릿을 통해서 페이지를 이동시켜줘야 한다.
+페이지 이동 방법에는 두 가지가 있다. forward 방식, redirect방식으로 해줘야 이동 가능하다.-->
