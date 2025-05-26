@@ -1,12 +1,16 @@
 package com.ohgiraffers.handlermethod;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
 
 @Controller
 @RequestMapping("/first/*")
+@SessionAttributes("id")
 public class FirstController {
 
     // /first/regist로 보낸다.
@@ -72,7 +76,42 @@ public class FirstController {
     public void login(){}
 
 
+    /*
+    * 4. @SessionAttribute
+    * HttpSession을 전달 받는 것도 가능하지만 Servlet 종속적이므로
+    * Spring에서 제공하는 기능을 사용할 것을 권장한다.
+    * 클래스 레벨에 @SessionAttribute("key")와 같이 지정하면
+    * Model에 해당 key가 추가될 경우 Session에도 자동 등록된다.
+    * */
+    @PostMapping("/login")
+    public String loginTest(String id, Model model){
 
+        model.addAttribute("id", id);
+        return "first/loginResult";
+    }
 
+    /* @SessionAttribute 만료
+     * SessionStatus 라는 세션의 상태를 관리하는 객체의 setComplete 메소드로 세션을 만료 시킨다.
+     * HttpSession의 invalidate 메소드를 호출해도 세션 값은 만료 되지 않고 유지 된다.
+     * */
+    @GetMapping("/logout")
+    public String logout(SessionStatus status){
+        status.setComplete();
+        return "first/loginResult";
+    }
 
+    @GetMapping("/body")
+    public void body(){}
+
+    @PostMapping("/body")
+    public void bodyTest(
+            @RequestBody String body,
+            @RequestHeader("content-type") String contentType,
+            @CookieValue("JSESSIONID") String sessionId
+    ){
+        System.out.println("body = " + body);
+        System.out.println("contentType = " + contentType);
+        System.out.println("sessionId = " + sessionId);
+
+    }
 }
