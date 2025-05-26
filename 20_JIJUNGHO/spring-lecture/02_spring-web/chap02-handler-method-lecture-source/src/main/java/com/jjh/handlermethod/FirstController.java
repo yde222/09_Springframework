@@ -15,13 +15,13 @@ public class FirstController {
     /*
      * /first/regist로 보낸다.
      * 핸들러 메서드 반환 값이 void인 경우 요청 주소가 곧 view의 이름이 된다.
-     *  */
+     * */
+
     @GetMapping("/regist")
     public void regist() {
     }
 
-    /*
-     * 1. WebRequest로 요청 파라미터 전달 받기
+     /* 1. WebRequest로 요청 파라미터 전달 받기
      * HttpServletRequest/Response도 매개변수에 선언해서 사용하는것이 가능하지만
      * WebRequest가 Servlet 기술에 종속적이지 않아 Spring 기반의 프로젝트에서 더 자주 사용된다.
      *  */
@@ -38,6 +38,10 @@ public class FirstController {
     }
 
     // 단순 페이지 이동용으로 만들어진 핸들러 메소드
+    @GetMapping("/modify")
+    public void modify() {
+    }
+
     /* 2. @RequestParam
      * 요청 파라미터를 매핑하여 핸들러 메소드 호출 시 값을 넣어주는 어노테이션으로 매개변수 앞에 작성
      * name 속성과 매개변수명이 다른 경우 @RequestParam("name") 으로 작성하며 별도의 속성이
@@ -52,10 +56,20 @@ public class FirstController {
             @RequestParam(value = "price") int modifyPrice,
             Model model
     ) {
-        String message = modifyName + "을 신규 메뉴 목록의 " + modifyPrice + "원으로 등록했습니다.";
+        String message = modifyName + "을 메뉴 목록의 " + modifyPrice + "원으로 수정했습니다.";
         model.addAttribute("message", message);
 
         return "first/messagePrinter";
+    }
+
+    @GetMapping("/search")
+    public void search() {
+    }
+
+    /* 3. @ModelAttribute */
+    @PostMapping("/search")
+    public String searchMenu() {
+        return "first/searchResult";
     }
 }
 
