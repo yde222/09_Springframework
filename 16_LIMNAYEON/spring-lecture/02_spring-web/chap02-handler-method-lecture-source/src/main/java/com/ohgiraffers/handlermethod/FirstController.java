@@ -1,9 +1,12 @@
 package com.ohgiraffers.handlermethod;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
+import org.thymeleaf.context.IContext;
 
 @Controller
 @RequestMapping("/first/*")
@@ -82,9 +85,35 @@ public class FirstController {
     @PostMapping("/login")
     public String loginTest(String id, Model model){
 
-        
+
         model.addAttribute("id", id);
         return "first/loginResult";
     }
 
+    /* @SessionAttribute 만료
+     * SessionStatus 라는 세션의 상태를 관리하는 객체의 setComplete 메소드로 세션을 만료 시킨다.
+     * HttpSession의 invalidate 메소드를 호출해도 세션 값은 만료 되지 않고 유지 된다.
+     * */
+    @GetMapping("/logout")
+    public String logout(SessionStatus status){
+        status.setComplete();
+        return "first/loginResult";
+    }
+
+    @GetMapping("/body")
+    public void body(){
+
+    }
+    
+    @PostMapping("/body")
+    public void bodyTest(
+            @RequestBody String body,
+            @RequestHeader("content-Type") String contentType,
+            @CookieValue("SESSIONMID") String sessionId
+    ){
+        System.out.println("body = " + body);
+        System.out.println("contentType = " + contentType);
+        System.                       out.println("sessionId = " + sessionId);
+
+    }
 }
