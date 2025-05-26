@@ -30,5 +30,30 @@
 <form action="/menu/delete" method="post">
     <button>POST 메뉴 삭제 요청</button>
 </form>
+
+<hr>
+
+<h2>GET : /order/regist</h2>
+<button onclick="location.href='/order/regist'">GET 주문 등록 요청</button>
+
+<hr>
+
+<h2>GET : /order/modify</h2>
+<form action="/order/modify" method="post">
+    <button>POST 메뉴 삭제 요청</button>
+</form>
+
+<hr>
+
+<h2>GET : /order/delete</h2>
+<form action="/order/delete" method="post">
+    <button>POST 메뉴 삭제 요청</button>
+</form>
+
+<hr>
+
+<h2>GET : /order/detail/{orderNo}</h2>
+<button onclick="location.href=`/order/detail/10`">GET 주문 10번 조회 요청</button>
+
 </body>
 </html>
