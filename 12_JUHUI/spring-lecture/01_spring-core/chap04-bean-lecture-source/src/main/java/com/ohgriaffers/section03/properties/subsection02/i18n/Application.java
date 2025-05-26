@@ -1,12 +1,13 @@
-package com.ohgiraffers.section03.properties.subsection02.i18n;
+package com.ohgriaffers.section03.properties.subsection02.i18n;
 
+import com.ohgriaffers.section01.scope.subsection01.singleton.ContextConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Date;
 import java.util.Locale;
 
-public class   Application {
+public class Application {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext =
