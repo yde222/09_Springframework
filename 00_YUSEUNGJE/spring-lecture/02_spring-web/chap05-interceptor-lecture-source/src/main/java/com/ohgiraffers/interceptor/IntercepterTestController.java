@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IntercepterTestController {
 
     @GetMapping("/stopwatch")
-    public String stopwatch() {
+    public String stopwatch() throws InterruptedException {
         System.out.println("Handler Method 호출 시점");
+        Thread.sleep(1000);
         return "result";
     }
 }
