@@ -6,7 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import java.util.Date;
 import java.util.Locale;
 
-public class Application {
+public class   Application {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext =
