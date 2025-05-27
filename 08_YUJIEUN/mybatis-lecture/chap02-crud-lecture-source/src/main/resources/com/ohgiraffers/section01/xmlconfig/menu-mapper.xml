@@ -13,7 +13,7 @@
         <result property="orderableStatus" column="orderable_status"/>
     </resultMap>
 
-    <select id="selctAllMenu" resultMap="menuResultMap">
+    <select id="selectMenuByMenuCode" resultMap="menuResultMap">
         SELECT
                menu_code
              , menu_name
@@ -21,7 +21,6 @@
              , category_code
              , orderable_status
           FROM tbl_menu
-         WHERE orderable_status = 'Y'
-         ORDER BY menu_code
+          WHERE menu_code = #{menuCode}
     </select>
 </mapper>
