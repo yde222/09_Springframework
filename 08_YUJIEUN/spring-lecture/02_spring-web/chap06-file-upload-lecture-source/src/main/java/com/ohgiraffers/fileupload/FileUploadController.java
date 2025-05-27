@@ -37,6 +37,10 @@ public class FileUploadController {
         return "result";
     }
 
+    @PostMapping("/multi-file"){
+        public String multiFileUpload()
+    }
+
     private String generateSavedFileName(MultipartFile file){
         String originFileName = file.getOriginalFilename();  // spring.svg
         String ext = originFileName.substring(originFileName.lastIndexOf("."));
