@@ -3,7 +3,12 @@ package com.ohgiraffers.section01.javaconfig;
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
+
+import java.util.Date;
 
 public class Application {
 
@@ -31,6 +36,18 @@ public class Application {
 
         // SqlSessionFactoryBuilder : SqlSessionFactory 타입의 하위 구현체 객체를 생성하기 위한 빌더 클래스
         // SqlSessionFactory : SqlSession 객체 생성을 위한 팩토리 역할의 인터페이스
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
+
+        // openSession : SqlSession 타입의 인터페이스를 반환하는 메소드
+        // -false : DML 수행 후 auto commit 옵션을 false로 지정
+        SqlSession sqlSession = sqlSessionFactory.openSession(false);
+
+        Mapper mapper = sqlSession.getMapper(Mapper.class);
+        Date now = mapper.selectDate();
+        System.out.println("now : " + now);
+
+        // SqlSession 반납
+        sqlSession.close();
 
     }
 }
