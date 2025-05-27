@@ -1,19 +1,18 @@
 package com.ohgiraffers.section02.annotation.subsection05.inject;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Application {
-
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com.ohgiraffers.section02");
-
-        String[] difinitionNames = applicationContext.getBeanDefinitionNames();
-        for(String difinitionName : difinitionNames) {
-            System.out.println("difinitionName = " + difinitionNames);
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext("com.ohgiraffers.section02");
+        String[] definitionNames = context.getBeanDefinitionNames();
+        for (String definitionName : definitionNames) {
+            System.out.println("definitionName = " + definitionName);
         }
 
-        PokemonService pokemonService = applicationContext.getBean(PokemonService.class);
+        PokemonService pokemonService = context.getBean(PokemonService.class);
         pokemonService.pokemonAttack();
     }
 }

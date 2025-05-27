@@ -9,20 +9,22 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Baverage extends Product{
+public class Beverage extends Product {
 
-    private int capacity;
+    private int capacity;       // 용량
 
-    public Baverage(String name, int price, int capacity) {
+    public Beverage() {
+    }
+
+    public Beverage(String name, int price, int capacity) {
         super(name, price);
         this.capacity = capacity;
     }
 
-    public Baverage() {
-    }
+
 
     @Override
     public String toString() {
-        return  super.toString()+ " " + capacity;
+        return super.toString() + "  " +  capacity;
     }
 }

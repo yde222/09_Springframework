@@ -7,12 +7,10 @@ import java.util.Date;
 
 @Getter
 @Setter
-
-public class Bread extends Product{
-    private java.util.Date bakedDate;   //생산시간
+public class Bread extends Product {
+    private java.util.Date bakedDate;       // 생산시간
 
     public Bread() {
-
     }
 
     public Bread(String name, int price, Date bakedDate) {
@@ -20,8 +18,9 @@ public class Bread extends Product{
         this.bakedDate = bakedDate;
     }
 
+
     @Override
     public String toString() {
-        return super.toString()+ " " + this.bakedDate;
+        return super.toString() + " " + this.bakedDate;
     }
 }

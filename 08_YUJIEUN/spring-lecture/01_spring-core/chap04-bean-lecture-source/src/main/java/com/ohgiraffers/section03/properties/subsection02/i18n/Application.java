@@ -6,10 +6,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import java.util.Date;
 import java.util.Locale;
 
-public class Application {
-    public static void main(String[] args) {
+public class   Application {
 
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ContextConfiguration.class);
+    public static void main(String[] args) {
+        ApplicationContext applicationContext =
+                new AnnotationConfigApplicationContext(ContextConfiguration.class);
 
         String error404KR = applicationContext.getMessage(
                 "error.404", null, Locale.KOREA
