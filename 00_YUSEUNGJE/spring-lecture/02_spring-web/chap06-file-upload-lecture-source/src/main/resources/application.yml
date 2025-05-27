@@ -1,0 +1,10 @@
+# 파일 업로드 관련 설정
+spring:
+  servlet:
+    multipart:
+      # 파일 저장 경로(메모리에 올리지 않고 디스크에 임시저장)
+      location: C:\dev\uploadFiles
+      # 최대 업로드 파일 크기
+      max-file-size: 10MB
+      # 최대 요청 파일 크기
+      max-request-size: 10MB
