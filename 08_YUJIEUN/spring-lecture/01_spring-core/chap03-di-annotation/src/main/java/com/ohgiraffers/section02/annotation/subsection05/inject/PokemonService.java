@@ -1,0 +1,21 @@
+package com.ohgiraffers.section02.annotation.subsection05.inject;
+
+import com.ohgiraffers.section02.annotation.common.Pokemon;
+import jakarta.inject.Inject;
+import org.springframework.stereotype.Service;
+
+@Service("pokemonServiceInject")
+public class PokemonService {
+    /*
+    * @Inject : 자바 진영에서 제공하는 DI Annotation
+    * @Autowired 와 유사하게 타입을 통해 의존성 주입을 하며 @Named를 통해
+    * 빈 이름을 명시할 수 있다.
+    *
+    * */
+    @Inject
+    private Pokemon pokemon;
+
+    public void pokemonAttack(){
+        pokemon.attack();
+    }
+}
