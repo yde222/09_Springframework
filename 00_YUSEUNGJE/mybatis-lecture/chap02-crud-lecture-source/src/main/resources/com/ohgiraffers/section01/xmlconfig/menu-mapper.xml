@@ -24,4 +24,20 @@
          WHERE orderable_status = 'Y'
          ORDER BY menu_code
     </select>
+    <!--
+         전달 되는 파라마터가 기본 자료형일 경우 #{ } 내부 명칭은 어떤 값을 작성해도 무관
+         객체 자료형일 경우 #{ } 내부 명칭은 필드명과 일치 시켜야 함
+         id, resultMap or resultType은 필수로 작성해야 하며
+         parameterType은 optional (Mybatis에서 사용하는 java type 별칭 사용 가능)
+     -->
+    <select id="selectMenuByMenuCode" resultMap="menuResultMap">
+        SELECT
+              menu_code
+            , menu_name
+            , menu_price
+            , category_code
+            , orderable_status
+        FROM tbl_menu
+        WHERE menu_code = #{ menuCode }
+    </select>
 </mapper>
