@@ -35,6 +35,8 @@
     <p th:object="${ member }" th:text="*{ gender }"></p>
     <div th:object="${ member }">
         <p th:text="*{ address }"></p>
+        <p th:text="*{ age }"></p>
+
     </div>
 
     <h2>escape 테스트</h2>
@@ -61,9 +63,9 @@
     <script th:inline="javascript">
         window.onload = function() {
             /* 동적 페이지에서는 정상 동작하지만 정적 페이지에서는 자바스크립트 문법 오류가 발생한다. (리터럴 형태가 아니라서) */
-            //let hello = [[${hello}]];
+            // let hello = [[${hello}]];
             /* 정적 페이지에서는 정상 동작하지만 동적 페이지에서는 ""[[${hello}]]"" 가 되어 오류가 발생한다. */
-            //let hello = "[[${hello}]]";
+            // let hello = "[[${hello}]]";
             /* 정적 페이지와 동적 페이지 모두 문제가 발생하지 않는다. */
             let hello = '[[${hello}]]';
             alert(hello);
