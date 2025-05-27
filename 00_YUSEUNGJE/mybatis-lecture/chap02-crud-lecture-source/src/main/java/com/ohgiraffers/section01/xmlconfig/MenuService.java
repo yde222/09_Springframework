@@ -23,4 +23,15 @@ public class MenuService {
 
         return menuList;
     }
+
+    public MenuDTO selectMenuByMenuCode(int menuCode) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        MenuDTO menu = menuDAO.selectMenuByMenuCode(sqlSession, menuCode);
+
+        sqlSession.close();
+
+        return menu;
+    }
 }

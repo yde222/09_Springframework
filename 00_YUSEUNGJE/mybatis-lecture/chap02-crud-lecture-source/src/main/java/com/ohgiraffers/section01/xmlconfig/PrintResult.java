@@ -4,12 +4,27 @@ import java.util.List;
 
 public class PrintResult {
 
-
     public void printMenuList(List<MenuDTO> menuList) {
         System.out.println("===== 메뉴 목록 ======");
         for(MenuDTO menuDTO : menuList) {
             System.out.println(menuDTO);
         }
+    }
+
+    public void printMenu(MenuDTO menu) {
+        System.out.println("======== 조회된 메뉴 ============");
+        System.out.println(menu);
+    }
+
+    public void printSuccessMessage(String successCode) {
+        System.out.println("===== Success =====");
+        String successMessage = switch (successCode) {
+            case "insert" -> "신규 메뉴 등록이 완료 되었습니다.";
+            case "update" -> "메뉴 수정이 완료 되었습니다.";
+            case "delete" -> "메뉴 삭제가 완료 되었습니다.";
+            default -> "";
+        };
+        System.out.println(successMessage);
     }
 
     public void printErrorMessage(String errorCode) {
