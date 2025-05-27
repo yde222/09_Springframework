@@ -1,13 +1,13 @@
-package com.ohgiraffers.interceptor;
+package com.ohgiraffers.thymeleaf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Chap05InterceptorLectureSourceApplication {
+public class Chap07ThymeleafLectureSourceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Chap05InterceptorLectureSourceApplication.class, args);
+        SpringApplication.run(Chap07ThymeleafLectureSourceApplication.class, args);
     }
+
 }
-    
