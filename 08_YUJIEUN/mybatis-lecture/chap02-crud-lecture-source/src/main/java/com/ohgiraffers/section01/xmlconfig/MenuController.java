@@ -1,7 +1,5 @@
 package com.ohgiraffers.section01.xmlconfig;
 
-import org.apache.ibatis.session.SqlSession;
-
 import java.util.List;
 import java.util.Map;
 
@@ -18,12 +16,23 @@ public class MenuController {
     public void selectAllMenu(){
         List<MenuDTO> menuList = menuService.selectAllMenu();
 
-        if(menuList != null ){
+        if(menuList != null && !menuList.isEmpty()){
             printResult.printMenuList(menuList);
         } else {
             printResult.printErrorMessage("selectList");
         }
     }
 
+    public void selectMenuByMenuCode(Map<String, String> parameter) {
 
+        int menuCode = Integer.parseInt(parameter.get("menuCode"));
+
+        MenuDTO menu = menuService.selectMenuByMenuCode(menuCode);
+
+        if(menu != null){
+            printResult.printMenu(menu);
+        } else {
+            printResult.printErrorMessage("selectOne");
+        }
+    }
 }
