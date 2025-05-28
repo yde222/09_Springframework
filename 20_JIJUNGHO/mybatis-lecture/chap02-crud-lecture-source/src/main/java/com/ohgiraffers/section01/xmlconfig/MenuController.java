@@ -63,4 +63,16 @@ public class MenuController {
             printResult.printErrorMessage("update");
         }
     }
+
+    public void deleteMenu(Map<String, String> stringStringMap) {
+
+        int menuCode = Integer.parseInt(stringStringMap.get("menuCode"));
+
+        if (menuService.deleteMenu(menuCode)) {
+            printResult.printSuccessMessage("delete");
+        } else {
+            printResult.printErrorMessage("delete");
+        }
+
+    }
 }

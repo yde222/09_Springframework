@@ -67,4 +67,20 @@ public class MenuService {
 
         return result > 0;
     }
+
+    public boolean deleteMenu(int menuCode) {
+        SqlSession sqlSession = getSqlSession();
+
+        int result = menuDAO.deleteMenu(sqlSession, menuCode);
+
+        if (result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0;
+    }
 }

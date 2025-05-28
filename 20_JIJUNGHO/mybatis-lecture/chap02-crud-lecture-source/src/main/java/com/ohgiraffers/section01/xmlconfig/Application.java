@@ -33,6 +33,7 @@ public class Application {
                     menuController.modifyMenu(inputModifyMenu());
                     break;
                 case 5:
+                    menuController.deleteMenu(inputMenuCode());
                     break;
                 case 6:
                     return;
