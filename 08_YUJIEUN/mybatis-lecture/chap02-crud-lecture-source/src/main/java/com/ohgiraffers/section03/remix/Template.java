@@ -1,6 +1,5 @@
 package com.ohgiraffers.section03.remix;
 
-import com.ohgiraffers.section02.javaconfig.MenuMapper;
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
