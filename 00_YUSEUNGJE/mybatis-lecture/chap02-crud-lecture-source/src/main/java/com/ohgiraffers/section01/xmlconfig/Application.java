@@ -26,11 +26,11 @@ public class Application {
                 case 2 :
                     menuController.selectMenuByMenuCode(inputMenuCode()); break;
                 case 3 :
-                    break;
+                     menuController.registMenu(inputMenu());  break;
                 case 4 :
-                    break;
+                    menuController.modifyMenu(inputModifyMenu()); break;
                 case 5 :
-                    break;
+                    menuController.deleteMenu(inputMenuCode()); break;
                 default :
                     System.out.println("잘못 된 번호를 선택하셨습니다.");
                     break;
@@ -44,6 +44,44 @@ public class Application {
         String menuCode = sc.nextLine();
         Map<String, String> parameter = new HashMap<>();
         parameter.put("menuCode", menuCode);
+        return parameter;
+    }
+
+    private static Map<String, String> inputMenu() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("메뉴 이름을 입력하세요 : ");
+        String menuName = sc.nextLine();
+        System.out.print("메뉴 가격을 입력하세요 : ");
+        String menuPrice = sc.nextLine();
+        System.out.print("카테고리 코드를 입력하세요 : ");
+        String categoryCode = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("menuName", menuName);
+        parameter.put("menuPrice", menuPrice);
+        parameter.put("categoryCode", categoryCode);
+
+        return parameter;
+    }
+
+    private static Map<String, String> inputModifyMenu() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("수정할 메뉴 코드를 입력하세요 : ");
+        String menuCode = sc.nextLine();
+        System.out.print("수정할 메뉴 이름을 입력하세요 : ");
+        String menuName = sc.nextLine();
+        System.out.print("수정할 메뉴 가격을 입력하세요 : ");
+        String menuPrice = sc.nextLine();
+        System.out.print("수정할 카테고리 코드를 입력하세요 : ");
+        String categoryCode = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("menuCode", menuCode);
+        parameter.put("menuName", menuName);
+        parameter.put("menuPrice", menuPrice);
+        parameter.put("categoryCode", categoryCode);
+
         return parameter;
     }
 }
