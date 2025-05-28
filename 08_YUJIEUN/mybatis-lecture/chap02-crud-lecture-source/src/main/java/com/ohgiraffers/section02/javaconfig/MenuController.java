@@ -1,4 +1,6 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.section02.javaconfig;
+
+
 
 import java.util.List;
 import java.util.Map;
@@ -36,11 +38,21 @@ public class MenuController {
         }
     }
 
-    public void registMenu(Map<String, String> parameter) {
+    public void registMenu(Map<String,String> parameter) {
 
+        MenuDTO menu = new MenuDTO();
+        menu.setMenuName(parameter.get("menuName"));
+        menu.setMenuPrice(Integer.parseInt(parameter.get("menuPrice")));
+        menu.setCategoryCode(Integer.parseInt(parameter.get("categoryCode")));
+
+        if(menuService.registMenu(menu)){
+            printResult.printSuccessMessage("insert");
+        }else {
+            printResult.printErrorMessage("insert");
+        }
     }
 
-    public void modifyMenu(Map<String, String> stringStringMapp) {
+    public void modifyMenu(Map<String, String> stringStringMap) {
 
     }
 

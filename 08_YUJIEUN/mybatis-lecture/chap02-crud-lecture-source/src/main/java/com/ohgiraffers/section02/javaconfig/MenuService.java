@@ -1,4 +1,4 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.section02.javaconfig;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -8,16 +8,12 @@ import static com.ohgiraffers.section01.xmlconfig.Template.getSqlSession;
 
 public class MenuService {
 
-    private final MenuDAO menuDAO;
 
-    public MenuService() {
-        this.menuDAO = new MenuDAO();
-    }
 
     public List<MenuDTO> selectAllMenu() {
         SqlSession sqlSession = getSqlSession();
-
-        List<MenuDTO> menuList = menuDAO.selctAllMenu(sqlSession);
+        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
+        List<MenuDTO> menuList = menuMapper.selectAllMenu();
 
         sqlSession.close();
 
@@ -28,12 +24,16 @@ public class MenuService {
 
         SqlSession sqlSession = getSqlSession();
 
-        MenuDTO menu = menuDAO.selectMenuByMenuCode(sqlSession, menuCode);
+        MenuDTO menu = menuMapper.selectMenuByMenuCode(sqlSession, menuCode);
 
         sqlSession.close();
 
         return menu;
     }
+
+    public
+
+
 
 
 }

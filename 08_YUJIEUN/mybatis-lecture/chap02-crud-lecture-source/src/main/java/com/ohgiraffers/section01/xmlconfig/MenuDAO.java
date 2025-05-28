@@ -16,4 +16,16 @@ public class MenuDAO {
         /* 메소드의 두번째 인수로 SQL구문 수행 시 필요한 객체를 전달*/
         return sqlSession.selectOne("MenuMapper.selectMenuByMenuCode", menuCode);
     }
+
+    public MenuDTO insertMenu(SqlSession sqlSession, MenuDTO menu) {
+        return sqlSession.selectOne("MenuMapper.insertMenu", menu);
+    }
+
+    public MenuDTO updateMenu(SqlSession sqlSession, MenuDTO menu) {
+        return sqlSession.selectOne("MenuMapper.updateMenu", menu);
+    }
+
+    public MenuDTO deleteMenu(SqlSession sqlSession, MenuDTO menu) {
+        return sqlSession.selectOne("MenuMapper.deleteMenu", menu);
+    }
 }
