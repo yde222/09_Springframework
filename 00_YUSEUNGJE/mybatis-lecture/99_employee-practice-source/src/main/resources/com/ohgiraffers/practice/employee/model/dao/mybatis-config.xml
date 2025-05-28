@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.ohgiraffers.section01.xmlconfig.MenuDTO" alias="MenuDTO"/>
+        <typeAlias type="" alias=""/>
     </typeAliases>
 
     <environments default="development">
@@ -12,13 +12,11 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/menudb"/>
-                <property name="username" value="ohgiraffers"/>
-                <property name="password" value="ohgiraffers"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/empdb"/>
+                <property name="username" value="employee"/>
+                <property name="password" value="employee"/>
             </dataSource>
         </environment>
     </environments>
-    <mappers>
-        <mapper resource="com/ohgiraffers/section01/xmlconfig/menu-mapper.xml"/>
-    </mappers>
+
 </configuration>
