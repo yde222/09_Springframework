@@ -2,6 +2,8 @@ package com.ohgiraffers.practice.employee.view;
 
 import com.ohgiraffers.practice.employee.controller.EmployeeController;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class MainView {
@@ -25,7 +27,7 @@ public class MainView {
                 case 1:
                     employeeController.selectAllEmployee(); break;
                 case 2:
-
+                    employeeController.selectEmployeeById(inputEmpId());
                     break;
                 case 3:
 
@@ -40,5 +42,15 @@ public class MainView {
                     System.out.println("잘못 된 번호를 선택하셨습니다.");
             }
         }
+    }
+
+    // 1번까지만 함.
+    private static Map<String, String> inputEmpId() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("회원 아이디 입력 : ");
+        String empId = sc.nextLine();
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("empId", empId);
+        return parameter;
     }
 }
