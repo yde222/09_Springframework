@@ -28,6 +28,7 @@
         </if>
         ORDER BY menu_code
     </select>
+
     <select id="selectMenu" resultType="MenuDTO">
         SELECT
         menu_code
@@ -48,6 +49,7 @@
         </if>
         ORDER BY menu_code
     </select>
+
     <select id="searchMenuBySupCategory" resultType="MenuDTO">
         SELECT
         menu_code
@@ -70,6 +72,7 @@
         </choose>
         ORDER BY menu_code
     </select>
+
     <select id="searchMenuByRandomMenuCode" resultType="MenuDTO">
         SELECT
         menu_code
@@ -82,6 +85,46 @@
         <foreach collection="randomMenuCode" item="menuCode" open="(" separator=", " close=")">
             #{menuCode}
         </foreach>
+    </select>
+
+    <select id="searchMenuByNameOrCategory" resultType="MenuDTO">
+        SELECT
+        menu_code
+        , menu_name
+        , menu_price
+        , category_code
+        , orderable_status
+        FROM tbl_menu
+        <!--
+            문제상황 : 전달되는 값에 따라 where 문자만 남거나, and문자로 시작되는 등의
+            구문 오류가 발생할 수 잇다.
+        -->
+        <!--        <if test="nameValue != null">-->
+        <!--            WHERE menu_name LIKE CONCAT('%', #{ nameValue }, '%')-->
+        <!--        </if>-->
+        <!--        <if test="categoryValue != null">-->
+        <!--            AND category_code = #{ categoryValue }-->
+        <!--        </if>-->
+
+        <!--        해결방법 1. <where> 태그 사용 -->
+<!--        <where>-->
+<!--            <if test="nameValue != null">-->
+<!--                WHERE menu_name LIKE CONCAT('%', #{ nameValue }, '%')-->
+<!--            </if>-->
+<!--            <if test="categoryValue != null">-->
+<!--                AND category_code = #{ categoryValue }-->
+<!--            </if>-->
+<!--        </where>-->
+
+        <!--        해결방법 2. <trim> 태그 사용 -->
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="nameValue != null">
+                menu_name LIKE CONCAT('%', #{ nameValue }, '%')
+            </if>
+            <if test="categoryValue != null">
+                AND category_code = #{ categoryValue }
+            </if>
+        </trim>
     </select>
 
 </mapper>

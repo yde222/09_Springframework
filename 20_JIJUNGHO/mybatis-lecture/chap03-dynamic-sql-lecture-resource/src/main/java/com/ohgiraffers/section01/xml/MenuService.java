@@ -81,4 +81,18 @@ public class MenuService {
         }
         sqlSession.close();
     }
+
+    public void searchMenuByNameOrCategory(Map<String, Object> criteria) {
+        SqlSession sqlSession = getSqlSession();
+        DynamicSqlMapper mapper = sqlSession.getMapper(DynamicSqlMapper.class);
+
+        List<MenuDTO> menuList = mapper.searchMenuByNameOrCategory(criteria);
+
+        if (menuList != null || menuList.isEmpty()) {
+            menuList.forEach(System.out::println);
+        } else {
+            System.out.println("검색 결과가 존재하지 않습니다.");
+        }
+        sqlSession.close();
+    }
 }

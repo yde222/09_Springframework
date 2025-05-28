@@ -2,9 +2,7 @@ package com.ohgiraffers.section01.xml;
 
 import com.ohgiraffers.common.SearchCriteria;
 
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -23,12 +21,64 @@ public class Application {
                 case 1 : ifSubMenu(); break;
                 case 2 : chooseSubMenu(); break;
                 case 3 : foreachSubMenu(); break;
-                case 4 :  break;
+                case 4 : trimSubMenu(); break;
                 case 9 :
                     System.out.println("프로그램을 종료합니다."); return;
             }
 
         } while(true);
+    }
+
+    private static void trimSubMenu() {
+        Scanner sc = new Scanner(System.in);
+        MenuService menuService = new MenuService();
+        do {
+            System.out.println("===== trim 서브 메뉴 =====");
+            System.out.println("1. 메뉴 혹은 카테고리 코드로 검색, 단 메뉴와 카테고리 둘 다 일치하는 경우도 검색하며, " +
+                    "검색 조건이 없는 경우에는 전체 검색");
+            System.out.println("2. 원하는 메뉴 정보만 수정");
+            System.out.println("9. 이전 메뉴로");
+            System.out.print("메뉴 번호 입력 : ");
+            int no = sc.nextInt();
+
+            switch (no) {
+                case 1 : menuService.searchMenuByNameOrCategory(inputSearchCriteriaMap()); break;
+                case 2 : /*menuService.modifyMenu(inputChangeInfo());*/ break;
+                case 9 : return;
+            }
+        } while(true);
+    }
+
+    private static Map<String, Object> inputSearchCriteriaMap() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("검색할 조건을 입력하세요(category or name or both or null) : ");
+        String condition = sc.nextLine();
+
+        Map<String, Object> criteria = new HashMap<>();
+        if("category".equals(condition)) {
+
+            System.out.print("검색할 카테고리 코드 입력 : ");
+            int categoryValue = sc.nextInt();
+            criteria.put("categoryValue", categoryValue);
+
+        } else if("name".equals(condition)) {
+
+            System.out.print("검색할 메뉴명 입력 : ");
+            String nameValue = sc.nextLine();
+            criteria.put("nameValue", nameValue);
+
+        } else if("both".equals(condition)) {
+
+            System.out.print("검색할 메뉴명 입력 : ");
+            String nameValue = sc.nextLine();
+            criteria.put("nameValue", nameValue);
+            System.out.print("검색할 카테고리 코드 입력 : ");
+            int categoryValue = sc.nextInt();
+            criteria.put("categoryValue", categoryValue);
+
+        }
+
+        return criteria;
     }
 
     private static void foreachSubMenu() {
