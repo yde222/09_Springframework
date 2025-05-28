@@ -18,7 +18,7 @@ public class Template {
 
     public static SqlSession getSqlSession() {
         if(sqlSessionFactory == null) {
-            String resource = "수정수정";
+            String resource = "config/mybatis-config.xml";
             try {
                 InputStream inputStream = Resources.getResourceAsStream(resource);
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
