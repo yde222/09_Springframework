@@ -1,4 +1,4 @@
-package com.ohgiraffers.section02.javaconfig;
+package com.ohgiraffers.section03.remix;
 
 import java.util.List;
 import java.util.Map;

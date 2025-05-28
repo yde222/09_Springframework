@@ -17,15 +17,15 @@ public class MenuDAO {
         return sqlSession.selectOne("MenuMapper.selectMenuByMenuCode", menuCode);
     }
 
-    public MenuDTO insertMenu(SqlSession sqlSession, MenuDTO menu) {
-        return sqlSession.selectOne("MenuMapper.insertMenu", menu);
+    public int insertMenu(SqlSession sqlSession, MenuDTO menu) {
+        return sqlSession.insert("MenuMapper.insertMenu", menu);
     }
 
-    public MenuDTO updateMenu(SqlSession sqlSession, MenuDTO menu) {
-        return sqlSession.selectOne("MenuMapper.updateMenu", menu);
+    public int updateMenu(SqlSession sqlSession, MenuDTO menu) {
+        return sqlSession.update("MenuMapper.updateMenu", menu);
     }
 
-    public MenuDTO deleteMenu(SqlSession sqlSession, MenuDTO menu) {
-        return sqlSession.selectOne("MenuMapper.deleteMenu", menu);
+    public int deleteMenu(SqlSession sqlSession, int menuCode) {
+        return sqlSession.delete("MenuMapper.deleteMenu", menuCode);
     }
 }

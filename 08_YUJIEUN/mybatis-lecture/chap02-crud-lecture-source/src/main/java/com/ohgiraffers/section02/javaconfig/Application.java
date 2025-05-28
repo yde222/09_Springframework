@@ -1,7 +1,5 @@
 package com.ohgiraffers.section02.javaconfig;
 
-
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -28,11 +26,11 @@ public class Application {
                 case 2 :
                     menuController.selectMenuByMenuCode(inputMenuCode()); break;
                 case 3 :
-                     menuController.registMenu(inputMenu()); break;
+                     menuController.registMenu(inputMenu());  break;
                 case 4 :
-                    menuController.modifyMenu(inputMenu()); break;
+                    menuController.modifyMenu(inputModifyMenu()); break;
                 case 5 :
-                    break;
+                    menuController.deleteMenu(inputMenuCode()); break;
                 default :
                     System.out.println("잘못 된 번호를 선택하셨습니다.");
                     break;

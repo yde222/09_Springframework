@@ -1,7 +1,6 @@
-package com.ohgiraffers.section02.javaconfig;
+package com.ohgiraffers.section03.remix;
 
 import org.apache.ibatis.annotations.*;
-import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
