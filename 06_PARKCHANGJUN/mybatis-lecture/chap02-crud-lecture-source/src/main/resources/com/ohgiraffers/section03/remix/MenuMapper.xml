@@ -2,18 +2,15 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="MenuMapper">
-    <resultMap id="menuResultMap" type="MenuDTO">
-<!--        id: pk에 해당하는 컬럼을 작성 -->
-        <id property="menuCode" column="menu_code"/>
-<!--        result: pk 외의 일반 컬럼을 작성 -->
-        <result property="menuName" column="menu_name"/>
-        <result property="menuPrice" column="menu_price"/>
-        <result property="categoryCode" column="category_code"/>
-        <result property="orderableStatus" column="orderable_status"/>
-    </resultMap>
+<mapper namespace="com.ohgiraffers.section03.remix.MenuMapper">
+    <!--
+        Mapper Interface와 Mapper XML 파일을 연동하는 방법
+        1. 인터페이스와 xml 파일이 동일 패키지에 동일한 이름으로 위치
+        2. 인터페이스의 풀네임을 namespace에 지정
+        3. 인터페이스 메소드의 이름과 id가 일치, 리턴 타입이 일치하는 쿼리문을 모두 작성
+    -->
 
-    <select id="selctAllMenu" resultMap="menuResultMap">
+    <select id="selctAllMenu" resultType="com.ohgiraffers.section03.remix.MenuDTO">
         SELECT
             menu_code
             , menu_name
@@ -33,7 +30,7 @@
         id, resultMap or resultType은 필수로 작성해 야 하며
         parameterType은 optional (Mybatis에서 사용하는 java type 별칭 사용 가능)
     -->
-    <select id="selectMenuByMenuCode" resultMap="menuResultMap">
+    <select id="selectMenuByMenuCode" resultType="com.ohgiraffers.section03.remix.MenuDTO">
         SELECT
             menu_code
             , menu_name
@@ -53,14 +50,14 @@
         자주 사용하는 타입이 있다면 config에서 별칭을 등록해서 사용 가능하며
         그렇지 않다면 패키지명을 포함한 풀네임으로 작성해야 한다.
     -->
-    <insert id="insertMenu" parameterType="MenuDTO">
+    <insert id="insertMenu" parameterType="com.ohgiraffers.section03.remix.MenuDTO">
         INSERT
             INTO tbl_menu(menu_name, menu_price, category_code, orderable_status)
         VALUES
             (#{ menuName }, #{ menuPrice }, #{ categoryCode }, 'Y')
     </insert>
 
-    <update id="updateMenu" parameterType="MenuDTO">
+    <update id="updateMenu" parameterType="com.ohgiraffers.section03.remix.MenuDTO">
         UPDATE tbl_menu
             SET menu_name = #{ menuName }
                 , menu_price = #{ menuPrice }

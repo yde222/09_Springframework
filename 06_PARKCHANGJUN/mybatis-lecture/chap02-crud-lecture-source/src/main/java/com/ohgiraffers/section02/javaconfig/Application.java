@@ -1,4 +1,4 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.section02.javaconfig;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +27,7 @@ public class Application {
                     menuController.selectMenuByMenuCode(inputMenuCode()); break;
                 case 3 :
                     menuController.registMenu(inputMenu());
-                     break;
+                    break;
                 case 4 :
                     menuController.modifyMenu(inputModifyMenu());
                     break;
