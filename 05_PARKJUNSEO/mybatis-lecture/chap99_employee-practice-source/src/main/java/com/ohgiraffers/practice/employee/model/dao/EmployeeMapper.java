@@ -9,4 +9,10 @@ public interface EmployeeMapper {
     List<EmployeeDTO> selectAllEmployees(SqlSession sqlSession);
 
     EmployeeDTO selectOneEmployee(int empId);
+
+    int insertEmployee(EmployeeDTO employeeDTO);
+
+    int updateEmployee(EmployeeDTO employee);
+
+    int deleteEmployee(int empId);
 }

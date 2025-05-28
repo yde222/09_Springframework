@@ -20,6 +20,17 @@ public class EmployeeDTO {
     public EmployeeDTO() {
     }
 
+    public EmployeeDTO(String empName, String empNo, String email, String phone, String deptCode, String jobCode, int salary, String quitYN) {
+        this.empName = empName;
+        this.empNo = empNo;
+        this.email = email;
+        this.phone = phone;
+        this.deptCode = deptCode;
+        this.jobCode = jobCode;
+        this.salary = salary;
+        this.quitYN = quitYN;
+    }
+
     public EmployeeDTO(int empId, String empName, String empNo, String email, String phone, String deptCode, String jobCode, int salary, String quitYN) {
         this.empId = empId;
         this.empName = empName;

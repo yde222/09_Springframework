@@ -30,14 +30,13 @@ public class MainView {
                     ec.selectOneEmployee(inputEmpId());
                     break;
                 case 3:
-                    ec.registMember(inputMember());
+                    ec.registEmployee(inputEmployee());
                     break;
                 case 4:
-
+                    ec.updateEmployee(inputUpdateEmployee());
                     break;
                 case 5:
-
-                    break;
+                    ec.deleteEmployee(inputEmpId());
                 case 9:
                     return;
                 default:
@@ -47,7 +46,7 @@ public class MainView {
         }
     }
 
-    private static EmployeeDTO inputMember() {
+    private static EmployeeDTO inputEmployee() {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("이름을 입력하세요: ");
@@ -66,7 +65,7 @@ public class MainView {
         int salary = sc.nextInt();
         String quitYN = "N";
 
-        EmployeeDTO employee = new EmployeeDTO( );
+        EmployeeDTO employee = new EmployeeDTO(empName, empNo, email, phone, deptCode, jobCode, salary, quitYN);
 
         return employee;
     }
@@ -78,6 +77,41 @@ public class MainView {
         String empId = sc.nextLine();
         Map<String, String> parameter = new HashMap<>();
         parameter.put("empId", empId);
+
+        return parameter;
+    }
+
+    private static Map<String, String> inputUpdateEmployee() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("수정할 회원 번호를 입력하세요 : ");
+        String empId = sc.nextLine();
+        System.out.print("수정할 이름을 입력하세요: ");
+        String empName = sc.nextLine();
+        System.out.print("수정할 주민번호를 입력하세요: ");
+        String empNo = sc.nextLine();
+        System.out.print("수정할 이메일을 입력하세요: ");
+        String email = sc.nextLine();
+        System.out.print("수정할 전화번호를 입력하세요: ");
+        String phone = sc.nextLine();
+        System.out.print("수정할 부서코드를 입력하세요: ");
+        String deptCode = sc.nextLine();
+        System.out.print("수정할 직무코드를 입력하세요: ");
+        String jobCode = sc.nextLine();
+        System.out.print("수정할 급여를 입력하세요: ");
+        int salary = sc.nextInt();
+        System.out.print("수정할 재직 상태를 입력하세요: ");
+        String quitYN = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("empId", empId);
+        parameter.put("empName", empName);
+        parameter.put("empNo", empNo);
+        parameter.put("email", email);
+        parameter.put("phone", phone);
+        parameter.put("deptCode", deptCode);
+        parameter.put("jobCode", jobCode);
+        parameter.put("salary", String.valueOf(salary));
+        parameter.put("quitYN", quitYN);
 
         return parameter;
     }

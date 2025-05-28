@@ -33,4 +33,37 @@
           FROM  employee
         WHERE   EMP_ID = #{ empId }
     </select>
+
+    <insert id="insertEmployee" parameterType="EmployeeDTO">
+        INSERT
+        INTO employee( EMP_NAME
+        , EMP_NO
+        , EMAIL
+        , PHONE
+        , DEPT_CODE
+        , JOB_CODE
+        , SALARY
+        , QUIT_YN )
+        VALUES
+        (#{ empName }, #{ empNo }, #{ email }, #{ phone }, #{ deptCode }, #{ jobCode }, #{ salary }, #{ quitYN })
+    </insert>
+
+    <update id="updateEmployee" parameterType="EmployeeDTO">
+        UPDATE employee
+        SET EMP_NAME = #{ empName }
+        , EMP_NO = #{ empNo }
+        , EMAIL = #{ email }
+        , PHONE = #{ phone }
+        , DEPT_CODE = #{ deptCode }
+        , JOB_CODE = #{ jobCode }
+        , SALARY = #{ salary }
+        , QUIT_YN = #{ quitYN }
+        WHERE EMP_ID = #{ empId }
+    </update>
+
+    <delete id="deleteEmployee" parameterType="EmployeeDTO" >
+        DELETE
+        FROM employee
+        WHERE EMP_ID = #{ empId }
+    </delete>
 </mapper>

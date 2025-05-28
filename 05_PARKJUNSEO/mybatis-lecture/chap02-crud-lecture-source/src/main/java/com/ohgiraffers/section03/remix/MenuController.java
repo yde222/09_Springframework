@@ -35,7 +35,7 @@ public class MenuController {
     }
 
     public void registMenu(Map<String, String> parameter) {
-       MenuDTO menu = new MenuDTO();
+        MenuDTO menu = new MenuDTO();
         menu.setMenuName(parameter.get("menuName"));
         menu.setMenuPrice(Integer.parseInt(parameter.get("menuPrice")));
         menu.setCategoryCode(Integer.parseInt(parameter.get("categoryCode")));
@@ -59,8 +59,6 @@ public class MenuController {
         } else {
             printResult.printSuccessMessage("update failed");
         }
-
-
     }
 
     public void deleteMenu(Map<String, String> parameter) {
@@ -72,6 +70,5 @@ public class MenuController {
         } else {
             printResult.printSuccessMessage("delete failed");
         }
-
     }
 }

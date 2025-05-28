@@ -29,4 +29,50 @@ public class EmployeeService {
 
         return employeeDTO;
     }
+
+    public boolean registMenu(EmployeeDTO employeeDTO) {
+
+        SqlSession sqlSession = getSqlSession();
+        EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+        int result = employeeMapper.insertEmployee(employeeDTO);
+
+        if (result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+        sqlSession.close();
+        return result > 0;
+    }
+
+    public boolean updateEmployee(EmployeeDTO employee) {
+
+        SqlSession sqlSession = getSqlSession();
+        EmployeeMapper menuMapper = sqlSession.getMapper(EmployeeMapper.class);
+        int result = menuMapper.updateEmployee(employee);
+
+        if (result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+        sqlSession.close();
+        return result > 0;
+
+    }
+
+    public boolean deleteEmployee(int empId) {
+
+        SqlSession sqlSession = getSqlSession();
+        EmployeeMapper menuMapper = sqlSession.getMapper(EmployeeMapper.class);
+        int result = menuMapper.deleteEmployee(empId);
+
+        if (result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+        sqlSession.close();
+        return result > 0;
+    }
 }
