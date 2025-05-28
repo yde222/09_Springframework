@@ -72,4 +72,86 @@
         </choose>
         ORDER BY menu_code
     </select>
+
+    <select id="searchMenuByRandomMenuCode" resultType="MenuDTO">
+        SELECT
+               menu_code
+             , menu_name
+             , menu_price
+             , category_code
+             , orderable_status
+          FROM tbl_menu
+         WHERE menu_code IN
+        <foreach collection="randomMenuCodeList" item="menuCode"  open="(" separator="," close=")">
+            #{ menuCode }
+        </foreach>
+    </select>
+
+    <select id="searchMenuByNameOrCategory" resultType="MenuDTO">
+        SELECT
+               menu_code
+             , menu_name
+             , menu_price
+             , category_code
+             , orderable_status
+          FROM tbl_menu
+        <!-- 문제상황 : 전달되는 값에 따라 where 문자만 남거나 and문자로 시작되는 등의
+             구문 오류가 발생할 수 있다.
+        -->
+<!--        <if test="nameValue != null">-->
+<!--            WHERE menu_name LIKE CONCAT('%', #{ nameValue }, '%')-->
+<!--        </if>-->
+<!--        <if test="categoryValue != null">-->
+<!--            AND category_code = #{ categoryValue }-->
+<!--        </if>-->
+
+<!--        해결 방법 1. <where> 태그 사용 -->
+<!--        <where>-->
+<!--            <if test="nameValue != null">-->
+<!--                menu_name LIKE CONCAT('%', #{ nameValue }, '%')-->
+<!--            </if>-->
+<!--            <if test="categoryValue != null">-->
+<!--                AND category_code = #{ categoryValue }-->
+<!--            </if>-->
+<!--        </where>-->
+<!--        해결 방법 2. <trim> 태그 사용 -->
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="nameValue != null">
+                 menu_name LIKE CONCAT('%', #{ nameValue }, '%')
+            </if>
+            <if test="categoryValue != null">
+                AND category_code = #{ categoryValue }
+            </if>
+        </trim>
+    </select>
+
+    <update id="updateMenu">
+        UPDATE tbl_menu
+<!--        문제 상황 : SET 구문이 남거나 `,`가 앞뒤로 붙어 구문오류가 발생할 수 있다.  -->
+<!--        해결 방법: 1. <set> 태그 사용 -->
+<!--        <set>-->
+<!--            <if test="menuName != null and menuName != ''">-->
+<!--                menu_name = #{ menuName },-->
+<!--            </if>-->
+<!--            <if test="categoryCode != null and categoryCode gt 0">-->
+<!--                category_code = #{ categoryCode },-->
+<!--            </if>-->
+<!--            <if test="orderableStatus != null and orderableStatus != ''">-->
+<!--                orderable_status = #{ orderableStatus }-->
+<!--            </if>-->
+<!--        </set>-->
+<!--        해결 방법: 2. <trim> 태그 사용 -->
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="menuName != null and menuName != ''">
+                menu_name = #{ menuName },
+            </if>
+            <if test="categoryCode != null and categoryCode gt 0">
+                category_code = #{ categoryCode },
+            </if>
+            <if test="orderableStatus != null and orderableStatus != ''">
+                orderable_status = #{ orderableStatus }
+            </if>
+        </trim>
+        WHERE menu_code = #{ menuCode }
+    </update>
 </mapper>
