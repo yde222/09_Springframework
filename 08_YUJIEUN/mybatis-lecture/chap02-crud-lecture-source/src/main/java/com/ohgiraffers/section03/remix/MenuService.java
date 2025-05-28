@@ -11,7 +11,7 @@ public class MenuService {
     public List<MenuDTO> selectAllMenu() {
         SqlSession sqlSession = getSqlSession();
         MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
-        List<MenuDTO> menuList = menuMapper.selctAllMenu();
+        List<MenuDTO> menuList = menuMapper.selectAllMenu();
 
         sqlSession.close();
 
