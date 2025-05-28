@@ -20,7 +20,5 @@
     </environments>
     <mappers>
         <mapper resource="com/ohgiraffers/section01/xmlconfig/menu-mapper.xml"/>
-        <mapper resource="com/ohgiraffers/section03/remix/MenuMapper.xml"/>
-
     </mappers>
 </configuration>
