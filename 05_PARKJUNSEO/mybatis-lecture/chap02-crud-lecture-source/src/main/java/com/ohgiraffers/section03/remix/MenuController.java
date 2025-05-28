@@ -1,4 +1,4 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.section03.remix;
 
 import java.util.List;
 import java.util.Map;
@@ -35,8 +35,7 @@ public class MenuController {
     }
 
     public void registMenu(Map<String, String> parameter) {
-
-        MenuDTO menu = new MenuDTO();
+       MenuDTO menu = new MenuDTO();
         menu.setMenuName(parameter.get("menuName"));
         menu.setMenuPrice(Integer.parseInt(parameter.get("menuPrice")));
         menu.setCategoryCode(Integer.parseInt(parameter.get("categoryCode")));

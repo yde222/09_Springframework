@@ -1,6 +1,5 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.section03.remix;
 
-import com.ohgiraffers.section03.remix.MenuController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +10,7 @@ public class Application {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        com.ohgiraffers.section03.remix.MenuController mc = new MenuController();
+        MenuController mc = new MenuController();
 
         do {
             System.out.println("===== 메뉴 관리 ======");
