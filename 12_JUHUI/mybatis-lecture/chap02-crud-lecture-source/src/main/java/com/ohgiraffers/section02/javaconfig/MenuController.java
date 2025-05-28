@@ -1,4 +1,4 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.section02.javaconfig;
 
 import java.util.List;
 import java.util.Map;
@@ -14,6 +14,7 @@ public class MenuController {
     }
 
     public void selectAllMenu(){
+
         List<MenuDTO> menuList = menuService.selectAllMenu();
 
         if(menuList != null && !menuList.isEmpty()){
@@ -39,6 +40,7 @@ public class MenuController {
     public void registMenu(Map<String, String> parameter) {
 
         MenuDTO menu = new MenuDTO();
+
         menu.setMenuName(parameter.get("menuName"));
         menu.setMenuPrice(Integer.parseInt(parameter.get("menuPrice")));
         menu.setCategoryCode(Integer.parseInt(parameter.get("categoryCode")));
@@ -52,6 +54,7 @@ public class MenuController {
 
     public void modifyMenu(Map<String, String> stringStringMap) {
         MenuDTO menu = new MenuDTO();
+
         menu.setMenuCode(Integer.parseInt(stringStringMap.get("menuCode")));
         menu.setMenuName(stringStringMap.get("menuName"));
         menu.setMenuPrice(Integer.parseInt(stringStringMap.get("menuPrice")));
