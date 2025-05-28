@@ -1,6 +1,4 @@
-package com.ohgiraffers.section01.xmlconfig;
-
-import com.ohgiraffers.section01.xmlconfig.MenuService;
+package com.ohgiraffers.section03.remix;
 
 import java.util.List;
 import java.util.Map;
@@ -55,7 +53,7 @@ public class MenuController {
 
     public void modifyMenu(Map<String, String> stringStringMap) {
 
-        MenuDTO menu = new MenuDTO();
+      MenuDTO menu = new MenuDTO();
         menu.setMenuCode(Integer.parseInt(stringStringMap.get("menuCode")));
         menu.setMenuName(stringStringMap.get("menuName"));
         menu.setMenuPrice(Integer.parseInt(stringStringMap.get("menuPrice")));

@@ -1,4 +1,5 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.section02.javaconfig;
+
 
 
 import java.util.HashMap;
@@ -10,7 +11,7 @@ public class Application {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        MenuController  menuController = new MenuController();
+        MenuController menuController = new MenuController();
         do {
             System.out.println("===== 메뉴 관리 ======");
             System.out.println("1. 메뉴 전체 조회");

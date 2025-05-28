@@ -1,6 +1,6 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.section02.javaconfig;
 
-import com.ohgiraffers.section01.xmlconfig.MenuService;
+
 
 import java.util.List;
 import java.util.Map;
