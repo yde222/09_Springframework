@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
-import static Template.getSqlSession;
+import static com.ohgiraffers.section02.javaconfig.Template.getSqlSession;
 
 public class MenuService {
 
