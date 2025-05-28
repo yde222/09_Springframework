@@ -70,5 +70,18 @@
         </choose>
         ORDER BY menu_code
     </select>
+    <select id="searchMenuByRandomMenuCode" resultType="MenuDTO">
+        SELECT
+        menu_code
+        , menu_name
+        , menu_price
+        , category_code
+        , orderable_status
+        FROM tbl_menu
+        WHERE menu_code IN
+        <foreach collection="randomMenuCode" item="menuCode" open="(" separator=", " close=")">
+            #{menuCode}
+        </foreach>
+    </select>
 
 </mapper>

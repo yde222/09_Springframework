@@ -2,7 +2,9 @@ package com.ohgiraffers.section01.xml;
 
 import com.ohgiraffers.common.SearchCriteria;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -20,13 +22,40 @@ public class Application {
             switch (no) {
                 case 1 : ifSubMenu(); break;
                 case 2 : chooseSubMenu(); break;
-                case 3 :  break;
+                case 3 : foreachSubMenu(); break;
                 case 4 :  break;
                 case 9 :
                     System.out.println("프로그램을 종료합니다."); return;
             }
 
         } while(true);
+    }
+
+    private static void foreachSubMenu() {
+        Scanner sc = new Scanner(System.in);
+        MenuService menuService = new MenuService();
+        do {
+            System.out.println("===== foreach 서브 메뉴 =====");
+            System.out.println("1. 랜덤한 메뉴 5개 추출해서 조회하기");
+            System.out.println("9. 이전 메뉴로");
+            System.out.print("메뉴 번호 입력 : ");
+            int no = sc.nextInt();
+
+            switch (no) {
+                case 1 : menuService.searchMenuByRandomMenuCode(createRandomMenuCodeList());break;
+                case 9 : return;
+            }
+        } while(true);
+    }
+
+    private static Set<Integer> createRandomMenuCodeList() {
+        Set<Integer> set = new HashSet<>();
+        while(set.size() < 5) {
+            int temp = (int) (Math.random() * 21) + 1;
+            set.add(temp);
+        }
+        System.out.println("set ==============> " + set);
+        return set;
     }
 
     private static void chooseSubMenu() {
