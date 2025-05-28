@@ -18,15 +18,24 @@ public class Application {
             int no = sc.nextInt();
 
             switch (no) {
-                case 1 : ifSubMenu(); break;
-                case 2 : chooseSubMenu(); break;
-                case 3 : foreachSubMenu(); break;
-                case 4 : trimSubMenu(); break;
-                case 9 :
-                    System.out.println("프로그램을 종료합니다."); return;
+                case 1:
+                    ifSubMenu();
+                    break;
+                case 2:
+                    chooseSubMenu();
+                    break;
+                case 3:
+                    foreachSubMenu();
+                    break;
+                case 4:
+                    trimSubMenu();
+                    break;
+                case 9:
+                    System.out.println("프로그램을 종료합니다.");
+                    return;
             }
 
-        } while(true);
+        } while (true);
     }
 
     private static void trimSubMenu() {
@@ -42,11 +51,38 @@ public class Application {
             int no = sc.nextInt();
 
             switch (no) {
-                case 1 : menuService.searchMenuByNameOrCategory(inputSearchCriteriaMap()); break;
-                case 2 : /*menuService.modifyMenu(inputChangeInfo());*/ break;
-                case 9 : return;
+                case 1:
+                    menuService.searchMenuByNameOrCategory(inputSearchCriteriaMap());
+                    break;
+                case 2:
+                    menuService.modifyMenu(inputChangeInfo());
+                    break;
+                case 9:
+                    return;
             }
-        } while(true);
+        } while (true);
+    }
+
+    private static Map<String, Object> inputChangeInfo() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("변경할 메뉴 코드 입력 : ");
+        int menuCode = sc.nextInt();
+        System.out.print("변경할 메뉴 이름 입력 : ");
+        sc.nextLine();
+        String menuName = sc.nextLine();
+        System.out.print("변경할 카테고리 코드 입력 : ");
+        int categoryCode = sc.nextInt();
+        System.out.print("변경할 판매여부 입력 : ");
+        sc.nextLine();
+        String orderableStatus = sc.nextLine();
+
+        Map<String, Object> criteria = new HashMap<>();
+        criteria.put("menuCode", menuCode);
+        criteria.put("menuName", menuName);
+        criteria.put("categoryCode", categoryCode);
+        criteria.put("orderableStatus", orderableStatus);
+
+        return criteria;
     }
 
     private static Map<String, Object> inputSearchCriteriaMap() {
@@ -55,19 +91,19 @@ public class Application {
         String condition = sc.nextLine();
 
         Map<String, Object> criteria = new HashMap<>();
-        if("category".equals(condition)) {
+        if ("category".equals(condition)) {
 
             System.out.print("검색할 카테고리 코드 입력 : ");
             int categoryValue = sc.nextInt();
             criteria.put("categoryValue", categoryValue);
 
-        } else if("name".equals(condition)) {
+        } else if ("name".equals(condition)) {
 
             System.out.print("검색할 메뉴명 입력 : ");
             String nameValue = sc.nextLine();
             criteria.put("nameValue", nameValue);
 
-        } else if("both".equals(condition)) {
+        } else if ("both".equals(condition)) {
 
             System.out.print("검색할 메뉴명 입력 : ");
             String nameValue = sc.nextLine();
@@ -92,15 +128,18 @@ public class Application {
             int no = sc.nextInt();
 
             switch (no) {
-                case 1 : menuService.searchMenuByRandomMenuCode(createRandomMenuCodeList());break;
-                case 9 : return;
+                case 1:
+                    menuService.searchMenuByRandomMenuCode(createRandomMenuCodeList());
+                    break;
+                case 9:
+                    return;
             }
-        } while(true);
+        } while (true);
     }
 
     private static Set<Integer> createRandomMenuCodeList() {
         Set<Integer> set = new HashSet<>();
-        while(set.size() < 5) {
+        while (set.size() < 5) {
             int temp = (int) (Math.random() * 21) + 1;
             set.add(temp);
         }
@@ -119,10 +158,13 @@ public class Application {
             int no = sc.nextInt();
 
             switch (no) {
-                case 1 : menuService.searchMenuBySupCategory(inputSupCategory());break;
-                case 9 : return;
+                case 1:
+                    menuService.searchMenuBySupCategory(inputSupCategory());
+                    break;
+                case 9:
+                    return;
             }
-        } while(true);
+        } while (true);
     }
 
     private static SearchCriteria inputSupCategory() {
@@ -145,9 +187,14 @@ public class Application {
             int no = sc.nextInt();
 
             switch (no) {
-                case 1 : menuService.selectMenuByPrice(inputPrice());  break;
-                case 2 : menuService.selectMenu(inputSearchCriteria());  break;
-                case 9 : return;
+                case 1:
+                    menuService.selectMenuByPrice(inputPrice());
+                    break;
+                case 2:
+                    menuService.selectMenu(inputSearchCriteria());
+                    break;
+                case 9:
+                    return;
             }
         } while (true);
     }

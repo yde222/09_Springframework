@@ -17,4 +17,6 @@ public interface DynamicSqlMapper {
     List<MenuDTO> searchMenuByRandomMenuCode(Map<String, Set<Integer>> criteria);
 
     List<MenuDTO> searchMenuByNameOrCategory(Map<String, Object> criteria);
+
+    int updateMenu(Map<String, Object> criteria);
 }

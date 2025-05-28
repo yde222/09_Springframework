@@ -107,14 +107,14 @@
         <!--        </if>-->
 
         <!--        해결방법 1. <where> 태그 사용 -->
-<!--        <where>-->
-<!--            <if test="nameValue != null">-->
-<!--                WHERE menu_name LIKE CONCAT('%', #{ nameValue }, '%')-->
-<!--            </if>-->
-<!--            <if test="categoryValue != null">-->
-<!--                AND category_code = #{ categoryValue }-->
-<!--            </if>-->
-<!--        </where>-->
+        <!--        <where>-->
+        <!--            <if test="nameValue != null">-->
+        <!--                WHERE menu_name LIKE CONCAT('%', #{ nameValue }, '%')-->
+        <!--            </if>-->
+        <!--            <if test="categoryValue != null">-->
+        <!--                AND category_code = #{ categoryValue }-->
+        <!--            </if>-->
+        <!--        </where>-->
 
         <!--        해결방법 2. <trim> 태그 사용 -->
         <trim prefix="WHERE" prefixOverrides="AND | OR">
@@ -127,4 +127,33 @@
         </trim>
     </select>
 
+    <update id="updateMenu">
+        UPDATE tbl_menu
+        <!-- 문제상황 : SET 구문이 남거나 ','가 앞뒤로 붙어서 구문 오류가 발생할 수 있다. -->
+        <!-- 해결방법 1. <set> 태그 사용 -->
+<!--        <set>-->
+<!--            <if test="menuName != null and menuname != ''">-->
+<!--                menu_name = #{menuName},-->
+<!--            </if>-->
+<!--            <if test="categoryCode != null and categoryCode gt 0">-->
+<!--                category_code = #{categoryCode},-->
+<!--            </if>-->
+<!--            <if test="orderableStatus != null and orderableStatus != ''">-->
+<!--                orderable_status = #{orderableStatus},-->
+<!--            </if>-->
+<!--        </set>-->
+        <!-- 해결방법 2. <trim> 태그 사용 -->
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="menuName != null and menuname != ''">
+                menu_name = #{menuName},
+            </if>
+            <if test="categoryCode != null and categoryCode gt 0">
+                category_code = #{categoryCode},
+            </if>
+            <if test="orderableStatus != null and orderableStatus != ''">
+                orderable_status = #{orderableStatus},
+            </if>
+        </trim>
+        WHERE menu_code = ${menuCode}
+    </update>
 </mapper>
