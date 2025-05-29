@@ -1,9 +1,13 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.practice.common;
 
+import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.mapping.Environment;
+import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,10 +17,8 @@ public class Template {
     private static SqlSessionFactory sqlSessionFactory;
 
     public static SqlSession getSqlSession() {
-
         if(sqlSessionFactory == null) {
-            String resource = "com/ohgiraffers/section01/xmlconfig/mybatis-config.xml";
-
+            String resource = "config/mybatis-config.xml";
             try {
                 InputStream inputStream = Resources.getResourceAsStream(resource);
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -24,7 +26,6 @@ public class Template {
                 throw new RuntimeException(e);
             }
         }
-
         return sqlSessionFactory.openSession(false);
     }
 }

@@ -1,4 +1,4 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.section03.remix;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ public class PrintResult {
         System.out.println("===== 메뉴 목록 ======");
         for(MenuDTO menuDTO : menuList) {
             System.out.println(menuDTO);
+
         }
     }
 
