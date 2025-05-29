@@ -38,5 +38,4 @@ public class OrderDTO {
     public void setTotalOrderPrice(int totalOrderPrice) {
         this.totalOrderPrice = totalOrderPrice;
     }
-
 }
