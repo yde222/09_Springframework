@@ -19,7 +19,7 @@ public class Application {
             switch (no) {
                 case 1 : elementTestService.selectResultMapTest(); break;
                 case 2 : elementTestService.selectResultMapAssociationTest(); break;
-//                case 3 : elementTestService.selectResultMapCollectionTest(); break;
+                case 3 : elementTestService.selectResultMapCollectionTest(); break;
                 default:
                     System.out.println("잘못 된 번호를 입력하셨습니다.");
             }

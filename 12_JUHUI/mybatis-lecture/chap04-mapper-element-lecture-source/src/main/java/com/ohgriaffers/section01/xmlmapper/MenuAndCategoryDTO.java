@@ -6,7 +6,7 @@ public class MenuAndCategoryDTO {
     private int menuCode;
     private String menuName;
     private int menuPrice;
-    private CategoryDTO category;
+    private CategoryDTO category; // 주소값이 들어감
     private String orderableStatus;
 
     public MenuAndCategoryDTO() {
