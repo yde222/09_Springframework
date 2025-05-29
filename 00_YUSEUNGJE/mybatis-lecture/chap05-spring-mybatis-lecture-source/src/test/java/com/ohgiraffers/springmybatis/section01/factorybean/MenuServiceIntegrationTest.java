@@ -50,5 +50,20 @@ public class MenuServiceIntegrationTest {
                         "주문 가능 메뉴의 이름은 ' (주문 가능)'으로 끝나야한다."));
     }
 
+    @Test
+    public void testFindAllMenuByOrderableStatus_NotOrderable(){
 
+        // given
+        String orderableStatus = "N";
+
+        // when
+        List<MenuDTO> resultList = menuService.findAllMenuByOrderableStatus(orderableStatus);
+        // then
+        assertNotNull(resultList);
+        assertEquals(1, resultList.size());
+
+        resultList.forEach(menu ->
+                assertTrue(menu.getMenuName().endsWith(" (주문 불가능)"),
+                        "주문 가능 메뉴의 이름은 ' (주문 불가능)'으로 끝나야한다."));
+    }
 }
