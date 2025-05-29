@@ -10,7 +10,7 @@ public class SqlBuilderProvider {
 
         return new SQL()
                 .INSERT_INTO("tbl_menu")
-                .VALUES("menu_name","#{ menuName")
+                .VALUES("menu_name","#{ menuName}")
                 .VALUES("menu_price","#{ menuPrice}")
                 .VALUES("category_code","#{ categoryCode}")
                 .VALUES("orderable_status","#{ orderableStatus}").toString();
@@ -43,7 +43,9 @@ public class SqlBuilderProvider {
     }
 
     public String deleteMenu(){
-        return "";
+        return new SQL()
+                .DELETE_FROM("tbl_menu")
+                .WHERE("menu)code = ${ menuCode}").toString();
     }
 
 }

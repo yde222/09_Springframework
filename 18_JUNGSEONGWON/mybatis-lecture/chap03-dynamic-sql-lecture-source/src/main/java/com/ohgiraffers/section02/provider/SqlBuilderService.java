@@ -43,12 +43,12 @@ public class SqlBuilderService {
         sqlSession.close();
     }
 
-    public void deleteMenu(int i) {
+    public void deleteMenu(int menuCode) {
 
         SqlSession sqlSession = getSqlSession();
         SqlBuilderMapper mapper = sqlSession.getMapper(SqlBuilderMapper.class);
 
-        int result = mapper.deleteMenu();
+        int result = mapper.deleteMenu(menuCode);
 
         if (result >0){
             sqlSession.commit();
