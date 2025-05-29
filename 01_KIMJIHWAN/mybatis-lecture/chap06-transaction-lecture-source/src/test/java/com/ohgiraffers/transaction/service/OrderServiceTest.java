@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,11 +24,12 @@ class OrderServiceTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+
     @DisplayName("주문등록 테스트")
     @Test
     public void testRegisterOrder() {
 
-        // given -> controller가정
+        // given  -> contoller가정
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setOrderDate("20250529");
         orderDTO.setOrderTime("100430");
@@ -56,7 +56,7 @@ class OrderServiceTest {
         assertThat(orderMenuCount).isEqualTo(2);
 
         String orderDate = jdbcTemplate.queryForObject(
-                "SELECT order date FROm tbl_order", String.class
+                "SELECT order_date FROM tbl_order", String.class
         );
         assertThat(orderDate).isEqualTo("20250529");
     }
