@@ -13,8 +13,12 @@
 <!--    스네이크 표기법은 자동으로 사용 가능-->
 
     <typeAliases>
-        <typeAlias type="com.ohgiraffers.common.MenuDTO" alias="MenuDTO" />
+        <typeAlias type="com.ohgiraffers.section01.xmlmapper.MenuDTO" alias="MenuDTO"/>
+        <typeAlias type="com.ohgiraffers.section01.xmlmapper.CategoryDTO" alias="CategoryDTO"/>
+        <typeAlias type="com.ohgiraffers.section01.xmlmapper.MenuAndCategoryDTO" alias="MenuAndCategoryDTO"/>
+        <typeAlias type="com.ohgiraffers.section01.xmlmapper.CategoryAndMenuDTO" alias="CategoryAndMenuDTO"/>
     </typeAliases>
+
 <!--    GPT: MyBatis에서 특정 Java 클래스와 별칭
 (Alias)을 연결하여 사용할 수 있도록 정의하는 요소입니다
 . 이를 사용하면 SQL 매핑 파일에서 클래스의 전체 패키지
@@ -34,7 +38,6 @@
     </environments>
 
     <mappers>
-        <package name="com.ohgiraffers.section01.xml"/>
-        <package name="com.ohgiraffers.section02.provider"/>
+        <package name="com.ohgiraffers.section01.xmlmapper"/>
     </mappers>
 </configuration>
