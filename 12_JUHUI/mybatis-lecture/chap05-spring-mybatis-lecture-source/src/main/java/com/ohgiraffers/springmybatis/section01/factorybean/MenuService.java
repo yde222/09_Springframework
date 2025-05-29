@@ -16,19 +16,20 @@ public class MenuService {
 
     public List<MenuDTO> findAllMenuByOrderableStatus(String orderableStatus) {
 
-        List<MenuDTO> menus =
-                sqlSession.getMapper(MenuMapper.class)
-                        .findAllMenuByOrderableStatus(orderableStatus);
+        List<MenuDTO> menus
+                = sqlSession.getMapper(MenuMapper.class)
+                .findAllMenuByOrderableStatus(orderableStatus);
 
-        if (menus == null) {
+        if(menus != null) {
             menus.forEach(menu -> {
-                if("Y".equals(menu.getOrderableStatus())) {
+                if("Y".equals(menu.getOrderableStatus())){
                     menu.setMenuName(menu.getMenuName() + " (주문 가능)");
                 } else {
-
+                    menu.setMenuName(menu.getMenuName() + " (주문 불가능)");
                 }
-            }
+            });
         }
+
         return menus;
     }
 }

@@ -9,5 +9,4 @@ public class Chap05SpringMybatisLectureSourceApplication {
     public static void main(String[] args) {
         SpringApplication.run(Chap05SpringMybatisLectureSourceApplication.class, args);
     }
-
 }
