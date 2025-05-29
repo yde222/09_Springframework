@@ -5,7 +5,6 @@ import com.ohgiraffers.transaction.domain.OrderMenu;
 import com.ohgiraffers.transaction.dto.OrderDTO;
 import com.ohgiraffers.transaction.dto.OrderMenuDTO;
 import com.ohgiraffers.transaction.mapper.OrderMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -19,7 +18,6 @@ public class OrderService {
 
     private final OrderMapper orderMapper;
 
-    @Autowired
     public OrderService(OrderMapper orderMapper) {
         this.orderMapper = orderMapper;
     }

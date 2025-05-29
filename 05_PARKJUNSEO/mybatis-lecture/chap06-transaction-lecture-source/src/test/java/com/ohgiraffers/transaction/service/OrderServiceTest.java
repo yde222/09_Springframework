@@ -20,15 +20,16 @@ class OrderServiceTest {
     @Autowired
     private OrderService orderService;
 
-    // Spring Framework에서 제공하는 클래스로 JDBC를 이용한 데이터베이스 접근을 쉽게 해주는 도구
+    // Spring Framework에서 제공하는 클래스로 JDBC를 이용한 데이터베이스접근을 쉽게 해주는 도구
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @DisplayName("주문 등록 테스트")
+
+    @DisplayName("주문등록 테스트")
     @Test
     public void testRegisterOrder() {
 
-        // given -> controller에서 값이 넘어온다고 가정
+        // given  -> contoller가정
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setOrderDate("20250529");
         orderDTO.setOrderTime("100430");
@@ -43,10 +44,8 @@ class OrderServiceTest {
         menuDTO2.setOrderAmount(3);
 
         List<OrderMenuDTO> orderMenuDTOS = Arrays.asList(menuDTO1, menuDTO2);
-
         // when
         orderService.registOrder(orderDTO, orderMenuDTOS);
-
 
         // then
         Integer orderCount = jdbcTemplate.queryForObject(
@@ -57,13 +56,8 @@ class OrderServiceTest {
         assertThat(orderMenuCount).isEqualTo(2);
 
         String orderDate = jdbcTemplate.queryForObject(
-                "SELECT order_date FROM tbl_order", String.class);
+                "SELECT order_date FROM tbl_order", String.class
+        );
         assertThat(orderDate).isEqualTo("20250529");
-
     }
-
-
-
-
-
 }
