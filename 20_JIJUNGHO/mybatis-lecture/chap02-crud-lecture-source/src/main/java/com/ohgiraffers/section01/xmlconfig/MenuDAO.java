@@ -17,4 +17,16 @@ public class MenuDAO {
         /* 복수의 객체에서 값을 가져올때는 Map<String, Object>를 활용한다.  */
         return sqlSession.selectOne("MenuMapper.selectMenuByMenuCode", menuCode);
     }
+
+    public int insertMenu(SqlSession sqlSession, MenuDTO menu) {
+        return sqlSession.insert("MenuMapper.insertMenu", menu);
+    }
+
+    public int updateMenu(SqlSession sqlSession, MenuDTO menu) {
+        return sqlSession.update("MenuMapper.updateMenu", menu);
+    }
+
+    public int deleteMenu(SqlSession sqlSession, int menuCode) {
+        return sqlSession.delete("MenuMapper.deleteMenu", menuCode);
+    }
 }
