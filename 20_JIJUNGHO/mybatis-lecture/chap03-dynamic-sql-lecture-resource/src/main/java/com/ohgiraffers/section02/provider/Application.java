@@ -45,11 +45,19 @@ public class Application {
             switch (no) {
                 case 1 : sqlBuilderService.registMenu(inputNewMenu()); break;
                 case 2 : sqlBuilderService.modifyMenu(inputModifyMenu()); break;
-                case 3 : /*sqlBuilderService.deleteMenu(inputMenuCode());*/ break;
+                case 3 : sqlBuilderService.deleteMenu(inputMenuCode()); break;
                 case 9 : return;
             }
 
         } while(true);
+    }
+
+    private static int inputMenuCode() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("삭제할 메뉴 번호를 입력하세요 : ");
+        int code = sc.nextInt();
+
+        return code;
     }
 
     private static MenuDTO inputModifyMenu() {

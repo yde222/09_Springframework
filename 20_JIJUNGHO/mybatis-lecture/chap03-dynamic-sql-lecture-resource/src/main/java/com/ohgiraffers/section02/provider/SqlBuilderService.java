@@ -43,4 +43,21 @@ public class SqlBuilderService {
         sqlSession.close();
         
     }
+
+    public void deleteMenu(int menuCode) {
+        SqlSession sqlSession = getSqlSession();
+        SqlBuilderMapper mapper = sqlSession.getMapper(SqlBuilderMapper.class);
+
+        int result = mapper.deleteMenu(menuCode);
+
+        if (result > 0) {
+            sqlSession.commit();
+            System.out.println("메뉴 삭제 완료");
+        } else {
+            sqlSession.rollback();
+            System.out.println("메뉴 삭제 실패");
+        }
+
+        sqlSession.close();
+    }
 }
