@@ -21,7 +21,7 @@ public class SelectBuilderService {
     * */
     public void testSimpleStatement() {
         SqlSession sqlSession = getSqlSession();
-        SqlBuilderMapper mapper = sqlSession.getMapper(SqlBuilderMapper.class);
+        SelectBuilderMapper mapper = sqlSession.getMapper(SelectBuilderMapper.class);
 
         List<MenuDTO> menuList = mapper.selectAllMenu();
 
@@ -37,7 +37,7 @@ public class SelectBuilderService {
 
     public void testDynamicStatement(SearchCriteria searchCriteria) {
         SqlSession sqlSession = getSqlSession();
-        SqlBuilderMapper mapper = sqlSession.getMapper(SqlBuilderMapper.class);
+        SelectBuilderMapper mapper = sqlSession.getMapper(SelectBuilderMapper.class);
 
         List<MenuDTO> menuList = mapper.selectMenuByNameOrCategory(searchCriteria);
 
