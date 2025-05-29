@@ -1,6 +1,7 @@
 package com.ohgiraffers.section02.provider;
 
 import com.ohgiraffers.common.MenuDTO;
+import com.ohgiraffers.common.SearchCriteria;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class SelectBuilderService {
     * */
     public void testSimpleStatement() {
         SqlSession sqlSession = getSqlSession();
-        SqlBuilderMapper mapper = sqlSession.getMapper(SqlBuilderMapper.class);
+        SelectBuilderMapper mapper = sqlSession.getMapper(SelectBuilderMapper.class);
 
         List<MenuDTO> menuList = mapper.selectAllMenu();
 
@@ -32,5 +33,21 @@ public class SelectBuilderService {
 
         sqlSession.close();
 
+    }
+
+    public void testDynamicStatement(SearchCriteria searchCriteria) {
+
+        SqlSession sqlSession = getSqlSession();
+        SelectBuilderMapper mapper = sqlSession.getMapper(SelectBuilderMapper.class);
+
+        List<MenuDTO> menuList = mapper.selectMenuByNameOrCategory(searchCriteria);
+
+        if(menuList != null && !menuList.isEmpty()) {
+            menuList.forEach(System.out::println);
+        } else {
+            System.out.println("검색 결과가 존재하지 않습니다.");
+        }
+
+        sqlSession.close();
     }
 }
