@@ -7,7 +7,7 @@
 
     <!-- autoMapping : 조회 결과를 type에 자동 매핑 할지 선택
     extends : 작성 된 resultMap을 확장(상속)하는 resultMap 생성-->
-    <resultMap id = "menuResultMap" type = "MenuDTO" autoMapping="false">
+    <resultMap id = "menuResultMap1" type = "MenuDTO" autoMapping="false">
         <id property="menuCode" column="menu_code"/>
         <result property="menuName" column="menu_name"/>
     </resultMap>
@@ -38,7 +38,6 @@
     <id property="menuCode" column="menu_code"/>
     <result property="menuName" column="menu_name"/>
     <result property="menuPrice" column="menu_price" />
-    <result property="categoryCode" column="category_code" />
     <result property="orderableStatus" column="orderable_status"/>
     <!--
            id, result 보다 위에 작성 되면 컴파일 에러 발생

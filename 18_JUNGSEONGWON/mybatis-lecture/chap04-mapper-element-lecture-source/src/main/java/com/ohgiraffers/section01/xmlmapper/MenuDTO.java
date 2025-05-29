@@ -1,6 +1,7 @@
 package com.ohgiraffers.section01.xmlmapper;
 
 public class MenuDTO {
+
     private int menuCode;
     private String menuName;
     private int menuPrice;
@@ -61,10 +62,10 @@ public class MenuDTO {
     @Override
     public String toString() {
         return "MenuDTO{" +
-                "categoryCode=" + categoryCode +
-                ", menuCode=" + menuCode +
+                "menuCode=" + menuCode +
                 ", menuName='" + menuName + '\'' +
                 ", menuPrice=" + menuPrice +
+                ", categoryCode=" + categoryCode +
                 ", orderableStatus='" + orderableStatus + '\'' +
                 '}';
     }

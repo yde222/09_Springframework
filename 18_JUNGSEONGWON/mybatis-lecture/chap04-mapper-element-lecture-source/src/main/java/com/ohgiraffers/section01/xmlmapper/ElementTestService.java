@@ -23,6 +23,7 @@ public class ElementTestService {
     }
 
     public void selectResultMapAssociationTest() {
+
         SqlSession sqlSession = getSqlSession();
         ElementTestMapper mapper = sqlSession.getMapper(ElementTestMapper.class);
 

@@ -10,7 +10,7 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type = "com.ohgiraffers.section01.xmlmapper.ElementTestMapper"/>
+        <typeAlias type = "com.ohgiraffers.section01.xmlmapper.MenuDTO" alias="MenuDTO"/>
         <typeAlias type = "com.ohgiraffers.section01.xmlmapper.CategoryDTO" alias="CategoryDTO"/>
         <typeAlias type = "com.ohgiraffers.section01.xmlmapper.MenuAndCategoryDTO" alias="MenuAndCategoryDTO"/>
         <typeAlias type = "com.ohgiraffers.section01.xmlmapper.CategoryAndMenuDTO" alias="CategoryAndMenuDTO"/>
