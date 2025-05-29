@@ -9,8 +9,8 @@ public class EmployeeDTO {
     private String phone;
     private String deptCode;
     private String jobCode;
-    private String salLevel = null;
-    private int salary;
+    private String salLevel;
+    private double salary;
     private double bonus = 0;;
     private int managerId = 0;
     private String hireDate = null;;
@@ -20,18 +20,8 @@ public class EmployeeDTO {
     public EmployeeDTO() {
     }
 
-    public EmployeeDTO(String empName, String empNo, String email, String phone, String deptCode, String jobCode, int salary, String quitYN) {
-        this.empName = empName;
-        this.empNo = empNo;
-        this.email = email;
-        this.phone = phone;
-        this.deptCode = deptCode;
-        this.jobCode = jobCode;
-        this.salary = salary;
-        this.quitYN = quitYN;
-    }
 
-    public EmployeeDTO(int empId, String empName, String empNo, String email, String phone, String deptCode, String jobCode, int salary, String quitYN) {
+    public EmployeeDTO(int empId, String empName, String empNo, String email, String phone, String deptCode, String jobCode, String salLevel, double salary, String quitYN) {
         this.empId = empId;
         this.empName = empName;
         this.empNo = empNo;
@@ -39,6 +29,7 @@ public class EmployeeDTO {
         this.phone = phone;
         this.deptCode = deptCode;
         this.jobCode = jobCode;
+        this.salLevel = salLevel;
         this.salary = salary;
         this.quitYN = quitYN;
     }
@@ -99,11 +90,11 @@ public class EmployeeDTO {
         this.jobCode = jobCode;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 

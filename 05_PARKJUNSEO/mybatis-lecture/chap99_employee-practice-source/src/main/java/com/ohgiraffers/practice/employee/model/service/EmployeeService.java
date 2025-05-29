@@ -30,7 +30,7 @@ public class EmployeeService {
         return employeeDTO;
     }
 
-    public boolean registMenu(EmployeeDTO employeeDTO) {
+    public boolean registEmployee(EmployeeDTO employeeDTO) {
 
         SqlSession sqlSession = getSqlSession();
         EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);

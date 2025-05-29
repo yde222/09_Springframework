@@ -37,6 +37,7 @@ public class MainView {
                     break;
                 case 5:
                     ec.deleteEmployee(inputEmpId());
+                    break;
                 case 9:
                     return;
                 default:
@@ -49,6 +50,9 @@ public class MainView {
     private static EmployeeDTO inputEmployee() {
         Scanner sc = new Scanner(System.in);
 
+        System.out.print("회원번호를 입력하세요: ");
+        int empId = sc.nextInt();
+        sc.nextLine();  // ← 버퍼 비우기
         System.out.print("이름을 입력하세요: ");
         String empName = sc.nextLine();
         System.out.print("주민번호를 입력하세요: ");
@@ -62,10 +66,12 @@ public class MainView {
         System.out.print("직무코드를 입력하세요: ");
         String jobCode = sc.nextLine();
         System.out.print("급여를 입력하세요: ");
-        int salary = sc.nextInt();
+        double salary = sc.nextDouble();
         String quitYN = "N";
 
-        EmployeeDTO employee = new EmployeeDTO(empName, empNo, email, phone, deptCode, jobCode, salary, quitYN);
+        String salLevel = "S1";
+
+        EmployeeDTO employee = new EmployeeDTO(empId, empName, empNo, email, phone, deptCode, jobCode, salLevel, salary, quitYN);
 
         return employee;
     }
@@ -73,7 +79,7 @@ public class MainView {
     private static Map<String, String> inputEmpId() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("메뉴 코드 입력 : ");
+        System.out.print("회원 번호 입력 : ");
         String empId = sc.nextLine();
         Map<String, String> parameter = new HashMap<>();
         parameter.put("empId", empId);

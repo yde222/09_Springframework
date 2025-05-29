@@ -30,11 +30,11 @@ public class EmployeeController {
     }
 
     public void selectOneEmployee(Map<String, String> parameter) {
-        int menuCode = Integer.parseInt(parameter.get("menuCode"));
-        EmployeeDTO menu = es.selectOneEmployee(menuCode);
+        int empId = Integer.parseInt(parameter.get("empId"));
+        EmployeeDTO employee = es.selectOneEmployee(empId);
 
-        if(menu != null) {
-            pv.printMenu(menu);
+        if(employee != null) {
+            pv.printMenu(employee);
         } else {
             pv.printErrorMessage("selectOneEmployee");
         }
@@ -42,7 +42,7 @@ public class EmployeeController {
 
     public void registEmployee(EmployeeDTO employeeDTO) {
 
-        if (es.registMenu(employeeDTO)) {
+        if (es.registEmployee(employeeDTO)) {
             pv.printSuccessMessage("insert");
         } else {
             pv.printErrorMessage("insert");
