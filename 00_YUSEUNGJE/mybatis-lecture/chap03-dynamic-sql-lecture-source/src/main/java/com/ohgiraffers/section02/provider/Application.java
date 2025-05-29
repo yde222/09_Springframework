@@ -1,5 +1,7 @@
 package com.ohgiraffers.section02.provider;
 
+import com.ohgiraffers.common.SearchCriteria;
+
 import java.util.Scanner;
 
 public class Application {
@@ -40,10 +42,21 @@ public class Application {
 
             switch (no) {
                 case 1 : selectBuilderService.testSimpleStatement(); break;
-                case 2 : /*selectBuilderService.testDynamicStatement(inputSearchCriteria());*/ break;
+                case 2 : selectBuilderService.testDynamicStatement(inputSearchCriteria()); break;
                 case 9 : return;
             }
 
         } while(true);
+    }
+
+    private static SearchCriteria inputSearchCriteria() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("검색 기준을 입력해주세요(name or category) : ");
+        String condition = sc.nextLine();
+        System.out.print("검색어를 입력해주세요 : ");
+        String value = sc.nextLine();
+
+        return new SearchCriteria(condition, value);
     }
 }
