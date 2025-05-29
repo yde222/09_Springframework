@@ -20,7 +20,7 @@ public class SelectBuilderService {
     * */
     public void testSimpleStatement() {
         SqlSession sqlSession = getSqlSession();
-        SqlBuilderMapper mapper = sqlSession.getMapper(SqlBuilderMapper.class);
+        SelectBuilderMapper mapper = sqlSession.getMapper(SelectBuilderMapper.class);
 
         List<MenuDTO> menuList = mapper.selectAllMenu();
 
