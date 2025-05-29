@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.SelectProvider;
 
 import java.util.List;
 
-public interface SqlBuilderMapper {
+public interface SelectBuilderMapper {
 
     @SelectProvider(type=SelectBuilderProvider.class, method = "selectAllMenu")
     List<MenuDTO> selectAllMenu();
