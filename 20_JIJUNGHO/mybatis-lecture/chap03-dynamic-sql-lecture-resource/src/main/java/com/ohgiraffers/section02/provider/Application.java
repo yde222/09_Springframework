@@ -52,6 +52,24 @@ public class Application {
         } while(true);
     }
 
+    private static MenuDTO inputModifyMenu() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("수정할 메뉴 번호를 입력하세요 : ");
+        int code = sc.nextInt();
+        System.out.print("수정할 메뉴 이름을 입력하세요 : ");
+        sc.nextLine();
+        String name = sc.nextLine();
+        System.out.print("수정할 메뉴의 가격을 입력하세요 : ");
+        int price = sc.nextInt();
+        System.out.print("수정할 카테고리를 입력하세요 : ");
+        int categoryCode = sc.nextInt();
+        System.out.print("수정할 판매 등록 여부를 입력하세요(Y/N) : ");
+        sc.nextLine();
+        String orderableStatus = sc.nextLine();
+
+        return new MenuDTO(code, name, price, categoryCode, orderableStatus);
+    }
+
     private static MenuDTO inputNewMenu() {
         Scanner sc = new Scanner(System.in);
         System.out.print("등록할 메뉴 이름을 입력하세요 : ");

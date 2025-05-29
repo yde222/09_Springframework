@@ -15,4 +15,31 @@ public class SqlBuilderProvider {
                 .VALUES("orderable_status", "#{orderableStatus}")
                 .toString();
     }
+
+    public String modifyMenu(MenuDTO menuDTO) {
+
+        SQL sql = new SQL();
+        sql.UPDATE("tbl_menu");
+
+        if(menuDTO.getMenuName() != null & !menuDTO.getMenuName().isEmpty()) {
+            sql.SET("menu_name = #{ menuName }");
+        }
+
+        if(menuDTO.getOrderableStatus() != null & !menuDTO.getOrderableStatus().isEmpty()) {
+            sql.SET("orderable_status = #{ orderableStatus }");
+        }
+
+        if(menuDTO.getCategoryCode() > 0) {
+            sql.SET("category_code = #{ categoryCode }");
+        }
+
+        if(menuDTO.getMenuPrice() > 0) {
+            sql.SET("menu_price = #{ menuPrice }");
+        }
+
+        sql.WHERE("menu_code = #{ menuCode }");
+
+        return sql.toString();
+
+    }
 }

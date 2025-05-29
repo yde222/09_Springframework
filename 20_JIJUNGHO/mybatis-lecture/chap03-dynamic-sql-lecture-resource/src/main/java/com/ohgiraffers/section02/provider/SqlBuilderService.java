@@ -24,4 +24,23 @@ public class SqlBuilderService {
         sqlSession.close();
 
     }
+
+    public void modifyMenu(MenuDTO menuDTO) {
+
+        SqlSession sqlSession = getSqlSession();
+        SqlBuilderMapper mapper = sqlSession.getMapper(SqlBuilderMapper.class);
+
+        int result = mapper.modifyMenu(menuDTO);
+
+        if (result > 0) {
+            sqlSession.commit();
+            System.out.println("메뉴 수정 완료");
+        } else {
+            sqlSession.rollback();
+            System.out.println("메뉴 수정 실패");
+        }
+
+        sqlSession.close();
+        
+    }
 }
