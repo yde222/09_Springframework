@@ -11,7 +11,10 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type="com.ohgiraffers.common.MenuDTO" alias="MenuDTO"/>
+        <typeAlias type="com.ohgiraffers.section01.xmlmapper.MenuDTO" alias="MenuDTO"/>
+        <typeAlias type="com.ohgiraffers.section01.xmlmapper.CategoryDTO" alias="CategoryDTO"/>
+        <typeAlias type="com.ohgiraffers.section01.xmlmapper.MenuAndCategoryDTO" alias="MenuAndCategoryDTO"/>
+        <typeAlias type="com.ohgiraffers.section01.xmlmapper.CategoryAndMenuDTO" alias="CategoryAndMenuDTO"/>
     </typeAliases>
 
     <environments default="development">
@@ -25,9 +28,9 @@
             </dataSource>
         </environment>
     </environments>
+
     <mappers>
 <!-- 다음 경로 하위에 있는 쿼리문을 모두 불러 올 수 있다. -->
-        <package name="com.ohgiraffers.section01.xml"/>
-        <package name="com.ohgiraffers.section02.provider"/>
+        <package name="com.ohgiraffers.section01.xmlmapper"/>
     </mappers>
 </configuration>

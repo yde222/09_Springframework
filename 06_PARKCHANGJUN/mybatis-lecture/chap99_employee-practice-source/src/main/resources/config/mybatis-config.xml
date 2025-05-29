@@ -4,30 +4,26 @@
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-    <properties resource="config/connection-info.properties"/>
-
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
     <typeAliases>
-        <typeAlias type="com.ohgiraffers.common.MenuDTO" alias="MenuDTO"/>
+        <typeAlias type="com.ohgiraffers.practice.employee.model.dto.EmployeeDTO" alias="EmployeeDTO"/>
     </typeAliases>
 
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="${driver}"/>
-                <property name="url" value="${url}"/>
-                <property name="username" value="${username}"/>
-                <property name="password" value="${password}"/>
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/empdb"/>
+                <property name="username" value="employee"/>
+                <property name="password" value="employee"/>
             </dataSource>
         </environment>
     </environments>
     <mappers>
-<!-- 다음 경로 하위에 있는 쿼리문을 모두 불러 올 수 있다. -->
-        <package name="com.ohgiraffers.section01.xml"/>
-        <package name="com.ohgiraffers.section02.provider"/>
+        <package name="com.ohgiraffers.practice.employee"/>
     </mappers>
 </configuration>
