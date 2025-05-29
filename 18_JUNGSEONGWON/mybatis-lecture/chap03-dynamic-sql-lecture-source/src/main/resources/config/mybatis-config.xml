@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <properties resource="config/connection.info.properties"/>
+    <properties resource="config/connection-info.properties"/>
 
     <settings >
         <setting name= "mapUnderscoreToCamelCase" value = "true"/>
@@ -27,5 +27,6 @@
 
     <mappers>
         <package name="com.ohgiraffers.section01.xml"/>
+        <package name="com.ohgiraffers.section02.provider"/>
     </mappers>
 </configuration>

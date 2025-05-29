@@ -105,7 +105,7 @@ public class MenuService {
             System.out.println("메뉴 정보 변경을 완료했습니다.");
         }else {
             sqlSession.rollback();
-            System.out.println("메뉴 정보ㅓ 변경에 실패했습니다.");
+            System.out.println("메뉴 정보 변경에 실패했습니다.");
         }
         sqlSession.close();
     }
