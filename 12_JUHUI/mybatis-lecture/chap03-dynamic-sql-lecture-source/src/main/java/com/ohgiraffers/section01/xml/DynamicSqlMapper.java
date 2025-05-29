@@ -1,4 +1,4 @@
-package com.ohgiraffers.section.xml;
+package com.ohgiraffers.section01.xml;
 
 import com.ohgiraffers.common.MenuDTO;
 import com.ohgiraffers.common.SearchCriteria;
