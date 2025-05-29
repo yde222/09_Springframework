@@ -3,4 +3,4 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     jdbc-url: jdbc:mysql://localhost:3306/menudb
     username: ohgiraffers
-    password: ohgiraffery
+    password: ohgiraffers

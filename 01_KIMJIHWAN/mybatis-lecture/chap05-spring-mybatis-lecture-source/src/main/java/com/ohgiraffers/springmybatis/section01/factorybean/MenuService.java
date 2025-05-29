@@ -1,11 +1,12 @@
 package com.ohgiraffers.springmybatis.section01.factorybean;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class MenuService {
-
 
     private final SqlSessionTemplate sqlSession;
 
@@ -13,10 +14,11 @@ public class MenuService {
         this.sqlSession = sqlSession;
     }
 
-    public List<MenuDTO> findAllMenuByOrderStatus(String orderStatus) {
+    public List<MenuDTO> findAllMenuByOrderableStatus(String orderableStatus) {
+
         List<MenuDTO> menus
                 = sqlSession.getMapper(MenuMapper.class)
-                .findAllMenuByOrderStatus(orderStatus);
+                .findAllMenuByOrderableStatus(orderableStatus);
 
         if(menus != null) {
             menus.forEach(menu -> {
@@ -30,5 +32,4 @@ public class MenuService {
 
         return menus;
     }
-
 }

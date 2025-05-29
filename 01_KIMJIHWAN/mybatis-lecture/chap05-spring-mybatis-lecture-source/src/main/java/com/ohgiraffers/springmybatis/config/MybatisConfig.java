@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class MybatisConfig {
 
     @Value("${spring.datasource.driver-class-name}")
-    private String driverClassName;
+    private String driveClassName;
 
     @Value("${spring.datasource.jdbc-url}")
     private String jdbcUrl;
@@ -28,7 +28,7 @@ public class MybatisConfig {
     @Bean
     public HikariDataSource getDataSource() {
         HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setDriverClassName(driverClassName);
+        dataSource.setDriverClassName(driveClassName);
         dataSource.setJdbcUrl(jdbcUrl);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
@@ -36,10 +36,10 @@ public class MybatisConfig {
         /* 커넥션 획득 대기 시간 */
         dataSource.setConnectionTimeout(30000);
 
-        /* 풀에서 동시에 유지 간으한 최대 커넥션 수 */
+        /* 풀에서 동시에 유지 가능한 최대 커넥션 수 */
         dataSource.setMaximumPoolSize(50);
 
-        /* 사용하지 않는 커넥션의 유효 시간 */
+        /* 사용하지 않는 커넥션의 유휴 시간 */
         dataSource.setIdleTimeout(600000);
 
         /* 커넥션의 최대 생명 주기를 설정(오래된 커넥션 주기적 교체) */
@@ -51,10 +51,10 @@ public class MybatisConfig {
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {
 
-        org.apache.ibatis.session.Configuration configuration =
-                new org.apache.ibatis.session.Configuration();
-
+        org.apache.ibatis.session.Configuration configuration
+                = new org.apache.ibatis.session.Configuration();
         configuration.getTypeAliasRegistry().registerAlias("MenuDTO", MenuDTO.class);
+
         configuration.addMapper(MenuMapper.class);
         configuration.setMapUnderscoreToCamelCase(true);
 
@@ -69,5 +69,6 @@ public class MybatisConfig {
     public SqlSessionTemplate sqlSessionTemplate() throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory());
     }
+
 
 }
