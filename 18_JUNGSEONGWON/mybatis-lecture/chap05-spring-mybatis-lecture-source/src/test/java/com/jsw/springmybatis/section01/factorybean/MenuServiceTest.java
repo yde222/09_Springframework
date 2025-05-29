@@ -12,38 +12,38 @@ import org.mybatis.spring.SqlSessionTemplate;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-
 /* 단위 테스트
-* Mockito 를 활용하여 의존성을 모킹(Mocking) 한 후 MenuService 의 순수 비즈니스 로직을 검증  */
+* Mockito 를 활용하여 의존성을 모킹(Mocking) 한 후 MenuService 의 순수 비즈니스 로직을 검증
+* */
 @ExtendWith(MockitoExtension.class)
 class MenuServiceTest {
 
-
     // @Mock : 모의 객체로 생성
     @Mock
-    private SqlSessionTemplate sqlSession; // 실제 DB 연결 없이 메소드 호출 처리 가능
+    private SqlSessionTemplate sqlSession; // 실제 DB연결 없이 메소드 호출 처리 가능
 
     @Mock
-    private MenuMapper menuMapper; // MybatisMapper를 구현체 없이 메소드 호출 가능
+    private MenuMapper menuMapper;  // Mybatis Mapper 구현체 없이 메소드 호출 가능
 
-    // @InjectMocks : 모의 객체를 MenuService에 주입하여 내부 의존성이 대체된다.
+    // @InjectMocks : 모의 객체를 MenuService에 주입하여 내부 의존성이 대체 된다.
     @InjectMocks
     private MenuService menuService;
 
     @BeforeEach
-    public void setup(){
-        // sqlSession.getMapper(MenuMapper.class) 호출 시에 모의 객체 menuMappe를 반환하도록 설정
+    public void setUp() {
+        // sqlSession.getMapper(MenuMapper.class) 호출 시에 모의 객체 menuMapper를 반환하도록 설정
         when(sqlSession.getMapper(MenuMapper.class)).thenReturn(menuMapper);
     }
 
-    /* 1. 주문 가능 상태 "Y"를 전달하는 테스트 시나리오*/
+    /* 1. 주문 가능 상태 "Y"를 전달하는 테스트 시나리오 */
     @DisplayName("주문 가능 상태 테스트")
     @Test
-    public void testFindAllMenuByOrderableStatus_OrderableStatus(){
+    public void testFindAllMenuByOrderableStatus_Orderable(){
         // given
         String orderable = "Y";
         MenuDTO menu1 = new MenuDTO(
@@ -59,20 +59,21 @@ class MenuServiceTest {
         List<MenuDTO> resultList = menuService.findAllMenuByOrderableStatus(orderable);
         // then
 
-        // 주어진 결과 값이 올바른 비즈니스 로직을 통해 가공 되었는 지 확인
+        // 주어진 결과 값이 올바른 비지니스 로직을 통해 가공 되었는지 확인
         assertNotNull(resultList);
         assertEquals(2, resultList.size());
         assertEquals("김치찌개 (주문 가능)", resultList.get(0).getMenuName());
-        assertEquals("된장찌개 (주문 가능)", resultList.get(0).getMenuName());
+        assertEquals("된장찌개 (주문 가능)", resultList.get(1).getMenuName());
 
-//        해당 객체에서 메소드 호출 여부 확인 -> 서비스 내부의 상호 작용이 기대한 대로 이루어졌는지
+        // 해당 객체에서 메소드 호출 여부 확인 -> 서비스 내부의 상호 작용이 기대한 대로 이루어졌는지
         verify(sqlSession).getMapper(MenuMapper.class);
         verify(menuMapper).findAllMenuByOrderableStatus(orderable);
     }
-    /* 1. 주문 가능 상태 "N"를 전달하는 테스트 시나리오*/
+
+    /* 1. 주문 가능 상태 "N"를 전달하는 테스트 시나리오 */
+    @DisplayName("주문 불가능 상태 테스트")
     @Test
     public void testFindAllMenuByOrderableStatus_NotOrderable(){
-
         // given
         String orderable = "N";
         MenuDTO menu1 = new MenuDTO(
@@ -88,13 +89,13 @@ class MenuServiceTest {
         List<MenuDTO> resultList = menuService.findAllMenuByOrderableStatus(orderable);
         // then
 
-        // 주어진 결과 값이 올바른 비즈니스 로직을 통해 가공 되었는 지 확인
+        // 주어진 결과 값이 올바른 비지니스 로직을 통해 가공 되었는지 확인
         assertNotNull(resultList);
-        assertEquals(1, resultList.size());
+        assertEquals(2, resultList.size());
         assertEquals("김치찌개 (주문 불가능)", resultList.get(0).getMenuName());
-        assertEquals("된장찌개 (주문 불가능)", resultList.get(0).getMenuName());
+        assertEquals("된장찌개 (주문 불가능)", resultList.get(1).getMenuName());
 
-//        해당 객체에서 메소드 호출 여부 확인 -> 서비스 내부의 상호 작용이 기대한 대로 이루어졌는지
+        // 해당 객체에서 메소드 호출 여부 확인 -> 서비스 내부의 상호 작용이 기대한 대로 이루어졌는지
         verify(sqlSession).getMapper(MenuMapper.class);
         verify(menuMapper).findAllMenuByOrderableStatus(orderable);
     }

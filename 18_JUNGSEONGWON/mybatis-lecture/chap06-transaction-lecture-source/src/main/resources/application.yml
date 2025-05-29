@@ -9,5 +9,5 @@ spring:
 mybatis:
   configuration:
     map-underscore-to-camel-case:
-  type-aliases-package: com.ohgiraffers.transaction
+  type-aliases-package: com.jsw.transaction
   mapper-locations: mappers/**/*.xml
