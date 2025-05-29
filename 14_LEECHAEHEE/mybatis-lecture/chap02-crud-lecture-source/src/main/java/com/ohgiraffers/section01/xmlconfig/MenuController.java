@@ -23,20 +23,6 @@ public class MenuController {
         }
     }
 
-    public void registMenu(Map<String, String> parameter) {
-        MenuDTO menu = new MenuDTO();
-        menu.setMenuName(parameter.get("menuName"));
-        menu.setMenuPrice(Integer.parseInt(parameter.get("menuPrice")));
-        menu.setCategoryCode(Integer.parseInt(parameter.get("categoryCode")));
-
-        if(menuService.registMenu(menu)) {
-            printResult.printSuccessMessage("insert");
-        } else {
-            printResult.printErrorMessage("insert");
-
-        }
-    }
-
     public void selectMenuByMenuCode(Map<String, String> parameter) {
 
         int menuCode = Integer.parseInt(parameter.get("menuCode"));
@@ -50,14 +36,28 @@ public class MenuController {
         }
     }
 
-    public void modifyMenu(Map<String, String> parameter) {
+    public void registMenu(Map<String, String> parameter) {
+
         MenuDTO menu = new MenuDTO();
-        menu.setMenuCode(Integer.parseInt(parameter.get("menuCode")));
         menu.setMenuName(parameter.get("menuName"));
         menu.setMenuPrice(Integer.parseInt(parameter.get("menuPrice")));
         menu.setCategoryCode(Integer.parseInt(parameter.get("categoryCode")));
 
-        if(menuService.modifyMenu(menu)) {
+        if(menuService.registMenu(menu)){
+            printResult.printSuccessMessage("insert");
+        } else {
+            printResult.printErrorMessage("insert");
+        }
+    }
+
+    public void modifyMenu(Map<String, String> stringStringMap) {
+        MenuDTO menu = new MenuDTO();
+        menu.setMenuCode(Integer.parseInt(stringStringMap.get("menuCode")));
+        menu.setMenuName(stringStringMap.get("menuName"));
+        menu.setMenuPrice(Integer.parseInt(stringStringMap.get("menuPrice")));
+        menu.setCategoryCode(Integer.parseInt(stringStringMap.get("categoryCode")));
+
+        if(menuService.modifyMenu(menu)){
             printResult.printSuccessMessage("update");
         } else {
             printResult.printErrorMessage("update");
@@ -66,7 +66,8 @@ public class MenuController {
 
     public void deleteMenu(Map<String, String> parameter) {
         int menuCode = Integer.parseInt(parameter.get("menuCode"));
-        if(menuService.deleteMenu(menuCode)) {
+
+        if(menuService.deleteMenu(menuCode)){
             printResult.printSuccessMessage("delete");
         } else {
             printResult.printErrorMessage("delete");
