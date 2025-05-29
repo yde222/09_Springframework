@@ -5,13 +5,13 @@
 <mapper namespace="com.ohgiraffers.section01.xml.DynamicSqlMapper">
     <select id="selectMenuByPrice" resultType="MenuDTO">
         SELECT
-        menu_code
-        , menu_name
-        , menu_price
-        , category_code
-        , orderable_status
-        FROM tbl_menu
-        WHERE orderable_status = 'Y'
+               menu_code
+             , menu_name
+             , menu_price
+             , category_code
+             , orderable_status
+          FROM tbl_menu
+         WHERE orderable_status = 'Y'
         <if test="price gt 0 and price lte 10000">
             <![CDATA[
             AND menu_price < #{ price }
@@ -26,21 +26,21 @@
         <if test="price gt 30000">
             AND menu_price BETWEEN 30000 AND #{ price }
         </if>
-        ORDER BY menu_price ASC
+        ORDER BY menu_code
     </select>
 
     <select id="selectMenu" resultType="MenuDTO">
         SELECT
-        menu_code
-        , menu_name
-        , menu_price
-        , category_code
-        , orderable_status
-        FROM tbl_menu
+               menu_code
+             , menu_name
+             , menu_price
+             , category_code
+             , orderable_status
+          FROM tbl_menu
         <if test="condition == 'category'">
             JOIN tbl_category USING(category_code)
         </if>
-        WHERE orderable_status = 'Y'
+         WHERE orderable_status = 'Y'
         <if test="condition == 'name'">
             AND menu_name LIKE CONCAT('%', #{ value }, '%')
         </if>
@@ -52,15 +52,16 @@
 
     <select id="searchMenuBySupCategory" resultType="MenuDTO">
         SELECT
-              menu_code
-            , menu_name
-            , menu_price
-            , category_code
-            , orderable_status
-        FROM tbl_menu
-        WHERE orderable_status = 'Y'
+               menu_code
+             , menu_name
+             , menu_price
+             , category_code
+             , orderable_status
+          FROM tbl_menu
+         WHERE orderable_status = 'Y'
         <choose>
             <when test="value == '식사'">
+                AND category_code IN (4, 5, 6, 7)
             </when>
             <when test="value == '음료'">
                 AND category_code IN (8, 9, 10)
@@ -74,29 +75,29 @@
 
     <select id="searchMenuByRandomMenuCode" resultType="MenuDTO">
         SELECT
-              menu_code
-            , menu_name
-            , menu_price
-            , category_code
-            , orderable_status
-        FROM tbl_menu
-        WHERE menu_code IN
-        <foreach collection="randomMenuCodeList" item="menuCode" open="(" separator="," close=")">
+               menu_code
+             , menu_name
+             , menu_price
+             , category_code
+             , orderable_status
+          FROM tbl_menu
+         WHERE menu_code IN
+        <foreach collection="randomMenuCodeList" item="menuCode"  open="(" separator="," close=")">
             #{ menuCode }
         </foreach>
     </select>
 
     <select id="searchMenuByNameOrCategory" resultType="MenuDTO">
         SELECT
-                menu_code
-                , menu_name
-                , menu_price
-                , category_code
-                , orderable_status
-         FROM tbl_menu
-<!--        문제 상황: 전달되는 값에 따라 where 문자만 남거나 and문자로 시작되는 등의
-            구문 오류가 발생할 수 있다.
-            -->
+               menu_code
+             , menu_name
+             , menu_price
+             , category_code
+             , orderable_status
+          FROM tbl_menu
+        <!-- 문제상황 : 전달되는 값에 따라 where 문자만 남거나 and문자로 시작되는 등의
+             구문 오류가 발생할 수 있다.
+        -->
 <!--        <if test="nameValue != null">-->
 <!--            WHERE menu_name LIKE CONCAT('%', #{ nameValue }, '%')-->
 <!--        </if>-->
@@ -104,20 +105,19 @@
 <!--            AND category_code = #{ categoryValue }-->
 <!--        </if>-->
 
-<!--        해결 방법 1. <where> 태그 사용-->
+<!--        해결 방법 1. <where> 태그 사용 -->
 <!--        <where>-->
 <!--            <if test="nameValue != null">-->
-<!--                WHERE menu_name LIKE CONCAT('%', #{ nameValue }, '%')-->
+<!--                menu_name LIKE CONCAT('%', #{ nameValue }, '%')-->
 <!--            </if>-->
 <!--            <if test="categoryValue != null">-->
 <!--                AND category_code = #{ categoryValue }-->
 <!--            </if>-->
 <!--        </where>-->
-
 <!--        해결 방법 2. <trim> 태그 사용 -->
-        <trim prefix="WHERE" prefixOverrides="AND | OR ">
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
             <if test="nameValue != null">
-                menu_name LIKE CONCAT('%', #{ nameValue }, '%')
+                 menu_name LIKE CONCAT('%', #{ nameValue }, '%')
             </if>
             <if test="categoryValue != null">
                 AND category_code = #{ categoryValue }
@@ -127,8 +127,8 @@
 
     <update id="updateMenu">
         UPDATE tbl_menu
-<!--        문제 상황: SET 구문이 남거나 ','가 앞뒤로 붙어 구문 오류가 발생할 수 있다.-->
-<!--        해결 방법: 1. <set> 태그 사용-->
+<!--        문제 상황 : SET 구문이 남거나 `,`가 앞뒤로 붙어 구문오류가 발생할 수 있다.  -->
+<!--        해결 방법: 1. <set> 태그 사용 -->
 <!--        <set>-->
 <!--            <if test="menuName != null and menuName != ''">-->
 <!--                menu_name = #{ menuName },-->
@@ -140,7 +140,6 @@
 <!--                orderable_status = #{ orderableStatus }-->
 <!--            </if>-->
 <!--        </set>-->
-
 <!--        해결 방법: 2. <trim> 태그 사용 -->
         <trim prefix="SET" suffixOverrides=",">
             <if test="menuName != null and menuName != ''">

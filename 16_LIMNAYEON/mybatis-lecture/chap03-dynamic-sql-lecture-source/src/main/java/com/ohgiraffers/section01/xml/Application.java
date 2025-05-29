@@ -20,9 +20,9 @@ public class Application {
 
             switch (no) {
                 case 1 : ifSubMenu(); break;
-                case 2 :  chooseSubMenu(); break;
+                case 2 : chooseSubMenu(); break;
                 case 3 : foreachSubMenu(); break;
-                case 4 : trimSubmenu(); break;
+                case 4 : trimSubMenu(); break;
                 case 9 :
                     System.out.println("프로그램을 종료합니다."); return;
             }
@@ -30,7 +30,8 @@ public class Application {
         } while(true);
     }
 
-    private static void trimSubmenu() {
+    private static void trimSubMenu() {
+
         Scanner sc = new Scanner(System.in);
         MenuService menuService = new MenuService();
         do {
@@ -51,6 +52,7 @@ public class Application {
     }
 
     private static Map<String, Object> inputChangeInfo() {
+
         Scanner sc = new Scanner(System.in);
         System.out.print("변경할 메뉴 코드 입력 : ");
         int menuCode = sc.nextInt();
@@ -123,16 +125,18 @@ public class Application {
     }
 
     private static Set<Integer> createRandomMenuCodeList() {
-        Set<Integer> set = new HashSet<Integer>();
-        while (set.size() < 5) {
-            int temp = (int) (Math.random() * 22 + 1);
+
+        Set<Integer> set = new HashSet<>();
+        while(set.size() < 5) {
+            int temp = (int) (Math.random() * 21) + 1;
             set.add(temp);
         }
-        System.out.println("set >>>>>>>>>>> " + set);
+        System.out.println("set =>> " + set);
         return set;
     }
 
     private static void chooseSubMenu() {
+
         Scanner sc = new Scanner(System.in);
         MenuService menuService = new MenuService();
         do {
@@ -158,6 +162,7 @@ public class Application {
     }
 
     private static void ifSubMenu() {
+
         Scanner sc = new Scanner(System.in);
         MenuService menuService = new MenuService();
         do {
@@ -170,13 +175,13 @@ public class Application {
 
             switch (no) {
                 case 1 : menuService.selectMenuByPrice(inputPrice()); break;
-                case 2 :  menuService.selectMenu(inputSearchCriteria()); break;
+                case 2 : menuService.selectMenu(inputSearchCriteria());  break;
                 case 9 : return;
             }
         } while (true);
     }
 
-    private static SearchCriteria  inputSearchCriteria() {
+    private static SearchCriteria inputSearchCriteria() {
         Scanner sc = new Scanner(System.in);
         System.out.print("검색 기준을 입력해주세요(name or category) : ");
         String condition = sc.nextLine();
@@ -187,6 +192,7 @@ public class Application {
     }
 
     private static int inputPrice() {
+
         Scanner sc = new Scanner(System.in);
         System.out.print("검색하실 가격의 최대 금액을 입력해주세요 : ");
         int price = sc.nextInt();

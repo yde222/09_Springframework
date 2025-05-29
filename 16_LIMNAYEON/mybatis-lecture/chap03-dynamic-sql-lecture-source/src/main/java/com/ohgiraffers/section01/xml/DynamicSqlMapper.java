@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 public interface DynamicSqlMapper {
+
     List<MenuDTO> selectMenuByPrice(Map<String, Integer> map);
 
     List<MenuDTO> selectMenu(SearchCriteria searchCriteria);

@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
     <properties resource="config/connection-info.properties"/>
 
     <settings>
@@ -12,7 +13,6 @@
     <typeAliases>
         <typeAlias type="com.ohgiraffers.common.MenuDTO" alias="MenuDTO"/>
     </typeAliases>
-
 
     <environments default="development">
         <environment id="development">
@@ -25,8 +25,9 @@
             </dataSource>
         </environment>
     </environments>
-
+    
     <mappers>
         <package name="com.ohgiraffers.section01.xml"/>
+        <package name="com.ohgiraffers.section02.provider"/>
     </mappers>
 </configuration>
