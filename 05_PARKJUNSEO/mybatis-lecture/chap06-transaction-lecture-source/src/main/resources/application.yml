@@ -1,0 +1,17 @@
+# spring.application.name=chap06-transaction-lecture-source
+
+# datasource
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://localhost:3306
+    username: ohgiraffers
+    password: ohgiraffers
+
+# mybatis config
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type.aliases-package: com.ohgiraffers.transaction
+
+  mapper-locations: mappers/**/*.xml
