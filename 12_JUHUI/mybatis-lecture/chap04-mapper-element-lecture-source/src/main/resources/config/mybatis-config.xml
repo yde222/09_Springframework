@@ -12,8 +12,8 @@
     <typeAliases>
         <typeAlias type="com.ohgiraffers.section01.xmlmapper.MenuDTO" alias="MenuDTO"/>
         <typeAlias type="com.ohgiraffers.section01.xmlmapper.CategoryDTO" alias="CategoryDTO"/>
-        <typeAlias type="com.ohgiraffers.section01.xmlmapper.Menu" alias="MenuCategoryDTO"/>
-        <typeAlias type="com.ohgiraffers.section01.xmlmapper." alias="CategoryAndMenuDTO"/>
+        <typeAlias type="com.ohgiraffers.section01.xmlmapper.MenuAndCategoryDTO" alias="MenuCategoryDTO"/>
+        <typeAlias type="com.ohgiraffers.section01.xmlmapper.CategoryAndMenuDTO" alias="CategoryAndMenuDTO"/>
         
     </typeAliases>
 
