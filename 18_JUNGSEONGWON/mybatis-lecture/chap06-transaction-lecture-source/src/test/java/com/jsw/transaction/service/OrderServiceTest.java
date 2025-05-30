@@ -50,8 +50,8 @@ class OrderServiceTest {
                 "select count(*) from tbl_order", Integer.class);
         Integer orderMenucount = jdbcTemplate.queryForObject(
                 "select count(*) from tbl_order_menu", Integer.class);
-        assertThat(orderConut).isEqualTo(1);
-        assertThat(orderMenuCount).isEqualTo(2);
+         assertThat(orderConut).isEqualTo(1);
+         assertThat(orderMenuCount).isEqualTo(2);
 
          String orderDate = jdbcTemplate.queryForObject(
                  "SELECT order_date FROM tbl_order", String.class);
