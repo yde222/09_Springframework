@@ -16,7 +16,6 @@ class EntityManagerCRUDTest {
 
     private EntityManagerCRUD crud;
 
-
     @BeforeEach
     void init(){
         this.crud = new EntityManagerCRUD();
@@ -71,10 +70,9 @@ class EntityManagerCRUDTest {
     void testRemoveMenu(int menuCode){
         // when
         Long count = crud.removeAndReturnAllCount(menuCode);
-        assertEquals(26, count);
 
         // then
-
+        assertEquals(26, count);
     }
 
 }

@@ -8,7 +8,6 @@ public class Menu {
 
     @Id
     @Column(name = "menu_code")
-
     private int menuCode;
 
     @Column(name = "menu_name")
