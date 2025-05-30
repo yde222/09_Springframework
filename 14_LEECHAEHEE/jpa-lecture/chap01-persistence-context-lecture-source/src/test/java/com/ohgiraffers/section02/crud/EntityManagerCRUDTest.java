@@ -10,17 +10,18 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EntityManagerCRUDTest {
+
     private EntityManagerCRUD entityManagerCRUD;
 
     @BeforeEach
-    void init() {
+    void init(){
         this.entityManagerCRUD = new EntityManagerCRUD();
     }
 
-    @DisplayName("메뉴 코드로 메뉴를 조회하기")
+    @DisplayName("메뉴 코드로 메뉴 조회")
     @ParameterizedTest
-    @CsvSource({"1,1", "2,2"})
-    void testFindMenuByMenuCode(int menuCode, int expected) {
+    @CsvSource({"1,1", "2,2", "3,3"})
+    void testFindMenuByMenuCode(int menuCode, int expected){
         // when
         Menu foundMenu = entityManagerCRUD.findMenuByMenuCode(menuCode);
         // then
@@ -28,10 +29,10 @@ class EntityManagerCRUDTest {
         System.out.println("foundMenu = " + foundMenu);
     }
 
-    private static Stream<Arguments> newMenu() {
+    private static Stream<Arguments> newMenu(){
         return Stream.of(
                 Arguments.of(
-                        "고등어꼬치2", 3500 ,4, "Y"
+                        "고등어꼬치", 3500, 4, "Y"
                 )
         );
     }
@@ -39,33 +40,31 @@ class EntityManagerCRUDTest {
     @DisplayName("신규 메뉴 추가")
     @ParameterizedTest
     @MethodSource("newMenu")
-    void testRegist(String menuName, int menuPrice, int categoryCode, String orderableStatus) {
+    void testRegist(String menuName, int menuPrice, int categoryCode, String orderableStatus){
         // when
-        Menu newMenu = new Menu(menuName, menuPrice, categoryCode, orderableStatus);
-        Long count = entityManagerCRUD.saveAndReturnAllCount(newMenu);
+        Menu menu = new Menu(menuName, menuPrice, categoryCode, orderableStatus);
+        Long count = entityManagerCRUD.saveAndReturnAllCount(menu);
         // then
-        assertEquals(27, count);
+        assertEquals(22, count);
     }
 
     @DisplayName("메뉴 이름 수정 테스트")
     @ParameterizedTest
     @CsvSource("1, 변경 된 이름")
-    void testModifyMenuName(int menuCode, String menuName) {
+    void testModifyMenuname(int menuCode, String menuName){
         // when
-        Menu modifiedMenu = entityManagerCRUD.modifyMenuName(menuCode, menuName);
-
+        Menu modifyMenu = entityManagerCRUD.modifyMenuName(menuCode, menuName);
         // then
-        assertEquals(menuName, modifiedMenu.getMenuName());
+        assertEquals(menuName, modifyMenu.getMenuName());
     }
 
     @DisplayName("메뉴 코드로 메뉴 삭제 테스트")
     @ParameterizedTest
-    @ValueSource(ints = {42})
-    void testRemoveMenu(int menuCode) {
+    @ValueSource(ints = {25})
+    void testRemoveMenu(int menuCode){
         // when
         Long count = entityManagerCRUD.removeAndReturnAllCount(menuCode);
-
         // then
-        assertEquals(24, count);
+        assertEquals(21, count);
     }
 }

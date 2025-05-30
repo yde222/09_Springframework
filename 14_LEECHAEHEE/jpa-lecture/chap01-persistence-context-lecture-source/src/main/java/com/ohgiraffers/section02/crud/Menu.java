@@ -15,9 +15,9 @@ public class Menu {
     private String menuName;
     @Column(name="menu_price")
     private int menuPrice;
-    @Column(name="category_code")
+    @Column(name= "category_code")
     private int categoryCode;
-    @Column(name="orderable_status")
+    @Column(name = "orderable_status")
     private String orderableStatus;
 
     public Menu() {
