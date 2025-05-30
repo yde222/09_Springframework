@@ -1,15 +1,13 @@
-package com.ohgiraffers.section02.crud;
+package com.ohgiraffers.section03.entity;
 
 import jakarta.persistence.*;
 
-// 기본 이름은 클래스명이며 중복되면 안된다.
-@Entity(name="Section02Menu")
+@Entity(name= "Section03Menu")
 @Table(name="tbl_menu")
 public class Menu {
 
     @Id
     @Column(name="menu_code")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int menuCode;
     @Column(name="menu_name")
     private String menuName;
@@ -23,7 +21,8 @@ public class Menu {
     public Menu() {
     }
 
-    public Menu(String menuName, int menuPrice, int categoryCode, String orderableStatus) {
+    public Menu(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
+        this.menuCode = menuCode;
         this.menuName = menuName;
         this.menuPrice = menuPrice;
         this.categoryCode = categoryCode;
@@ -34,12 +33,40 @@ public class Menu {
         return menuCode;
     }
 
+    public void setMenuCode(int menuCode) {
+        this.menuCode = menuCode;
+    }
+
     public String getMenuName() {
         return menuName;
     }
 
     public void setMenuName(String menuName) {
         this.menuName = menuName;
+    }
+
+    public int getMenuPrice() {
+        return menuPrice;
+    }
+
+    public void setMenuPrice(int menuPrice) {
+        this.menuPrice = menuPrice;
+    }
+
+    public int getCategoryCode() {
+        return categoryCode;
+    }
+
+    public void setCategoryCode(int categoryCode) {
+        this.categoryCode = categoryCode;
+    }
+
+    public String getOrderableStatus() {
+        return orderableStatus;
+    }
+
+    public void setOrderableStatus(String orderableStatus) {
+        this.orderableStatus = orderableStatus;
     }
 
     @Override
