@@ -57,4 +57,5 @@ class EntityManagerFactoryGeneratorTest {
         assertNotEquals(entityManager1, entityManager2);
         assertNotEquals(entityManager1.hashCode(), entityManager2.hashCode());
     }
+    
 }
