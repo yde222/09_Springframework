@@ -47,4 +47,18 @@ public class EntityManagerCRUD {
         return foundMenu;
     }
 
+    /* 4. 특정 메뉴 코드로 메뉴 삭제하는 기능 */
+    public long removeAndReturnAllCount(int menuCode){
+        entityManager = EntityManagerGenerator.getInstance();
+        Menu foundMenu = entityManager.find(Menu.class, menuCode); // foundMenu가 영속성 컨텍스트라
+
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        entityManager.remove(foundMenu); // 변경이 감지되면 삭제시킴.
+
+        transaction.commit();
+        return getCount(entityManager);
+    }
+
 }
