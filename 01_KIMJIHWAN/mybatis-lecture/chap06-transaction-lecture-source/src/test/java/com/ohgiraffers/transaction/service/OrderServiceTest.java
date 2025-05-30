@@ -44,6 +44,7 @@ class OrderServiceTest {
         menuDTO2.setOrderAmount(3);
 
         List<OrderMenuDTO> orderMenuDTOS = Arrays.asList(menuDTO1, menuDTO2);
+
         // when
         orderService.registOrder(orderDTO, orderMenuDTOS);
 
