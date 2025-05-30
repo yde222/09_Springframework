@@ -18,5 +18,4 @@ public class Menu {
     private int menuPrice;
     private int categoryCode;
     private String orderableStatus;
-
 }

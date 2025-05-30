@@ -9,4 +9,5 @@ public class EntityManagerGenerator {
         EntityManagerFactory factory = EntityManagerFactoryGenerator.getInstance();
         return factory.createEntityManager();
     }
+
 }

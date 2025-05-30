@@ -13,4 +13,5 @@ public class EntityManagerFactoryGenerator {
     public static EntityManagerFactory getInstance() {
         return factory;
     }
+
 }
