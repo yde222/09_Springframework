@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <h1>Spring MVC Mapping Test</h1>
+
+    <h2>GET: /menu/regist</h2>
+    <button onclick="location.href='/menu/regist'">GET 메뉴 등록 요청</button>
+
+    <h2>Post: /menu/regist</h2>
+    <form action="/menu/regist" method="post">
+        <button>Post 메뉴 등록 요청</button>
+    </form>
+
+    <h2>GET: /menu/modify</h2>
+    <button onclick="location.href='/menu/modify'">GET 메뉴 수정 요청</button>
+
+    <h2>Post: /menu/modify</h2>
+    <form action="/menu/modify" method="post">
+        <button>Post 메뉴 수정 요청</button>
+    </form>
+
+    <h2>GET: /menu/delete</h2>
+    <button onclick="location.href='/menu/delete'">GET 메뉴 삭제 요청</button>
+
+    <h2>Post: /menu/delete</h2>
+    <form action="/menu/delete" method="post">
+        <button>Post 메뉴 삭제 요청</button>
+    </form>
+
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+
+    <h2>GET: /order/regist</h2>
+    <button onclick="location.href='/order/regist'">GET 주문 등록 요청</button>
+
+    <h2>Post: /order/modify</h2>
+    <form action="/order/modify" method="post">
+        <button>Post 메뉴 수정 요청</button>
+    </form>
+
+    <h2>Post: /order/delete</h2>
+    <form action="/order/delete" method="post">
+        <button>Post 메뉴 삭제 요청</button>
+    </form>
+
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+
+    <h2>GET: /order/detail/{orderNo}</h2>
+    <button onclick="location.href='/order/detail/10'">GET 주문 n번 주문 조회 요청</button>
+
+</body>
+</html>
