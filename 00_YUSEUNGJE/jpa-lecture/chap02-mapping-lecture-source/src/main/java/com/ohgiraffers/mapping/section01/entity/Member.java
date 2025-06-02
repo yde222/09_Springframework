@@ -6,18 +6,18 @@ import java.time.LocalDateTime;
 
 @Entity(name="entityMember")
 @Table(name="tbl_member")
-@TableGenerator(
-        name="member_seq_tbl_generator",
-        table="tbl_my_sequences",
-        pkColumnValue = "my_seq_member_no"
-)
+//@TableGenerator(
+//        name="member_seq_tbl_generator",
+//        table="tbl_my_sequences",
+//        pkColumnValue = "my_seq_member_no"
+//)
 @Access(AccessType.FIELD) // 클래스 레벨에 작성 시 모든 필드에 대한 접근 방식 설정(default:FIELD)
 public class Member {
 
     @Id
     @Column(name="member_no")
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "member_seq_tbl_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.TABLE, generator = "member_seq_tbl_generator")
     private int memberNo;
 
     @Access(AccessType.FIELD)  // 필드 레벨에 작성 시 해당 필드에 대한 접근 방식 설정
@@ -30,6 +30,7 @@ public class Member {
     @Column(name="member_name")
     private String memberName;
 
+    @Transient
     @Column(name="phone")
     private String phone;
 
