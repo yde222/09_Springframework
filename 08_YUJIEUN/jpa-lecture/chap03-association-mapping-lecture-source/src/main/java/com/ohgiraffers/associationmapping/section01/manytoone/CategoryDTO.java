@@ -1,8 +1,9 @@
-package com.ohgiraffers.associationmapping.section02.ontomany;
+package com.ohgiraffers.associationmapping.section01.manytoone;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
-
-import java.util.List;
 
 
 @NoArgsConstructor
@@ -15,5 +16,5 @@ public class CategoryDTO {
     private int categoryCode;
     private String categoryName;
     private Integer refCategoryCode;
-    private List<MenuDTO> menuList;
+
 }

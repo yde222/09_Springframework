@@ -1,4 +1,7 @@
-package com.ohgiraffers.associationmapping.section01.manytotone;
+package com.ohgiraffers.associationmapping.section01.manytoone;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ManyToOneService {
@@ -9,7 +12,7 @@ public class ManyToOneService {
         this.manyToOneRepository = manyToOneRepository;
     }
 
-    public Menu findMenu(int menuCode) {
+    public Menu findMenu(int menuCode){
         return manyToOneRepository.find(menuCode);
     }
 
@@ -18,7 +21,7 @@ public class ManyToOneService {
     }
 
     @Transactional
-    public void registMenu(MenuDTO menuInfo) {
+    public void registMenu(MenuDTO menuInfo){
         Menu menu = new Menu(
                 menuInfo.getMenuCode(),
                 menuInfo.getMenuName(),
@@ -30,7 +33,6 @@ public class ManyToOneService {
                 ),
                 menuInfo.getOrderableStatus()
         );
-
         manyToOneRepository.regist(menu);
     }
 }
