@@ -1,6 +1,11 @@
 package com.ohgiraffers.associationmapping.section02.ontomany;
 
+import jakarta.persistence.Table;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class OneToManyService {
@@ -16,5 +21,10 @@ public class OneToManyService {
         System.out.println("category ===>>> " + category);
 
         return category;
+    }
+
+    @Transactional
+    public void registMenu(Menu menu) {
+        
     }
 }
