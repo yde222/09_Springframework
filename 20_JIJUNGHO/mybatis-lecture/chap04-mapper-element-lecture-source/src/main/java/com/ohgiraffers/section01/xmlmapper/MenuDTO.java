@@ -1,4 +1,4 @@
-package com.ohgiraffers.common;
+package com.ohgiraffers.section01.xmlmapper;
 
 public class MenuDTO {
 

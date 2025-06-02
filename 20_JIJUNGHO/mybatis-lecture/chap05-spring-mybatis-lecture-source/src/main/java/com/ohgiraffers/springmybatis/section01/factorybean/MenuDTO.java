@@ -1,4 +1,4 @@
-package com.ohgiraffers.common;
+package com.ohgiraffers.springmybatis.section01.factorybean;
 
 public class MenuDTO {
 
@@ -8,6 +8,9 @@ public class MenuDTO {
     private int categoryCode;
     private String orderableStatus;
 
+    public MenuDTO() {
+    }
+
     public MenuDTO(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
         this.menuCode = menuCode;
         this.menuName = menuName;
@@ -16,53 +19,49 @@ public class MenuDTO {
         this.orderableStatus = orderableStatus;
     }
 
-    public MenuDTO() {
-
+    public int getMenuCode() {
+        return menuCode;
     }
 
     public void setMenuCode(int menuCode) {
         this.menuCode = menuCode;
     }
 
-    public void setMenuName(String menuName) {
-        this.menuName = menuName;
-    }
-
-    public void setMenuPrice(int menuPrice) {
-        this.menuPrice = menuPrice;
-    }
-
-    public void setCategoryCode(int categoryCode) {
-        this.categoryCode = categoryCode;
-    }
-
-    public void setOrderableStatus(String orderableStatus) {
-        this.orderableStatus = orderableStatus;
-    }
-
-    public int getMenuCode() {
-        return menuCode;
-    }
-
     public String getMenuName() {
         return menuName;
+    }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
     }
 
     public int getMenuPrice() {
         return menuPrice;
     }
 
+    public void setMenuPrice(int menuPrice) {
+        this.menuPrice = menuPrice;
+    }
+
     public int getCategoryCode() {
         return categoryCode;
+    }
+
+    public void setCategoryCode(int categoryCode) {
+        this.categoryCode = categoryCode;
     }
 
     public String getOrderableStatus() {
         return orderableStatus;
     }
 
+    public void setOrderableStatus(String orderableStatus) {
+        this.orderableStatus = orderableStatus;
+    }
+
     @Override
     public String toString() {
-        return "menuDTO{" +
+        return "MenuDTO{" +
                 "menuCode=" + menuCode +
                 ", menuName='" + menuName + '\'' +
                 ", menuPrice=" + menuPrice +

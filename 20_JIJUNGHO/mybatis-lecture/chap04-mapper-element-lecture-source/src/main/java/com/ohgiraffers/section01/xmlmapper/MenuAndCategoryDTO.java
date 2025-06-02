@@ -1,42 +1,23 @@
-package com.ohgiraffers.common;
+package com.ohgiraffers.section01.xmlmapper;
 
-public class MenuDTO {
+// 받을려고하는 내용은
+// 하나의 메뉴는 하나의 카테고리 정보만을 가지고있다. 1:1 관계
+public class MenuAndCategoryDTO {
 
     private int menuCode;
     private String menuName;
     private int menuPrice;
-    private int categoryCode;
+    private CategoryDTO category;
     private String orderableStatus;
 
-    public MenuDTO(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
+    public MenuAndCategoryDTO() {
+    }
+
+    public MenuAndCategoryDTO(int menuCode, String menuName, int menuPrice, CategoryDTO category, String orderableStatus) {
         this.menuCode = menuCode;
         this.menuName = menuName;
         this.menuPrice = menuPrice;
-        this.categoryCode = categoryCode;
-        this.orderableStatus = orderableStatus;
-    }
-
-    public MenuDTO() {
-
-    }
-
-    public void setMenuCode(int menuCode) {
-        this.menuCode = menuCode;
-    }
-
-    public void setMenuName(String menuName) {
-        this.menuName = menuName;
-    }
-
-    public void setMenuPrice(int menuPrice) {
-        this.menuPrice = menuPrice;
-    }
-
-    public void setCategoryCode(int categoryCode) {
-        this.categoryCode = categoryCode;
-    }
-
-    public void setOrderableStatus(String orderableStatus) {
+        this.category = category;
         this.orderableStatus = orderableStatus;
     }
 
@@ -52,22 +33,43 @@ public class MenuDTO {
         return menuPrice;
     }
 
-    public int getCategoryCode() {
-        return categoryCode;
+    public CategoryDTO getCategory() {
+        return category;
     }
 
     public String getOrderableStatus() {
         return orderableStatus;
     }
 
+    public void setMenuCode(int menuCode) {
+        this.menuCode = menuCode;
+    }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+
+    public void setMenuPrice(int menuPrice) {
+        this.menuPrice = menuPrice;
+    }
+
+    public void setCategory(CategoryDTO category) {
+        this.category = category;
+    }
+
+    public void setOrderableStatus(String orderableStatus) {
+        this.orderableStatus = orderableStatus;
+    }
+
     @Override
     public String toString() {
-        return "menuDTO{" +
+        return "MenuAndCategoryDTO{" +
                 "menuCode=" + menuCode +
                 ", menuName='" + menuName + '\'' +
                 ", menuPrice=" + menuPrice +
-                ", categoryCode=" + categoryCode +
+                ", category=" + category +
                 ", orderableStatus='" + orderableStatus + '\'' +
                 '}';
     }
 }
+
