@@ -1,8 +1,7 @@
 package com.ohgiraffers.associationmapping.section02.ontomany;
 
-import jakarta.persistence.Table;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,24 @@ public class OneToManyService {
     }
 
     @Transactional
-    public void registMenu(Menu menu) {
-        
+    public void registMenu(CategoryDTO categoryInfo) {
+        Category category = new Category(
+                categoryInfo.getCategoryCode(),
+                categoryInfo.getCategoryName(),
+                categoryInfo.getRefCategoryCode(),
+                null
+        );
+        Menu menu = new Menu(
+                categoryInfo.getMenuList().get(0).getMenuCode(),
+                categoryInfo.getMenuList().get(0).getMenuName(),
+                categoryInfo.getMenuList().get(0).getMenuPrice(),
+                categoryInfo.getMenuList().get(0).getCategoryCode(),
+                categoryInfo.getMenuList().get(0).getOrderableStatus()
+        );
+        List<Menu> menuList = new ArrayList<>();
+        menuList.add(menu);
+        category.setMenuList(menuList);
+
+        oneToManyRepository.regist(category);
     }
 }
