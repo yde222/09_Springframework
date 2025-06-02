@@ -44,29 +44,28 @@ class BiDirectionServiceTest {
        // System.out.println("foundCategory ===>> " + foundCategory);
     }
 
+
     private static Stream<Arguments> getMenuInfo(){
         return Stream.of(
-                Arguments.of(111,"스테이크 크림 파스타", 30000, "Y")
+                Arguments.of(111, "스테이크 크림 파스타", 9000, "Y")
         );
     }
 
     @DisplayName("양방향 연관관계 주인 객체를 이용한 삽입 테스트")
     @ParameterizedTest
     @MethodSource("getMenuInfo")
-    void biDirectionInsertTest1(int menuCode, String menuName, int menuPrice,String orderableStatus) {
-
-        Category category = biDirectionService.findCategory(4);
-
-        Menu menu = new Menu(menuCode, menuName, menuPrice, orderableStatus);
-
+    void biDirectionInsertTest1(int menuCode, String menuName, int menuPrice, String orderableStatus){
+        // given
+        Category category = biDirectionService.findCategory(4);  // 영속화
+        Menu menu = new Menu(menuCode, menuName, menuPrice, category, orderableStatus);
+        // when
+        // then
         Assertions.assertDoesNotThrow(
                 () -> biDirectionService.registMenu(menu)
         );
-
     }
 
-
-    private static Stream<Arguments> getCategoryInfo() {
+    private static Stream<Arguments> getCategoryInfo(){
         return Stream.of(
                 Arguments.of(111, "양방향 카테고리", null)
         );
@@ -75,23 +74,19 @@ class BiDirectionServiceTest {
     @DisplayName("양방향 연관관계 주인이 아닌 객체를 이용한 삽입 테스트")
     @ParameterizedTest
     @MethodSource("getCategoryInfo")
-    void biDirectionInsertTest2(
-            int categoryCode, String categoryName, Integer refCategoryCode
-    ) {
-        //given
-        Category category = new Category(
-                categoryCode,
-                categoryName,
-                refCategoryCode
-        );
-
-        //when
+    void biDirectionInsertTest2(int categoryCode, String categoryName, Integer refCategoryCode){
+        // given
+        Category category = new Category(categoryCode, categoryName, refCategoryCode);
+        // when
         biDirectionService.registCategory(category);
-
-        //then
+        // then
         Category foundCategory = biDirectionService.findCategory(categoryCode);
         Assertions.assertNotNull(foundCategory);
     }
+
+
+
+
 
 
 
