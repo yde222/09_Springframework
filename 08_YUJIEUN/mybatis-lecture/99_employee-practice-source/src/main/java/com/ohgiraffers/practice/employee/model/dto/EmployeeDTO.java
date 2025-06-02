@@ -1,22 +1,42 @@
 package com.ohgiraffers.practice.employee.model.dto;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 public class EmployeeDTO {
+
     private String empId;
     private String empName;
     private String empNo;
     private String email;
     private String phone;
+    private String deptCode;
+    private String jobCode;
+    private String salLevel;
+    private double salary;
+    private double bonus;
+    private String managerId;
+    private LocalDateTime hireDate;
+    private LocalDateTime quitDate;
+    private String quitYn;
 
-    public EmployeeDTO() {}
+    public EmployeeDTO() {
+    }
 
-    public EmployeeDTO(String empId, String empName, String empNo, String email, String phone) {
+    public EmployeeDTO(String empId, String empName, String empNo, String email, String phone, String deptCode, String jobCode, String salLevel, double salary, double bonus, String managerId, LocalDateTime hireDate, LocalDateTime quitDate, String quitYn) {
         this.empId = empId;
         this.empName = empName;
         this.empNo = empNo;
         this.email = email;
         this.phone = phone;
+        this.deptCode = deptCode;
+        this.jobCode = jobCode;
+        this.salLevel = salLevel;
+        this.salary = salary;
+        this.bonus = bonus;
+        this.managerId = managerId;
+        this.hireDate = hireDate;
+        this.quitDate = quitDate;
+        this.quitYn = quitYn;
     }
 
     public String getEmpId() {
@@ -40,7 +60,7 @@ public class EmployeeDTO {
     }
 
     public void setEmpNo(String empNo) {
-
+        this.empNo = empNo;
     }
 
     public String getEmail() {
@@ -59,6 +79,78 @@ public class EmployeeDTO {
         this.phone = phone;
     }
 
+    public String getDeptCode() {
+        return deptCode;
+    }
+
+    public void setDeptCode(String deptCode) {
+        this.deptCode = deptCode;
+    }
+
+    public String getJobCode() {
+        return jobCode;
+    }
+
+    public void setJobCode(String jobCode) {
+        this.jobCode = jobCode;
+    }
+
+    public String getSalLevel() {
+        return salLevel;
+    }
+
+    public void setSalLevel(String salLevel) {
+        this.salLevel = salLevel;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
+
+    public String getManagerId() {
+        return managerId;
+    }
+
+    public void setManagerId(String managerId) {
+        this.managerId = managerId;
+    }
+
+    public LocalDateTime getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(LocalDateTime hireDate) {
+        this.hireDate = hireDate;
+    }
+
+    public LocalDateTime getQuitDate() {
+        return quitDate;
+    }
+
+    public void setQuitDate(LocalDateTime quitDate) {
+        this.quitDate = quitDate;
+    }
+
+    public String getQuitYn() {
+        return quitYn;
+    }
+
+    public void setQuitYn(String quitYn) {
+        this.quitYn = quitYn;
+    }
+
     @Override
     public String toString() {
         return "EmployeeDTO{" +
@@ -67,8 +159,15 @@ public class EmployeeDTO {
                 ", empNo='" + empNo + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
+                ", deptCode='" + deptCode + '\'' +
+                ", jobCode='" + jobCode + '\'' +
+                ", salLevel='" + salLevel + '\'' +
+                ", salary=" + salary +
+                ", bonus=" + bonus +
+                ", managerId='" + managerId + '\'' +
+                ", hireDate=" + hireDate +
+                ", quitDate=" + quitDate +
+                ", quitYn='" + quitYn + '\'' +
                 '}';
     }
-
-
 }

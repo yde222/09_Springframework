@@ -5,35 +5,38 @@ import com.ohgiraffers.practice.employee.model.service.EmployeeService;
 import com.ohgiraffers.practice.employee.view.PrintResult;
 
 import java.util.List;
+import java.util.Map;
 
 public class EmployeeController {
 
     private final EmployeeService employeeService;
     private final PrintResult printResult;
 
-    // 기본 생성자에서 직접 객체 생성
     public EmployeeController() {
         this.employeeService = new EmployeeService();
         this.printResult = new PrintResult();
     }
 
+    public void selectEmployeeAll() {
 
-    public EmployeeController(EmployeeService employeeService, PrintResult printResult) {
-        this.employeeService = employeeService;
-        this.printResult = printResult;
-    }
+        List<EmployeeDTO> empList = employeeService.selectEmployeeAll();
 
-    public void selectAllEmployees() {
-        List<EmployeeDTO> empList = employeeService.selectAllEmp();
-
-        if (empList != null && !empList.isEmpty()) {
+        if(empList != null && !empList.isEmpty()) {
             printResult.printEmpList(empList);
         } else {
             printResult.printErrorMessage("selectList");
         }
+
     }
 
-    public void selectEmployeeById(Integer id) {
+    public void selectEmployeeById(Map<String, String> parameter) {
 
+        EmployeeDTO emp = employeeService.selectEmployeeById(parameter);
+
+        if(emp != null) {
+            printResult.printEmp(emp);
+        } else {
+            printResult.printErrorMessage("selectOne");
+        }
     }
 }

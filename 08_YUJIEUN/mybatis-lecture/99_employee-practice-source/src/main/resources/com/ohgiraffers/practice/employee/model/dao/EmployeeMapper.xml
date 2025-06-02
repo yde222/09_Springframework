@@ -3,67 +3,42 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ohgiraffers.practice.employee.model.dao.EmployeeMapper">
-
-    <resultMap id="empResultMap" type="com.ohgiraffers.practice.employee.model.dto.EmployeeDTO">
-        <id property="empId" column="emp_id"/>
-        <result property="empName" column="emp_name"/>
-        <result property="empNo" column="emp_no"/>
-        <result property="email" column="email"/>
-        <result property="phone" column="phone"/>
-    </resultMap>
-
-    <select id="selectAllEmp" resultMap="empResultMap">
+    <select id="selectEmployeeAll" resultType="EmployeeDTO">
         SELECT
-                emp_id,
-                emp_name,
-                emp_no,
-                email,
-                phone
-        FROM employee
-        ORDER BY emp_id
+               EMP_ID
+             , EMP_NAME
+             , EMP_NO
+             , EMAIL
+             , PHONE
+             , DEPT_CODE
+             , JOB_CODE
+             , SAL_LEVEL
+             , SALARY
+             , BONUS
+             , MANAGER_ID
+             , HIRE_DATE
+             , QUIT_DATE
+             , QUIT_YN
+          FROM employee
     </select>
 
-    <select id="selectEmpByEmpId" parameterType="string" resultMap="empResultMap">
+    <select id="selectEmployeeById" resultType="EmployeeDTO">
         SELECT
-                emp_id,
-                emp_name,
-                emp_no,
-                email,
-                phone
+                  EMP_ID
+                , EMP_NAME
+                , EMP_NO
+                , EMAIL
+                , PHONE
+                , DEPT_CODE
+                , JOB_CODE
+                , SAL_LEVEL
+                , SALARY
+                , BONUS
+                , MANAGER_ID
+                , HIRE_DATE
+                , QUIT_DATE
+                , QUIT_YN
         FROM employee
-        WHERE emp_id = #{empId}
+        WHERE  EMP_ID = #{ empId }
     </select>
-
-    <insert id="insertEmp" parameterType="com.ohgiraffers.practice.employee.model.dto.EmployeeDTO">
-        INSERT INTO tbl_emp (
-            emp_id,
-            emp_name,
-            emp_no,
-            email,
-            phone
-        ) VALUES (
-             #{empId},
-            #{empName},
-            #{empNo},
-            #{email},
-            #{phone}
-        )
-    </insert>
-
-    <update id="updateEmp" parameterType="com.ohgiraffers.practice.employee.model.dto.EmployeeDTO">
-        UPDATE tbl_emp
-        SET
-        emp_name = #{empName},
-        emp_no = #{empNo},
-        email = #{email},
-        phone = #{phone}
-        WHERE
-        emp_id = #{empId}
-    </update>
-
-    <delete id="deleteEmp" parameterType="string">
-        DELETE FROM tbl_emp
-        WHERE emp_id = #{empId}
-    </delete>
-
 </mapper>
