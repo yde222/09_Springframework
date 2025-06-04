@@ -6,6 +6,8 @@ import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class SimpleJPQLRepository {
 
@@ -25,4 +27,9 @@ public class SimpleJPQLRepository {
         Object resultMenuName = query.getSingleResult();
         return resultMenuName;
     }
-}
+
+    public List<Menu>  selectUsingIn() {
+        String jpql = "SELECT m.menufound sm select";
+
+
+    }
