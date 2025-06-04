@@ -1,7 +1,5 @@
 package com.ohgiraffers.jpql.section08.namedquery;
 
-
-import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -15,7 +13,8 @@ public class NamedQueryRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Menu> selectByDynamicQuery(String searchName, int searchCode) {
+    public List<Menu> selectByDynamicQuery(String searchName, int searchCode){
+
         StringBuilder jpql = new StringBuilder("SELECT m FROM Section08Menu m ");
 
         if(searchName != null && !searchName.isEmpty() && searchCode > 0) {
@@ -34,7 +33,8 @@ public class NamedQueryRepository {
         }
 
         TypedQuery<Menu> query = entityManager.createQuery(jpql.toString(), Menu.class);
-        //파라미터를 추가 하는 코드
+
+        /* 파라미터를 추가 하는 코드 */
         if(searchName != null && !searchName.isEmpty() && searchCode > 0) {
             query.setParameter("menuName", searchName);
             query.setParameter("categoryCode", searchCode);
@@ -46,22 +46,21 @@ public class NamedQueryRepository {
             }
         }
 
-
         List<Menu> menuList = query.getResultList();
-
         return menuList;
     }
 
+
     public List<Menu> selectByNamedQuery() {
-        return entityManager.createNamedQuery("Section08Menu.selectMenuList",Menu.class).getResultList;
+
+        List<Menu> menuList = entityManager.createNamedQuery("Section08Menu.selectMenuList", Menu.class).getResultList();
+        return menuList;
     }
 
-
-    public Menu selectByNamedQueryWithXml(int menuCode) {
-
-        return entityManager.createNamedQuery("Section08Menu.selectMenuByCode", Menu.class)
+    public Menu selectByNamedQueryWithXml(int menuCode){
+        Menu foundMenu = entityManager.createNamedQuery("Section08Menu.selectMenuByCode", Menu.class)
                 .setParameter("menuCode", menuCode)
                 .getSingleResult();
+        return foundMenu;
     }
-
 }

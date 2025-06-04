@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name="tbl_menu")
 @NamedQueries({
         @NamedQuery(name="Section08Menu.selectMenuList",
-        query =  "SELECT  m FROM Section08Menu m" )
+            query = "SELECT m FROM Section08Menu  m")
 })
 public class Menu {
 
