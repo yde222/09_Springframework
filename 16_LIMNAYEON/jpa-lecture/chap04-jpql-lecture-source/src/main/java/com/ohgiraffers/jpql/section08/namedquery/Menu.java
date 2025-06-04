@@ -1,11 +1,13 @@
 package com.ohgiraffers.jpql.section08.namedquery;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
-@Entity(name="Section07Menu")
+@Entity(name="Section08Menu")
 @Table(name="tbl_menu")
+@NamedQueries({
+        @NamedQuery(name="Section08Menu.selectMenuList",
+            query = "SELECT m FROM Section08Menu m")
+})
 public class Menu {
 
     @Id
