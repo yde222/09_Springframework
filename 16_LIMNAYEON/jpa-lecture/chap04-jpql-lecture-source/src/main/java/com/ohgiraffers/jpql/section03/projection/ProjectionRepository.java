@@ -17,5 +17,21 @@ public class ProjectionRepository {
         return entityManager.createQuery(jpql, Menu.class).getResultList();
     }
 
-    
+    public List<MenuInfo> emmbddedTypeProjection() {
+        String jpql = "SELECT m.menuInfo FROM EmbeddedMenu m";
+        return entityManager.createQuery(jpql, MenuInfo.class).getResultList();
+    }
+
+    public List<Object[]> scalarTypeProjcetion(){
+        String jpql = "SELECT c.categoryCode, c.categoryName FROM Section03Category c";
+        return entityManager.createQuery(jpql, Object[].class).getResultList();
+    }
+
+    public List<CategoryInfo> newCommandProjcetion(){
+        String jpql =
+                "SELECT new com.ohgiraffers.jpql.section03.projection.CategoryInfo(" +
+                        "c.categoryCode, c.categoryName) FROM Section03Category c";
+        return entityManager.createQuery(jpql, CategoryInfo.class).getResultList();
+
+    }
 }
