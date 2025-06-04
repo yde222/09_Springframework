@@ -12,8 +12,15 @@ public class SubQueryRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Menu> selectWithSubQuery(String categoryName){
+    public List<Menu> selectWithSubQuery(String categoryName) {
+        String jpql = "SELECT m " +
+                "FROM Section07Menu m " +
+                "WHERE m.categoryCode = (SELECT c.categoryCode " +
+                "FROM Section07Category c " +
+                "WHERE c.categoryName = :categoryName)";
 
-        return null;
+        return entityManager.createQuery(jpql, Menu.class)
+                .setParameter("categoryName", categoryName)
+                .getResultList();
     }
 }
