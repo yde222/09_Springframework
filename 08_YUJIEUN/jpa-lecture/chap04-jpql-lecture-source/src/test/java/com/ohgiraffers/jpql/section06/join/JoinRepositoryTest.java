@@ -1,6 +1,5 @@
 package com.ohgiraffers.jpql.section06.join;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,95 +8,75 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class JoinRepositoryTest {
-
 
     @Autowired
     private JoinRepository joinRepository;
 
-    @DisplayName("내부조인을 이용한 조회 테스트")
+    @DisplayName("inner join 테스트")
     @Test
-    public void testSelectByInnerJoin() {
-        //given
-        //when
-        List<Menu> menuList = joinRepository.selectByInnerJoin();
+    void testSelectByInnerJoin(){
+        List<Menu> menus = joinRepository.selectByInnerJoin();
+        assertNotNull(menus);
+    }
 
-        //then
-        Assertions.assertNotNull(menuList);
-        menuList.forEach(System.out::println);
+    @DisplayName("join fetch 테스트")
+    @Test
+    void testSelectByFetchJoin(){
+        List<Menu> menus = joinRepository.selectByFetchJoin();
+        assertNotNull(menus);
+    }
+
+    @DisplayName("outer join 테스트")
+    @Test
+    void testSelectByOuterJoin(){
+        List<Object[]> menuList = joinRepository.selectByOuterJoint();
+        assertNotNull(menuList);
+
+        menuList.forEach(row -> {
+            for(Object column : row){
+                System.out.print(column + " ");
+            }
+            System.out.println();
+        });
+    }
+
+    @DisplayName("collection join 테스트")
+    @Test
+    void testSelectByCollectionJoin(){
+        List<Object[]> menuList = joinRepository.selectByCollectionJoin();
+        assertNotNull(menuList);
+
+        menuList.forEach(row -> {
+            for(Object column : row){
+                System.out.print(column + " ");
+            }
+            System.out.println();
+        });
+    }
+
+    @DisplayName("theta join 테스트")
+    @Test
+    void testSelectByThetaJoin(){
+        List<Object[]> menuList = joinRepository.selectByThetaJoin();
+        assertNotNull(menuList);
+
+        menuList.forEach(row -> {
+            for(Object column : row){
+                System.out.print(column + " ");
+            }
+            System.out.println();
+        });
     }
 
 
-    @DisplayName("페치조인을 이용한 조회 테스트")
-    @Test
-    public void testSelectByFetchJoin() {
-        //given
-        //when
-        List<Menu> menuList = joinRepository.selectByFetchJoin();
-
-        //then
-        Assertions.assertNotNull(menuList);
-        menuList.forEach(System.out::println);
-    }
-
-    @DisplayName("외부조인을 이용한 조회 테스트")
-    @Test
-    public void testSelectByOuterJoin() {
-        //given
-        //when
-        List<Object[]> menuList = joinRepository.selectByOuterJoin();
-
-        //then
-        Assertions.assertNotNull(menuList);
-        menuList.forEach(
-                row -> {
-                    for(Object column : row) {
-                        System.out.print(column + " ");
-                    }
-                    System.out.println();
-                }
-        );
-    }
-
-    @DisplayName("컬렉션조인을 이용한 조회 테스트")
-    @Test
-    public void testSelectByCollectionJoin() {
-        //given
-        //when
-        List<Object[]> categoryList = joinRepository.selectByCollectionJoin();
-
-        //then
-        Assertions.assertNotNull(categoryList);
-        categoryList.forEach(
-                row -> {
-                    for(Object col : row) {
-                        System.out.print(col + " ");
-                    }
-                    System.out.println();
-                }
-        );
-    }
-
-    @DisplayName("세타조인을 이용한 조회 테스트")
-    @Test
-    public void testSelectByThetaJoin() {
-        //given
-        //when
-        List<Object[]> categoryList = joinRepository.selectByThetaJoin();
-
-        //then
-        Assertions.assertNotNull(categoryList);
-        categoryList.forEach(
-                row -> {
-                    for(Object col : row) {
-                        System.out.print(col + " ");
-                    }
-                    System.out.println();
-                }
-        );
-    }
 
 
 }
+
+
+
+
+
+

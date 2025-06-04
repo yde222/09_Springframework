@@ -2,8 +2,6 @@ package com.ohgiraffers.jpql.section06.join;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity(name="Section06Menu")
 @Table(name="tbl_menu")
 public class Menu {
@@ -12,19 +10,14 @@ public class Menu {
     private int menuCode;
     private String menuName;
     private int menuPrice;
-
     @ManyToOne
     @JoinColumn(name="categoryCode")
     private Category category;
-
     private String orderableStatus;
 
     public Menu() {}
 
-    public Menu(
-            int menuCode, String menuName, int menuPrice,
-            Category category, String orderableStatus
-    ) {
+    public Menu(int menuCode, String menuName, int menuPrice, Category category, String orderableStatus) {
         this.menuCode = menuCode;
         this.menuName = menuName;
         this.menuPrice = menuPrice;

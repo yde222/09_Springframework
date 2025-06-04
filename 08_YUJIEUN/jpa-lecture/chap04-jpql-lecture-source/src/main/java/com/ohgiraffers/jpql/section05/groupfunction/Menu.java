@@ -1,4 +1,4 @@
-package com.ohgiraffers.jpql.section05;
+package com.ohgiraffers.jpql.section05.groupfunction;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

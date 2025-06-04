@@ -12,20 +12,17 @@ public class PagingRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    /***
-     *
-     * @param offset : 조회를 시작할 위치 (0부터) -< offset이 10 이면 0~9넣고 10 부터 조회
-     * @param limit :조회할  데이터의 갯수
-     * @return
-     */
-    public List<Menu> usingPagingAPI(int offset, int limit){
-        String jpql = "SELECT m FROM Section04Menu m ORDER BY m.menuCode DESC";
+    /*
+    * offset : 조회를 시작할 위치(0부터) -> offset이 10이면 0~9넘고 10부터 조회
+    * limit: 조회할 데이터의 갯수
+    * */
+    public List<Menu> usingPagingAPI(int offset, int limit) {
+        String jpql = "SELECT m FROM Section04Menu m ORDER BY m.menuCode ASC";
 
-        return entityManager.createQuery(jpql, Menu.class)
+        List<Menu> menuList = entityManager.createQuery(jpql, Menu.class)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
                 .getResultList();
-
-
+        return menuList;
     }
 }
