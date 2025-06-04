@@ -13,3 +13,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    mapping-resources:
+      - section08/namedquery/menu-query.xml
+    output:
+      ansi:
+        enabled: always
