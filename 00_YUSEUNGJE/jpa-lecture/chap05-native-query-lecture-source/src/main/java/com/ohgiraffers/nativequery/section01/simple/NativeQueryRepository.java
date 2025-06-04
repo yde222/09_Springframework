@@ -5,6 +5,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class NativeQueryRepository {
 
@@ -21,4 +23,50 @@ public class NativeQueryRepository {
                 .setParameter(1, menuCode);
         return (Menu) nativeQuery.getSingleResult();
     }
+
+
+
+    public List<Object[]> nativeQueryByNoReultType(){
+        String query = "SELECT menu_name, menu_price FROM tbl_menu";
+        Query nativeQuery = entityManager.createNativeQuery(query);
+        return nativeQuery.getResultList();
+    }
+
+    public List<Object[]> nativeQueryByAutoMapping(){
+        String query
+                = "SELECT a.category_code, a.category_name, a.ref_category_code," +
+                " COALESCE(v.menu_count, 0) menu_count" +
+                " FROM tbl_category a" +
+                " LEFT JOIN (SELECT COUNT(*) AS menu_count, b.category_code" +
+                " FROM tbl_menu b" +
+                " GROUP BY b.category_code) v ON (a.category_code = v.category_code)" +
+                " ORDER BY 1";
+
+        Query nativeQuery
+                = entityManager.createNativeQuery(query, "categoryCountAutoMapping");
+        return nativeQuery.getResultList();
+    }
+
+    public List<Object[]> nativeQueryByManualMapping(){
+        String query
+                = "SELECT a.category_code, a.category_name, a.ref_category_code," +
+                " COALESCE(v.menu_count, 0) menu_count" +
+                " FROM tbl_category a" +
+                " LEFT JOIN (SELECT COUNT(*) AS menu_count, b.category_code" +
+                " FROM tbl_menu b" +
+                " GROUP BY b.category_code) v ON (a.category_code = v.category_code)" +
+                " ORDER BY 1";
+        Query nativeQuery
+                = entityManager.createNativeQuery(query, "categoryCountManualMapping");
+        return nativeQuery.getResultList();
+
+    }
+
+
+
+
+
+
+
+
 }
