@@ -6,7 +6,6 @@ import java.util.List;
 
 import static com.ohgiraffers.section02.javaconfig.Template.getSqlSession;
 
-
 public class MenuService {
 
     public List<MenuDTO> selectAllMenu() {

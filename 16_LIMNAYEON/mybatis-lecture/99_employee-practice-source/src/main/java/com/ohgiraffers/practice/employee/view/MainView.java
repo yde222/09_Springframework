@@ -10,9 +10,7 @@ public class MainView {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        EmployeeController employeeController = new EmployeeController();
-
+        EmployeeController empcontroller = new EmployeeController();
         while(true) {
             System.out.println("===== 회원 관리 ======");
             System.out.println("1. 회원 전체 조회");
@@ -24,10 +22,10 @@ public class MainView {
             int no = sc.nextInt();
             switch (no) {
                 case 1:
-                    employeeController.selectAll();
-                    break;
+                    empcontroller.selectEmployeeAll();
+                     break;
                 case 2:
-                    employeeController.selectByEmpCode(inputEmpCode());
+                    empcontroller.selectEmployeeById(inputEmpId());
                     break;
                 case 3:
 
@@ -44,13 +42,12 @@ public class MainView {
         }
     }
 
-    private static Map<String, String> inputEmpCode() {
-            Scanner sc = new Scanner(System.in);
-            System.out.print("회원 코드 입력 : ");
-            String empId = sc.nextLine();
-            Map<String, String> parameter = new HashMap<>();
-            parameter.put("empId", empId);
-            return parameter;
+    private static Map<String, String> inputEmpId() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("회원 아이디 입력 : ");
+        String empId = sc.nextLine();
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("empId", empId);
+        return parameter;
     }
 }
-

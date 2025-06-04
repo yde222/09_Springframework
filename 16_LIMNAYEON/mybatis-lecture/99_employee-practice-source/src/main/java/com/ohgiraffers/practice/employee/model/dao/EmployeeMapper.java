@@ -3,9 +3,11 @@ package com.ohgiraffers.practice.employee.model.dao;
 import com.ohgiraffers.practice.employee.model.dto.EmployeeDTO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EmployeeMapper {
-    List<EmployeeDTO> selectAll();
+    List<EmployeeDTO> selectEmployeeAll();
 
-    EmployeeDTO selectMenuByMenuCode(int empId);
+
+    EmployeeDTO selectEmployeeById(Map<String, String> parameter);
 }
