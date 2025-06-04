@@ -12,8 +12,13 @@ public class ProjectionRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Menu>  selectByBinding(String MenuName){
-        String jpql = "select m.menuName from Section03Menu as m WHERE m.menuName";
-        return
+    public List<Menu> singleEntityProjection() {
+        String jpql = "SELECT m FROM Section03Menu m";
+        return entityManager.createQuery(jpql, Menu.class).getResultList();
+    }
+
+    public List<String> scalarTypeProjection(){
+        String jpql = "SELECT c.categoryName FROM Section03Category c";
+        return entityManager.createQuery(jpql, String.class).getResultList();
     }
 }

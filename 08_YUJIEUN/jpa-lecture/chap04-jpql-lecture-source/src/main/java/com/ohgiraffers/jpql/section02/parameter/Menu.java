@@ -1,10 +1,11 @@
-package com.ohgiraffers.jpql.section03.projection;
+package com.ohgiraffers.jpql.section02.parameter;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
-@Entity(name="Section03Menu")
+@Entity(name="Section02Menu")
 @Table(name="tbl_menu")
 public class Menu {
 
