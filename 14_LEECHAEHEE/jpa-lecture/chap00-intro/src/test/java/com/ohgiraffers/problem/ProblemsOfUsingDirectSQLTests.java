@@ -174,7 +174,7 @@ class ProblemsOfUsingDirectSQLTests {
 
         // given
         String query = "SELECT a.menu_code, a.menu_name, a.menu_price, b.category_code, b.category_name" +
-                ", a.orderable_status FROM tbl_menu a JOIN tbl_category b ON (a.category_code = b.category_code)";
+                ", a.orderable_stastus FROM tbl_menu a JOIN tbl_category b ON (a.category_code = b.category_code)";
         // when
         Statement stmt = con.createStatement();
         ResultSet rset = stmt.executeQuery(query);
