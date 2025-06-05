@@ -2,8 +2,8 @@ package com.ohgiraffers.datajpa.menu.controller;
 
 import com.ohgiraffers.datajpa.common.Pagenation;
 import com.ohgiraffers.datajpa.common.PagingButton;
+import com.ohgiraffers.datajpa.menu.dto.CategoryDTO;
 import com.ohgiraffers.datajpa.menu.dto.MenuDTO;
-import com.ohgiraffers.datajpa.menu.entity.Category;
 import com.ohgiraffers.datajpa.menu.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static java.awt.SystemColor.menu;
 
 @Controller
 @RequestMapping("/menu")
@@ -77,48 +75,38 @@ public class MenuController {
         return "menu/searchResult";
     }
 
-    @GetMapping("/category")
-    @ResponseBody
-    public List<Category> findCategoryList(){
-        return menuService.findAllCategory();
-    }
-
     @GetMapping("/regist")
-    public void registPage(@ModelAttribute MenuDTO menuDTO){
+    public void registPage(){}
 
+    @GetMapping("/category")
+    @ResponseBody // 응답 데이터에 body에 반환 값을 그대로 전달하겠다는 의미(ViewResolver 사용 x)
+    public List<CategoryDTO> findCategoryList(){
+        return menuService.findALlCategory();
     }
 
     @PostMapping("/regist")
-    public String registNewMenu(@ModelAttribute MenuDTO menuDTO){
-        menuService.registNewMenu(menuDTO);
-
-        return "redirect/menu/list";
+    public String registMenu(@ModelAttribute MenuDTO menuDTO) { // input의 name값과 필드명이 동일해야한다.
+        menuService.registMenu(menuDTO);
+        // insert, update, delete의 행위후에 새로운 request, response를 만들기위해 redirect
+        return "redirect:/menu/list";
     }
 
     @GetMapping("/modify")
-    public void modifyPage() {
-
-    }
+    public void modifyPage(){}
 
     @PostMapping("/modify")
-    public String modifyMenu(MenuDTO menuDTO) {
+    public String modifyMenu(@ModelAttribute MenuDTO menuDTO) {
 
         menuService.modifyMenu(menuDTO);
-
         return "redirect:/menu/" + menuDTO.getMenuCode();
-
     }
 
     @GetMapping("/delete")
-    public void deletePage() {
-
-    }
+    public void deletePage(){}
 
     @PostMapping("/delete")
-    public String deleteMenu(@RequestParam Integer menuCode) {
-
+    public String deleteMenu(@RequestParam int menuCode){
         menuService.deleteMenu(menuCode);
-
         return "redirect:/menu/list";
     }
 }
