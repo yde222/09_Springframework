@@ -7,13 +7,12 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.util.List;
-
-import static java.awt.SystemColor.menu;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -47,29 +46,35 @@ public class MenuService {
         return modelMapper.map(menu, MenuDTO.class);
     }
 
-
-    /* 2. */
-
-    public List<MenuDTO> findMenuList(){
-//        List<Menu> menuList = menuRepository.findAll();
+    /* 2. findAll() or findAll(Sort) */
+    public List<MenuDTO> findMenuList() {
+//        List<Menu> menuList = menuRepository.findAll();  정렬미적용
         List<Menu> menuList = menuRepository.findAll(Sort.by("menuCode").descending());
-        return  menuList.stream()
-                .map(menu -> modelMapper.map(menu,MenuDTO.class))
+        return menuList.stream()
+                .map(menu -> modelMapper.map(menu, MenuDTO.class))
                 .toList();
     }
 
-
-    public Page<MenuDTO> findMenuList(Pageable pageable){
+    /* 3. findAll(Pageable) */
+    public Page<MenuDTO> findMenuList(Pageable pageable) {
+        /*
+        * page는 0부터 시작하는 부분을 1로 보정
+        * 정렬 기준은 전달받지 않고 고정된 기준으로 수행
+        * */
         pageable = PageRequest.of(
-                pageable.getPageNumber() <= 0 ? 0 pageable.getNumberOfPages()-1,
+                pageable.getPageNumber() <= 0? 0 : pageable.getPageNumber() - 1,
                 pageable.getPageSize(),
-                Sort.by()
-
+                Sort.by("menuCode").descending()
         );
+
+        Page<Menu> menuList = menuRepository.findAll(pageable);
+        return menuList.map(menu -> modelMapper.map(menu, MenuDTO.class));
     }
 
+    public List<MenuDTO> findByMenuPrice(Integer menuPrice) {
 
+        List<Menu> menuList = menuRepository.findByMenuPriceGreaterThan(menuPrice);
 
-
-
+        return menuList.stream().map(menu -> modelMapper.map(menu, MenuDTO.class)).toList();
+    }
 }

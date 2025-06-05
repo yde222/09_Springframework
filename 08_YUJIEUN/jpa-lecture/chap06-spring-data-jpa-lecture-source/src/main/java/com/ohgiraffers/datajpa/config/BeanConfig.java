@@ -9,20 +9,18 @@ import org.springframework.context.annotation.Configuration;
  *    - 런타임에 Reflection을 사용하므로 성능 오버헤드가 있을 수 있음, 복잡한 매핑 규칙은 추가 설정이 필요
  * */
 
-
 @Configuration
 public class BeanConfig {
 
     @Bean
-    public ModelMapper modelMapper(){
+    public ModelMapper modelMapper() {
         ModelMapper modelMapper = new ModelMapper();
-
+        /* setter 메소드 미사용 시 ModelMapper가 private 필드에 접근가능하도록 설정 */
         modelMapper.getConfiguration()
                 .setFieldAccessLevel(
                         org.modelmapper.config.Configuration.AccessLevel.PRIVATE
                 )
-                .setDeepCopyEnabled(true);
+                .setFieldMatchingEnabled(true);
         return modelMapper;
-
     }
 }

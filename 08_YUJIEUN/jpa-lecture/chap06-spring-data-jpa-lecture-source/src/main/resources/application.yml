@@ -17,4 +17,5 @@ spring:
     ansi:
       enabled: always
 
-  server: 8001
+server:
+  port: 8000
