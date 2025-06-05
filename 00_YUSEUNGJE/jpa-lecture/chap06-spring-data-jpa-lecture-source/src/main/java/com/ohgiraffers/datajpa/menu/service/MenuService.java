@@ -5,7 +5,14 @@ import com.ohgiraffers.datajpa.menu.entity.Menu;
 import com.ohgiraffers.datajpa.menu.respository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -37,5 +44,37 @@ public class MenuService {
                 .orElseThrow(IllegalArgumentException::new);
         //return MenuDTO.changeMenuDto(menu);
         return modelMapper.map(menu, MenuDTO.class);
+    }
+
+    /* 2. findAll() or findAll(Sort) */
+    public List<MenuDTO> findMenuList() {
+//        List<Menu> menuList = menuRepository.findAll();  정렬미적용
+        List<Menu> menuList = menuRepository.findAll(Sort.by("menuCode").descending());
+        return menuList.stream()
+                .map(menu -> modelMapper.map(menu, MenuDTO.class))
+                .toList();
+    }
+
+    /* 3. findAll(Pageable) */
+    public Page<MenuDTO> findMenuList(Pageable pageable) {
+        /*
+        * page는 0부터 시작하는 부분을 1로 보정
+        * 정렬 기준은 전달받지 않고 고정된 기준으로 수행
+        * */
+        pageable = PageRequest.of(
+                pageable.getPageNumber() <= 0? 0 : pageable.getPageNumber() - 1,
+                pageable.getPageSize(),
+                Sort.by("menuCode").descending()
+        );
+
+        Page<Menu> menuList = menuRepository.findAll(pageable);
+        return menuList.map(menu -> modelMapper.map(menu, MenuDTO.class));
+    }
+
+    public List<MenuDTO> findByMenuPrice(Integer menuPrice) {
+
+        List<Menu> menuList = menuRepository.findByMenuPriceGreaterThan(menuPrice);
+
+        return menuList.stream().map(menu -> modelMapper.map(menu, MenuDTO.class)).toList();
     }
 }
