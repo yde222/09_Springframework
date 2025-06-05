@@ -1,8 +1,11 @@
 package com.ohgiraffers.datajpa.menu.service;
 
 import com.ohgiraffers.datajpa.menu.dto.MenuDTO;
+import com.ohgiraffers.datajpa.menu.entity.Category;
 import com.ohgiraffers.datajpa.menu.entity.Menu;
+import com.ohgiraffers.datajpa.menu.respository.CategoryRepository;
 import com.ohgiraffers.datajpa.menu.respository.MenuRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -20,6 +23,9 @@ public class MenuService {
 
     private final MenuRepository menuRepository;
     private final ModelMapper modelMapper;
+    private final CategoryRepository categoryRepository;
+
+
 
     /* DTO와 Entity의 분리
      * DTO(Data Transfer Object)는 프레젠테이션 계층과의 데이터 교환을 위한 객체로,
@@ -71,10 +77,50 @@ public class MenuService {
         return menuList.map(menu -> modelMapper.map(menu, MenuDTO.class));
     }
 
+    /* 4. 쿼리 메소드 활용 */
     public List<MenuDTO> findByMenuPrice(Integer menuPrice) {
 
-        List<Menu> menuList = menuRepository.findByMenuPriceGreaterThan(menuPrice);
+	/*List<Menu> menuList = menuRepository.findByMenuPriceGreaterThan(menuPrice);*/
+	/*List<Menu> menuList = menuRepository.findByMenuPriceGreaterThanOrderByMenuPrice(menuPrice);*/
+        List<Menu> menuList = menuRepository.findByMenuPriceGreaterThan(menuPrice,
+                Sort.by("menuPrice").descending()
+        );
 
-        return menuList.stream().map(menu -> modelMapper.map(menu, MenuDTO.class)).toList();
+        return menuList.stream()
+                .map(menu -> modelMapper.map(menu, MenuDTO.class))
+                .collect(Collectors.toList());
     }
+
+    public List<Category> findAllCategory() {
+
+        List<Category> categoryList = categoryRepository.findAllCategory();
+        return categoryList.stream().map(category -> modelMapper.map(category, Category.class)).toList();
+
+    }
+
+    // 등록
+    @Transactional
+    public void registNewMenu(MenuDTO menuDTO) {
+        menuRepository.save(modelMapper.map(menuDTO,Menu.class));
+    }
+
+    // 수정
+    @Transactional
+    public void modifyMenu(MenuDTO menuDTO) {
+        Menu foundMenu
+                = menuRepository.findById(menuDTO.getMenuCode())
+                .orElseThrow(IllegalArgumentException::new);
+
+        /* setter 사용 (지양)
+         * 이름 수정 메서드를 정의하여 사용 */
+        foundMenu.modifyMenuName(menuDTO.getMenuName());
+    }
+
+    // 삭제
+    @Transactional
+    public void deleteMenu(Integer menuCode) {
+        menuRepository.deleteById(menuCode);
+    }
+
+
 }
