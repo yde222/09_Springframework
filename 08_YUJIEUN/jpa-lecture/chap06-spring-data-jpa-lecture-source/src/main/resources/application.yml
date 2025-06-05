@@ -16,3 +16,5 @@ spring:
   output:
     ansi:
       enabled: always
+
+  server: 8001
