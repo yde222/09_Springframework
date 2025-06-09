@@ -6,12 +6,15 @@ import com.ohgiraffers.cqrs.products.command.application.dto.response.ProductCom
 import com.ohgiraffers.cqrs.products.command.application.service.ProductCommandService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import static org.springframework.http.ResponseEntity.status;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,6 +31,12 @@ public class ProductCommandController {
         log.info("Creating product ===>>{}", productCreateRequest);
         log.info("Product image ===>>{}", productImg);
         Long productCode = productCommandService.createProduct(productCreateRequest, productImg);
-        return null;
+
+        ProductCommandResponse response = ProductCommandResponse.builder()
+                .productCode(productCode).build();
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(ApiResponse.success(response));
     }
 }
