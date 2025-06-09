@@ -1,7 +1,6 @@
 package com.ohgiraffers.restapi.section04.hateoas;
 
 import com.ohgiraffers.restapi.section02.responseentity.ResponseMessage;
-import com.ohgiraffers.restapi.section02.responseentity.UserDTO;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -12,90 +11,72 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/hateoas")
-public class HateoasTestController {
+public class HateoasController {
 
     private List<UserDTO> users;
 
-    public HateoasTestController() {
+    public HateoasController() {
         users = new ArrayList<>();
-
-        users.add(
-                new UserDTO(1, "user01", "pass01", "홍길동", new java.util.Date())
-        );
-        users.add(
-                new UserDTO(2, "user02", "pass02", "유관순", new  java.util.Date())
-        );
-        users.add(
-                new UserDTO(3, "user03", "pass03", "이순신", new java.util.Date())
-        );
-
+        users.add(new UserDTO(1, "user01", "pass01", "유관순"));
+        users.add(new UserDTO(2, "user02", "pass02", "홍길동"));
+        users.add(new UserDTO(3, "user03", "pass03", "이순신"));
     }
 
     @GetMapping("/users")
     public ResponseEntity<ResponseMessage> findAllUsers() {
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-
-        List<EntityModel<UserDTO>> userWithRel =
-                users.stream().map(
-                        user -> EntityModel.of(
+        /* Hateoas 설정 */
+        List<EntityModel<UserDTO>> usersWithRel = users.stream().map(
+                user ->
+                        EntityModel.of(
                                 user,
-                                linkTo(
-                                        methodOn(HateoasTestController.class)
-                                                .findUserByNo(user.getNo())
-                                )
-                                        .withSelfRel(),
-                                linkTo(
-                                        methodOn(HateoasTestController.class)
-                                                .findAllUsers()
-                                )
-                                        .withRel("users")
+                                linkTo(methodOn(HateoasController.class).findUserByNo(user.getNo())).withSelfRel(),
+                                linkTo(methodOn(HateoasController.class).findAllUsers()).withRel("users")
                         )
-                ).collect(Collectors.toList());
+        ).toList();
 
+        /* 응답 바디 설정 */
         Map<String, Object> responseMap = new HashMap<>();
-        responseMap.put("users", userWithRel);
+        responseMap.put("users", usersWithRel);
 
-        ResponseMessage responseMessage
-                = new ResponseMessage(200, "조회 성공", responseMap);
-
-        return new ResponseEntity<>(responseMessage, headers, HttpStatus.OK);
-
+        /* 응답 메세지 설정 */
+        ResponseMessage responseMessage = new ResponseMessage(200, "조회 성공", responseMap);
+        return ResponseEntity.ok().body(responseMessage);
     }
-
 
     @GetMapping("/users/{userNo}")
-    public ResponseEntity<ResponseMessage> findUserByNo(@PathVariable int userNo) {
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(
-                new MediaType("application", "json", Charset.forName("UTF-8"))
+    public ResponseEntity<ResponseMessage> findUserByNo(@PathVariable("userNo") int userNo) {
+        /* 응답 헤더 설정 : JSON 응답이 default 이기는 하나 변경이 필요한 경우 HttpHeaders 설정 변경 */
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(
+                new MediaType("application", "json", StandardCharsets.UTF_8)
         );
 
-        UserDTO foundUser
-                = users.stream().filter(user -> user.getNo() == userNo)
-                .collect(Collectors.toList()).get(0);
-        System.out.println(foundUser);
-
+        /* 응답 바디 설정 */
         Map<String, Object> responseMap = new HashMap<>();
+        UserDTO foundUser = users.stream().filter(user -> user.getNo() == userNo).findFirst().get();
         responseMap.put("user", foundUser);
 
+        /* 응답 메세지 설정 */
+        ResponseMessage responseMessage = new ResponseMessage(
+                200, "조회 성공", responseMap
+        );
+
+//        return new ResponseEntity<>(responseMessage, httpHeaders, HttpStatus.OK);
         return ResponseEntity
                 .ok()
-                .headers(headers)
-                .body(new ResponseMessage(200, "조회 성공", responseMap));
+                .headers(httpHeaders)
+                .body(responseMessage);
     }
+
 }

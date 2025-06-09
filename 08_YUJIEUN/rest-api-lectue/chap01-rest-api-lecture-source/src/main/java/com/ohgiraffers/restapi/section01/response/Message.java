@@ -1,6 +1,5 @@
 package com.ohgiraffers.restapi.section01.response;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
@@ -8,10 +7,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @ToString
-public class Message{
-
+public class Message {
     private int httpStatusCode;
     private String message;
-
-
 }

@@ -7,7 +7,6 @@ import lombok.ToString;
 
 import java.util.Map;
 
-
 @AllArgsConstructor
 @Getter
 @Setter
@@ -17,5 +16,4 @@ public class ResponseMessage {
     private int httpStatus;
     private String message;
     private Map<String, Object> results;
-
 }

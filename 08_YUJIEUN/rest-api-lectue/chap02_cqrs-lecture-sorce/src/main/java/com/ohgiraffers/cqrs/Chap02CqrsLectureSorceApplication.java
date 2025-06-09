@@ -1,13 +1,13 @@
-package com.ohgiraffers.restapi;
+package com.ohgiraffers.cqrs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Chap01RestApiLectureSourceApplication {
+public class Chap02CqrsLectureSorceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Chap01RestApiLectureSourceApplication.class, args);
+        SpringApplication.run(Chap02CqrsLectureSorceApplication.class, args);
     }
 
 }
