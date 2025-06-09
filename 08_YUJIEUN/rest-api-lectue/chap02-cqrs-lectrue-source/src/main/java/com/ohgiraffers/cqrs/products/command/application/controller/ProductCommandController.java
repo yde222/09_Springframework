@@ -28,5 +28,11 @@ public class ProductCommandController {
         log.info("Creating product ===>>{}", productCreateRequest);
         log.info("Product image ===>>{}", productImg);
         Long productCode = productCommandService.createProduct(productCreateRequest, productImg);
+
+        ProductCommandResponse response = ProductCommandResponse.builder()
+                .productCode(productCode).build();
+
+
+        return Restpons ;
     }
 }
