@@ -4,6 +4,9 @@ spring:
     url: jdbc:mysql://localhost:3306/cqrs
     username: swcamp
     password: swcamp
+  output:
+    ansi:
+      enabled: always
 
 image:
   image-dir: C:/upload/productimgs
