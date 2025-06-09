@@ -6,6 +6,7 @@ import com.ohgiraffers.cqrs.products.query.dto.response.ProductDetailResponse;
 import com.ohgiraffers.cqrs.products.query.dto.response.ProductListResponse;
 import com.ohgiraffers.cqrs.products.query.service.ProductQueryService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class ProductQueryController {
 
     private final ProductQueryService productQueryService;
@@ -27,6 +29,7 @@ public class ProductQueryController {
     public ResponseEntity<ApiResponse<ProductListResponse>> getProducts(
             ProductSearchRequest productSearchRequest
     ) {
+        log.info("[ProductQueryController] getProducts productSearchRequest.productName ==>> {}", productSearchRequest.getProductName());
         ProductListResponse response = productQueryService.getProducts(productSearchRequest);
         return ResponseEntity.ok(ApiResponse.success(response));
     }
