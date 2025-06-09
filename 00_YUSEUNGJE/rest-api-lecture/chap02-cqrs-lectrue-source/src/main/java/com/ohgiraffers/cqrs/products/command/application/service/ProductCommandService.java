@@ -10,5 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class ProductCommandService {
 
     public Long createProduct(ProductCreateRequest productCreateRequest, MultipartFile productImg) {
+        return 0L;
     }
 }
