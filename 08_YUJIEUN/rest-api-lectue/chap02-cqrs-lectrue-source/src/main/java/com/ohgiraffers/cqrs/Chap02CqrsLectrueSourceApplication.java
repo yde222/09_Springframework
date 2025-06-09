@@ -1,4 +1,4 @@
-package com.ohgiraffers.cqrs.exception;
+package com.ohgiraffers.cqrs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

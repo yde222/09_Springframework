@@ -1,4 +1,4 @@
-package com.ohgiraffers.config;
+package com.ohgiraffers.cqrs.config;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -10,14 +10,17 @@ import org.springframework.context.annotation.Configuration;
 public class ModelMapperConfig {
 
     @Bean
-    public ModelMapper modelMapper(){
+    public ModelMapper modelMapper() {
         ModelMapper modelMapper = new ModelMapper();
 
         modelMapper.getConfiguration()
+                /* 필드명이 완전히 동일해야 변환(엄격 모드)*/
                 .setMatchingStrategy(MatchingStrategies.STRICT)
-                .setFildAccessLevel(
+                /* setter메소드 미사용 시 ModelMapper가 private 필드에 접근 가능하도록 하는 설정 */
+                .setFieldAccessLevel(
                         org.modelmapper.config.Configuration.AccessLevel.PRIVATE
-                ).setMatchingFied;
-        return ;
+                )
+                .setFieldMatchingEnabled(true);
+        return modelMapper;
     }
 }
