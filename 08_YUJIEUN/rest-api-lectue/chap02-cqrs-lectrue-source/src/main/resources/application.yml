@@ -5,6 +5,6 @@ spring:
     username: swcamp
     password: swcamp
 
-  image:
-    image-dir: C:/upload/productimgs
-    image-url: http://localhost:8080/productimgs/
+image:
+  image-dir: C:/upload/productimgs
+  image-url: http://localhost:8080/productimgs/
