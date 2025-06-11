@@ -1,13 +1,13 @@
-package com.ohgiraffers.cqrs.products.command.application.service;
+package com.ohgiraffers.cqrs.product.command.application.service;
 
 import com.ohgiraffers.cqrs.common.service.FileStorageService;
 import com.ohgiraffers.cqrs.exception.BusinessException;
 import com.ohgiraffers.cqrs.exception.ErrorCode;
-import com.ohgiraffers.cqrs.products.command.application.dto.request.ProductCreateRequest;
-import com.ohgiraffers.cqrs.products.command.application.dto.request.ProductUpdateRequest;
-import com.ohgiraffers.cqrs.products.command.domain.aggregate.Product;
-import com.ohgiraffers.cqrs.products.command.domain.aggregate.ProductStatus;
-import com.ohgiraffers.cqrs.products.command.domain.respository.ProductRepository;
+import com.ohgiraffers.cqrs.product.command.application.dto.request.ProductCreateRequest;
+import com.ohgiraffers.cqrs.product.command.application.dto.request.ProductUpdateRequest;
+import com.ohgiraffers.cqrs.product.command.domain.aggregate.Product;
+import com.ohgiraffers.cqrs.product.command.domain.aggregate.ProductStatus;
+import com.ohgiraffers.cqrs.product.command.domain.respository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 
 import org.modelmapper.ModelMapper;

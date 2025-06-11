@@ -1,4 +1,4 @@
-package com.ohgiraffers.cqrs.products.command.domain.aggregate;
+package com.ohgiraffers.cqrs.product.command.domain.aggregate;
 
 public enum ProductStatus {
     USABLE,     // 주문 가능

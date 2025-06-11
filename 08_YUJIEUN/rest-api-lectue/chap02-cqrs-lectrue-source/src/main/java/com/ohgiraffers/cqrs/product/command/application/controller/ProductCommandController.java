@@ -1,10 +1,10 @@
-package com.ohgiraffers.cqrs.products.command.application.controller;
+package com.ohgiraffers.cqrs.product.command.application.controller;
 
 import com.ohgiraffers.cqrs.common.dto.ApiResponse;
-import com.ohgiraffers.cqrs.products.command.application.dto.request.ProductCreateRequest;
-import com.ohgiraffers.cqrs.products.command.application.dto.request.ProductUpdateRequest;
-import com.ohgiraffers.cqrs.products.command.application.dto.response.ProductCommandResponse;
-import com.ohgiraffers.cqrs.products.command.application.service.ProductCommandService;
+import com.ohgiraffers.cqrs.product.command.application.dto.request.ProductCreateRequest;
+import com.ohgiraffers.cqrs.product.command.application.dto.request.ProductUpdateRequest;
+import com.ohgiraffers.cqrs.product.command.application.dto.response.ProductCommandResponse;
+import com.ohgiraffers.cqrs.product.command.application.service.ProductCommandService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

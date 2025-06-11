@@ -1,6 +1,6 @@
-package com.ohgiraffers.cqrs.products.command.domain.respository;
+package com.ohgiraffers.cqrs.product.command.domain.respository;
 
-import com.ohgiraffers.cqrs.products.command.domain.aggregate.Product;
+import com.ohgiraffers.cqrs.product.command.domain.aggregate.Product;
 
 import java.util.Optional;
 

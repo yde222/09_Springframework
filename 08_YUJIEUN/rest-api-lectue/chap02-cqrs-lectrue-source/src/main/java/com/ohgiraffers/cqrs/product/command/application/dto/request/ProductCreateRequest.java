@@ -1,4 +1,4 @@
-package com.ohgiraffers.cqrs.products.command.application.dto.request;
+package com.ohgiraffers.cqrs.product.command.application.dto.request;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class ProductUpdateRequest {
+public class ProductCreateRequest {
     @NotBlank
     private final String productName;
     @Min(value = 1)
@@ -18,6 +18,4 @@ public class ProductUpdateRequest {
     private final Long categoryCode;
     @Min(value = 1)
     private final Long productStock;
-    @NotBlank
-    private final String status;
 }

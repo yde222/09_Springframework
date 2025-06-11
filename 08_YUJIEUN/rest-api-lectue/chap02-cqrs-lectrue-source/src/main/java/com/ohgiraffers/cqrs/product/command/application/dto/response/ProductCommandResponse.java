@@ -1,4 +1,4 @@
-package com.ohgiraffers.cqrs.products.command.application.dto.response;
+package com.ohgiraffers.cqrs.product.command.application.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;
